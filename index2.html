@@ -505,48 +505,204 @@
       </div>
     </section>
 
-    <!-- Formación académica y experiencia -->
-    <section id="formacion">
-      <h3>Formación académica</h3>
-      <div class="list" style="margin-top:8px">
-        <div class="badge">Título profesional en Psicología</div>
-        <div class="badge">Diplomado en Arteterapia</div>
-        <div class="badge">Diplomado en Neurodiversidad</div>
-        <div class="badge">Capacitación en Autismo y TDAH</div>
+    <!-- AACC -->
+    <section id="aacc">
+      <h3>Altas capacidades (AACC)</h3>
+      <div style="display:grid; grid-template-columns:1fr; gap:12px; margin-top:14px">
+        <div class="card">
+          <p>Detección temprana y seguimiento para potenciar talentos, estrategias de aprendizaje y acompañamiento emocional.</p>
+        </div>
       </div>
-      <h3 style="margin-top:32px">Experiencia laboral</h3>
-      <div style="margin-top:8px; color:var(--muted); line-height:1.4;">
-        <ul>
-          <li>Consultora clínica en centro infantil especializado, 5 años</li>
-          <li>Colaboración con escuelas para inclusión educativa, 3 años</li>
-          <li>Talleres de sensibilización y apoyo a familias, continuos</li>
-        </ul>
+    </section>
+
+    
+
+    <!-- Agendamiento y costos -->
+    <section id="agendar">
+      <h3>Agendamiento de cita · Costos · Modalidad</h3>
+      <div style="display:grid; grid-template-columns:1fr 360px; gap:18px; margin-top:14px">
+        <div>
+          <p class="small">Selecciona modalidad y completa datos para solicitar una cita. Confirmación vía email y/o whatsapp.</p>
+
+          <div class="pricing" style="margin-top:12px">
+            <div class="plan">
+              <h4>Sesión individual</h4>
+              <div class="cost">$45.000 CLP</div>
+              <p class="small">50 minutos · Evaluación inicial</p>
+            </div>
+            <div class="plan">
+              <h4>Sesión de seguimiento</h4>
+              <div class="cost">$35.000 CLP</div>
+              <p class="small">45 minutos · Intervención y acompañamiento</p>
+            </div>
+            <div class="plan">
+              <h4>Taller o intervención escolar</h4>
+              <div class="cost">A convenir</div>
+              <p class="small">Presupuesto según alcance</p>
+            </div>
+          </div>
+
+          <h4 style="margin-top:14px">Modalidad de atención</h4>
+          <ul style="color:var(--muted)">
+            <li>Presencial: consulta en Santiago (dirección a confirmar al reservar)</li>
+            <li>Online: videollamada (Zoom / Google Meet)</li>
+            <li>Visitas a colegio y talleres in situ disponibles</li>
+          </ul>
+
+          <h4 style="margin-top:12px">Información de pago</h4>
+          <div class="card" style="margin-top:8px">
+            <p class="small">Transferencia bancaria / Trasferencia RUT / Webpay (si corresponde). Indicar nombre del paciente y fecha de la sesión en el comprobante.</p>
+            <p style="margin-top:8px"><strong>Banco:</strong> Banco Ejemplo<br><strong>RUT:</strong> 12.345.678-9<br><strong>Titular:</strong> Nombre Apellido</p>
+          </div>
+        </div>
+
+        <aside class="card">
+          <h4>Solicitar cita</h4>
+          <p class="small">Rellena el formulario y recibirás un email de confirmación.</p>
+          <form id="booking-form" onsubmit="return submitBooking(event)" style="margin-top:12px">
+            <div class="form-grid">
+              <input type="text" name="nombre" placeholder="Nombre completo" required />
+              <input type="text" name="telefono" placeholder="Teléfono / WhatsApp" required />
+              <input type="email" name="email" placeholder="Correo electrónico" required />
+              <select name="modalidad" required>
+                <option value="">Seleccionar modalidad</option>
+                <option value="presencial">Presencial</option>
+                <option value="online">Online</option>
+                <option value="taller">Taller / Institución</option>
+              </select>
+            </div>
+            <div style="margin-top:10px">
+              <label class="small">Fecha preferida</label>
+              <input type="date" name="fecha" required />
+            </div>
+            <div style="margin-top:10px">
+              <label class="small">Comentarios / Motivo</label>
+              <textarea name="motivo" rows="3" placeholder="Breve descripción"></textarea>
+            </div>
+            <div style="margin-top:12px; display:flex; gap:8px">
+              <button class="btn" type="submit">Enviar solicitud</button>
+              <a href="#contacto" style="align-self:center; font-weight:700; color:var(--accent)">¿Dudas?</a>
+            </div>
+          </form>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Necesitas ayuda urgente -->
+    <section id="urgente">
+      <h3>¿Necesitas ayuda urgente?</h3>
+      <div style="display:flex; gap:12px; margin-top:12px; align-items:center">
+        <div class="card" style="flex:1">
+          <p style="font-weight:800; color:#b91c1c">Si tú o alguien corre riesgo inmediato: llamar a emergencias o acudir a urgencias más cercanas.</p>
+          <ul style="color:var(--muted); margin-top:8px">
+            <li>Emergencias: 131 / 133</li>
+            <li>Salud mental: Línea de ayuda local (agregar número local)</li>
+            <li>Centro de salud mental o servicio de urgencias más cercano</li>
+          </ul>
+        </div>
+        <div class="card" style="width:260px; text-align:center">
+          <div style="font-size:28px; font-weight:800; color:var(--accent-2)">Disponible</div>
+          <div class="small">Lunes a Viernes · 09:00 - 18:00</div>
+          <div style="margin-top:10px"><a class="btn" href="#contacto">Contactar ahora</a></div>
+        </div>
       </div>
     </section>
 
     <!-- Contacto -->
-    <section id="contacto" style="margin-top:48px;">
-      <h3>Contacto y agendamiento</h3>
-      <p>Para consultas, agendar citas o solicitar información, puedes contactarme vía WhatsApp o correo electrónico.</p>
-      <p><strong>Email:</strong> contacto@psicologaconsulta.cl</p>
-      <p><strong>WhatsApp:</strong> <a href="https://wa.me/56912345678" target="_blank" rel="noopener">+56 9 1234 5678</a></p>
-      <a href="#agendar" class="btn">Agendar cita</a>
+    <section id="contacto">
+      <h3>Contacto</h3>
+      <div style="display:grid; grid-template-columns:1fr 320px; gap:18px; margin-top:12px">
+        <div>
+          <p class="small">Escríbenos para consultas, coordinación con colegios o derivaciones. Respuesta en un plazo aproximado de 24-48 horas hábiles.</p>
+          <div style="display:flex; gap:12px; margin-top:12px; flex-wrap:wrap">
+            <div class="card">
+              <strong>Email</strong>
+              <div class="small">hola@ejemplo.cl</div>
+            </div>
+            <div class="card">
+              <strong>WhatsApp</strong>
+              <div class="small">+56 9 1234 5678</div>
+            </div>
+            <div class="card">
+              <strong>Ubicación</strong>
+              <div class="small">Santiago, Chile (dirección a confirmar al reservar)</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card">
+          <h4>Enviar mensaje</h4>
+          <form onsubmit="return submitContact(event)" style="margin-top:10px">
+            <input name="nombre" placeholder="Nombre" required />
+            <input name="email" placeholder="Correo" type="email" required style="margin-top:8px" />
+            <input name="telefono" placeholder="Teléfono" style="margin-top:8px" />
+            <textarea name="mensaje" placeholder="Mensaje" rows="4" style="margin-top:8px"></textarea>
+            <div style="margin-top:10px"><button class="btn" type="submit">Enviar</button></div>
+          </form>
+        </aside>
+      </div>
     </section>
 
-    <!-- Agendar cita (id para scroll) -->
-    <section id="agendar" style="margin-top:48px;">
-      <h3>Agendar cita</h3>
-      <p>Formulario y opciones para reservar tu sesión próximamente.</p>
-    </section>
-
+    <footer>
+      <div class="wrap footer-grid">
+        <div>
+          <strong>Psicóloga · Consulta</strong>
+          <div class="small">Protegemos la confidencialidad y privacidad de tus datos conforme a la normativa vigente.</div>
+        </div>
+        <div class="small">© Derechos reservados · Nombre profesional · 2025.</div>
+      </div>
+    </footer>
   </main>
 
-  <footer>
-    <div class="wrap footer-grid">
-      <div class="small">© 2025 Psicóloga Consulta. Todos los derechos reservados.</div>
-      <div class="small">Desarrollado por Alfredo Andaluz Prado</div>
+  <!-- Modal booking -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center">
+        <h4>Solicitar cita</h4>
+        <button onclick="closeModal()" aria-label="Cerrar">✕</button>
+      </div>
+      <form id="modal-form" style="margin-top:12px" onsubmit="return submitBooking(event)">
+        <div class="form-grid">
+          <input name="nombre" placeholder="Nombre" required />
+          <input name="telefono" placeholder="Teléfono" required />
+          <input name="email" placeholder="Correo" type="email" required />
+          <select name="modalidad" required>
+            <option value="">Modalidad</option>
+            <option value="presencial">Presencial</option>
+            <option value="online">Online</option>
+          </select>
+        </div>
+        <div style="margin-top:10px">
+          <input type="date" name="fecha" required />
+        </div>
+        <div style="margin-top:10px"><textarea name="motivo" rows="3" placeholder="Motivo"></textarea></div>
+        <div style="margin-top:12px; display:flex; gap:8px"><button class="btn" type="submit">Enviar</button><button type="button" onclick="closeModal()" style="background:#efefef;border-radius:8px;padding:10px 12px">Cancelar</button></div>
+      </form>
     </div>
-  </footer>
+  </div>
 
+  <script>
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click', e=>{
+      const href = a.getAttribute('href');
+      if(href.length>1){
+        e.preventDefault(); document.querySelector(href).scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    }));
+
+    // Modal booking
+    const modal = document.getElementById('modal');
+    const openBook = document.getElementById('open-book');
+    openBook.addEventListener('click', e=>{ e.preventDefault(); openModal(); });
+    function openModal(){ modal.classList.add('active'); modal.setAttribute('aria-hidden','false'); }
+    function closeModal(){ modal.classList.remove('active'); modal.setAttribute('aria-hidden','true'); }
+
+    // Fake submit handlers (replace with integration code)
+    function submitBooking(e){ e.preventDefault(); const f = (e.target); alert('Solicitud enviada. Se contactará por correo/whatsapp para confirmar.'); closeModal(); f.reset(); return false }
+    function submitContact(e){ e.preventDefault(); alert('Mensaje enviado. Te responderemos dentro de 24-48 horas hábiles.'); e.target.reset(); return false }
+
+    // Accessibility: close modal with ESC
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); })
+  </script>
 </body>
 </html>
