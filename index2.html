@@ -12,80 +12,216 @@
       --fw-heading: 700; --fw-regular: 400; --container:1200px;
     }
     *{box-sizing:border-box}
-    body{font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; background:linear-gradient(180deg,var(--bg),#eef6fb); color:#0b1220; -webkit-font-smoothing:antialiased}
+    body{
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      margin:0; background:linear-gradient(180deg,var(--bg),#eef6fb);
+      color:#0b1220; -webkit-font-smoothing:antialiased;
+      scroll-behavior: smooth; /* scroll suave */
+    }
     .wrap{max-width:var(--container); margin:0 auto; padding:40px 24px}
 
     /* Header */
-    header{position:sticky; top:0; background:rgba(255,255,255,0.9); backdrop-filter: blur(6px); z-index:40; box-shadow:0 2px 10px rgba(15,23,42,0.04)}
-    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 24px}
-    .brand{display:flex; gap:12px; align-items:center}
-    .logo{width:52px; height:52px; border-radius:12px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); display:flex; align-items:center; justify-content:center; color:white; font-weight:800; font-size:18px; box-shadow:var(--shadow)}
+    header{
+      position:sticky; top:0; background:rgba(255,255,255,0.9);
+      backdrop-filter: blur(6px); z-index:40; box-shadow:0 2px 10px rgba(15,23,42,0.04)
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 24px
+    }
+    .brand{
+      display:flex; gap:12px; align-items:center
+    }
+    .logo{
+      width:52px; height:52px; border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex; align-items:center; justify-content:center; color:white;
+      font-weight:800; font-size:18px; box-shadow:var(--shadow)
+    }
     .brand h1{margin:0; font-size:16px}
-    nav ul{display:flex; gap:14px; list-style:none; margin:0; padding:0}
-    nav a{color:var(--muted); text-decoration:none; font-weight:600}
-    .cta{background:var(--accent); color:white; padding:10px 16px; border-radius:10px; text-decoration:none; font-weight:700}
+    nav ul{
+      display:flex; gap:14px; list-style:none; margin:0; padding:0
+    }
+    nav a{
+      color:var(--muted); text-decoration:none; font-weight:600; cursor:pointer;
+    }
+    nav a:hover{
+      color:var(--accent-2); text-decoration:underline;
+    }
+    .cta{
+      background:var(--accent); color:white; padding:10px 16px;
+      border-radius:10px; text-decoration:none; font-weight:700; cursor:pointer;
+    }
 
     /* Hero */
-    .hero{display:grid; grid-template-columns:1fr 420px; gap:32px; align-items:center; padding:56px 24px}
-    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.95)); border-radius:18px; padding:28px; box-shadow:var(--shadow)}
-    .hero h2{margin:0 0 10px; font-size:28px; color:var(--accent-2)}
-    .lead{color:var(--muted); margin-bottom:18px}
-    .bullets{display:flex; gap:12px; flex-wrap:wrap}
-    .chip{background:#eef7f6; color:var(--accent); padding:8px 12px; border-radius:999px; font-weight:700}
+    .hero{
+      display:grid; grid-template-columns:1fr 420px; gap:32px; align-items:center; padding:56px 24px
+    }
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.95));
+      border-radius:18px; padding:28px; box-shadow:var(--shadow)
+    }
+    .hero h2{
+      margin:0 0 10px; font-size:28px; color:var(--accent-2)
+    }
+    .lead{
+      color:var(--muted); margin-bottom:18px
+    }
+    .bullets{
+      display:flex; gap:12px; flex-wrap:wrap
+    }
+    .chip{
+      background:#eef7f6; color:var(--accent); padding:8px 12px; border-radius:999px; font-weight:700
+    }
 
     /* Quick contact */
-    .quick-contact{display:flex; flex-direction:column; gap:12px}
-    .card{background:var(--card); border-radius:12px; padding:18px; box-shadow:0 6px 22px rgba(16,24,40,0.06)}
-    .price{font-size:20px; font-weight:800}
+    .quick-contact{
+      display:flex; flex-direction:column; gap:12px
+    }
+    .card{
+      background:var(--card); border-radius:12px; padding:18px;
+      box-shadow:0 6px 22px rgba(16,24,40,0.06)
+    }
+    .price{
+      font-size:20px; font-weight:800
+    }
 
     /* Sections */
-    section{padding:48px 0}
-    h3{font-size:22px; margin:0 0 14px}
-    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
-    .service{padding:20px; border-radius:12px; background:linear-gradient(180deg,#fff,#fbfeff); box-shadow:0 6px 16px rgba(3,105,161,0.04)}
-    .service h4{margin:0 0 8px}
-    p{color:var(--muted); margin:0}
+    section{
+      padding:48px 0
+    }
+    h3{
+      font-size:22px; margin:0 0 14px
+    }
+    .grid-3{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:18px
+    }
+    .service{
+      padding:20px; border-radius:12px; background:linear-gradient(180deg,#fff,#fbfeff);
+      box-shadow:0 6px 16px rgba(3,105,161,0.04);
+      transition: transform 0.28s ease;
+    }
+    .service:hover{
+      transform:translateY(-6px);
+    }
+    .service h4{
+      margin:0 0 8px
+    }
+    p{
+      color:var(--muted); margin:0
+    }
 
-    /* Profile */
-    .profile{display:flex; gap:24px; align-items:center}
-    .avatar{width:140px; height:140px; border-radius:18px; overflow:hidden; display:block}
-    .avatar img{width:100%; height:100%; object-fit:cover; display:block}
-    .meta{max-width:720px}
-    .meta p{margin:8px 0}
-    .list{display:flex; gap:12px; flex-wrap:wrap}
-    .badge{background:#f1f5f9; padding:8px 10px; border-radius:8px; color:var(--muted); font-weight:700}
+    /* Profile (Quién soy destacado) */
+    #quien{
+      background:#e6f0ff;
+      border-radius:20px;
+      box-shadow:0 8px 30px rgba(3,105,161,0.15);
+      padding:36px 28px;
+      margin-bottom:48px;
+    }
+    #quien .profile{
+      display:flex;
+      gap:32px;
+      align-items:center;
+    }
+    #quien .avatar{
+      width:160px;
+      height:160px;
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:0 8px 20px rgba(3,105,161,0.3);
+      flex-shrink:0;
+    }
+    #quien .avatar img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    #quien .meta h3{
+      color:#0369a1;
+      font-weight:800;
+      margin-bottom:12px;
+    }
 
     /* Pricing table */
-    .pricing{display:flex; gap:16px; flex-wrap:wrap}
-    .plan{flex:1; min-width:200px; border-radius:12px; background:linear-gradient(180deg,#fff,#fbfdff); padding:18px; box-shadow:var(--shadow)}
-    .plan h4{margin:0 0 8px}
-    .plan .cost{font-size:22px; font-weight:800; margin-bottom:10px}
+    .pricing{
+      display:flex; gap:16px; flex-wrap:wrap
+    }
+    .plan{
+      flex:1; min-width:200px; border-radius:12px;
+      background:linear-gradient(180deg,#fff,#fbfdff);
+      padding:18px; box-shadow:var(--shadow);
+      transition: transform 0.28s ease;
+    }
+    .plan:hover{
+      transform:translateY(-6px);
+    }
+    .plan h4{
+      margin:0 0 8px
+    }
+    .plan .cost{
+      font-size:22px; font-weight:800; margin-bottom:10px
+    }
 
     /* Booking modal */
-    .modal{position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(2,6,23,0.45); z-index:60}
-    .modal.active{display:flex}
-    .modal-card{background:var(--card); width:720px; max-width:92%; border-radius:12px; padding:22px}
-    .form-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-    input,textarea,select{width:100%; padding:10px 12px; border-radius:8px; border:1px solid #e6edf3; font-size:14px}
-    .btn{display:inline-block; padding:10px 14px; border-radius:10px; background:var(--accent); color:white; font-weight:700; text-decoration:none}
+    .modal{
+      position:fixed; inset:0; display:none;
+      align-items:center; justify-content:center;
+      background:rgba(2,6,23,0.45); z-index:60
+    }
+    .modal.active{
+      display:flex
+    }
+    .modal-card{
+      background:var(--card); width:720px; max-width:92%;
+      border-radius:12px; padding:22px
+    }
+    .form-grid{
+      display:grid; grid-template-columns:1fr 1fr; gap:12px
+    }
+    input,textarea,select{
+      width:100%; padding:10px 12px; border-radius:8px; border:1px solid #e6edf3; font-size:14px
+    }
+    .btn{
+      display:inline-block; padding:10px 14px; border-radius:10px;
+      background:var(--accent); color:white; font-weight:700; text-decoration:none;
+      cursor:pointer;
+    }
+    .btn:active{
+      transform:translateY(1px);
+    }
 
     /* Footer */
-    footer{padding:28px 0; border-top:1px solid rgba(10,20,30,0.04); margin-top:24px}
-    .footer-grid{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
-    .small{font-size:13px; color:var(--muted)}
+    footer{
+      padding:28px 0; border-top:1px solid rgba(10,20,30,0.04); margin-top:24px
+    }
+    .footer-grid{
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap
+    }
+    .small{
+      font-size:13px; color:var(--muted)
+    }
 
     /* Responsive */
     @media (max-width:960px){
-      .hero{grid-template-columns:1fr; padding:28px 16px}
-      .grid-3{grid-template-columns:1fr}
-      .profile{flex-direction:column; align-items:flex-start}
+      .hero{
+        grid-template-columns:1fr; padding:28px 16px
+      }
+      .grid-3{
+        grid-template-columns:1fr
+      }
+      .profile{
+        flex-direction:column; align-items:flex-start
+      }
+      #quien .profile{
+        flex-direction: column;
+        gap: 24px;
+      }
+      #quien .avatar{
+        width: 120px;
+        height: 120px;
+      }
     }
-
-    /* Micro interactions */
-    .service:hover{transform:translateY(-6px); transition:transform .28s ease}
-    .plan:hover{transform:translateY(-6px); transition:transform .28s ease}
-    .cta:active{transform:translateY(1px)}
-
   </style>
 </head>
 <body>
@@ -100,6 +236,7 @@
       </div>
       <nav>
         <ul>
+          <li><a href="#quien">Quién soy</a></li>
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#autismo">Autismo</a></li>
           <li><a href="#tdah">TDAH</a></li>
@@ -114,6 +251,31 @@
   </header>
 
   <main class="wrap">
+
+    <!-- Quién soy al principio, destacado -->
+    <section id="quien">
+      <div class="profile">
+        <div class="avatar">
+          <img src="https://media.licdn.com/dms/image/v2/D4E35AQGqc7J65C1OkA/profile-framedphoto-shrink_400_400/B4EZblAb1VGQAc-/0/1747598818941?e=1755230400&v=beta&t=YCfcQdqubesGdBR03uHm_KjIvecZYsSOiTs8pV32Qxs" alt="Foto de la psicóloga" />
+        </div>
+        <div class="meta">
+          <h3>¿Quién soy?</h3>
+          <p>Psicóloga clínica con enfoque en desarrollo infantil y neurodiversidad. Trabajo con familias, escuelas y equipos interdisciplinarios para generar entornos de apoyo.</p>
+
+          <h3 id="formacion">Formación académica</h3>
+          <div class="list" style="margin-top:8px">
+            <div class="badge">Título profesional en Psicología</div>
+            <div class="badge">Diplomado en Intervención en Autismo</div>
+            <div class="badge">Capacitación en evaluación TDAH y AACC</div>
+          </div>
+
+          <h3 style="margin-top:12px">Experiencia laboral</h3>
+          <p>Más de X años trabajando en consultas privadas, centros educativos y programas comunitarios. Coordinación con equipos multidisciplinarios y apoyo a procesos de inclusión escolar.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hero -->
     <section class="hero">
       <div class="hero-card">
         <h2>Atención psicológica especializada y cercana</h2>
@@ -159,22 +321,22 @@
       <div class="grid-3" style="margin-top:14px">
         <div class="service">
           <p style="text-align:justify;">
-    He estado en situaciones de mucha vulnerabilidad en las que me hubiera gustado sentir que tenía la opción de pedir ayuda, y otras en las que el apoyo psicológico profesional, más las herramientas que ya había desarrollado y junto a una red solidaria y bondadosa han sido mi verdadero salvavidas, que me ayudaron a transitar serias dificultades, a sobrellevar mis actividades diarias a pesar de ellas, y reconectar con mi capacidad de ser resiliente, a sanar y empezar de nuevo.&nbsp;
-</p>
-<p style="text-align:justify;">
-    Esta es mi manera de expresar mi agradecimiento, de retribuir un poco de eso bonito que aún existe en el mundo, desde mi vereda y profesión, para que este mundo sea cada día mejor.&nbsp;
-</p>
-<blockquote>
-    <p style="text-align:justify;">
-        Así como a mí un día me dieron motivos para sentir esperanza, ser solidaria, empática y compasiva, y motivarme a seguir, anhelo que también le pase a otros.&nbsp;
-    </p>
-</blockquote>
-<p style="text-align:justify;">
-    También puedes ser parte de esto, o aprovechar esta oportunidad para resignificar tu historia.&nbsp;
-</p>
-<p style="text-align:justify;">
-    -Esta sección aún está en construcción, próximamente tendremos más Servicios a la Comunidad como Foros de apoyo(Haz click aquí) entre otros. Si te gustaría colaborar con este proyecto contáctame. Te invito a conocer lo que está disponible:
-</p>
+            He estado en situaciones de mucha vulnerabilidad en las que me hubiera gustado sentir que tenía la opción de pedir ayuda, y otras en las que el apoyo psicológico profesional, más las herramientas que ya había desarrollado y junto a una red solidaria y bondadosa han sido mi verdadero salvavidas, que me ayudaron a transitar serias dificultades, a sobrellevar mis actividades diarias a pesar de ellas, y reconectar con mi capacidad de ser resiliente, a sanar y empezar de nuevo.&nbsp;
+          </p>
+          <p style="text-align:justify;">
+            Esta es mi manera de expresar mi agradecimiento, de retribuir un poco de eso bonito que aún existe en el mundo, desde mi vereda y profesión, para que este mundo sea cada día mejor.&nbsp;
+          </p>
+          <blockquote>
+            <p style="text-align:justify;">
+              Así como a mí un día me dieron motivos para sentir esperanza, ser solidaria, empática y compasiva, y motivarme a seguir, anhelo que también le pase a otros.&nbsp;
+            </p>
+          </blockquote>
+          <p style="text-align:justify;">
+            También puedes ser parte de esto, o aprovechar esta oportunidad para resignificar tu historia.&nbsp;
+          </p>
+          <p style="text-align:justify;">
+            -Esta sección aún está en construcción, próximamente tendremos más Servicios a la Comunidad como Foros de apoyo(Haz click aquí) entre otros. Si te gustaría colaborar con este proyecto contáctame. Te invito a conocer lo que está disponible:
+          </p>
         </div>
         <div class="service">
           <h4>Terapia familiar</h4>
@@ -197,247 +359,4 @@
         </div>
         <div class="card">
           <h4>Intervención</h4>
-          <p>Planes de intervención individualizados, apoyo en habilidades sociales, regulación emocional y acompañamiento a cuidadores.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- TDAH -->
-    <section id="tdah">
-      <h3>TDAH</h3>
-      <div class="grid-3" style="margin-top:14px">
-        <div class="service">
-          <h4>Evaluación neuropsicológica</h4>
-          <p>Pruebas estandarizadas para diagnóstico diferencial y recomendaciones educativas.</p>
-        </div>
-        <div class="service">
-          <h4>Entrenamiento psicoeducativo</h4>
-          <p>Estrategias para manejo de impulsividad, atención y planificación en la vida diaria y escolar.</p>
-        </div>
-        <div class="service">
-          <h4>Apoyo a docentes</h4>
-          <p>Intervenciones y adaptaciones dentro del aula para favorecer el aprendizaje.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- AACC -->
-    <section id="aacc">
-      <h3>Altas capacidades (AACC)</h3>
-      <div style="display:grid; grid-template-columns:1fr; gap:12px; margin-top:14px">
-        <div class="card">
-          <p>Detección temprana y seguimiento para potenciar talentos, estrategias de aprendizaje y acompañamiento emocional.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Quién soy y formación -->
-    <section id="quien">
-      <div class="profile">
-        <div class="avatar"><img src="https://media.licdn.com/dms/image/v2/D4E35AQGqc7J65C1OkA/profile-framedphoto-shrink_400_400/B4EZblAb1VGQAc-/0/1747598818941?e=1755230400&v=beta&t=YCfcQdqubesGdBR03uHm_KjIvecZYsSOiTs8pV32Qxs" alt="Foto de la psicóloga"/></div>
-        <div class="meta">
-          <h3>¿Quién soy?</h3>
-          <p>Psicóloga clínica con enfoque en desarrollo infantil y neurodiversidad. Trabajo con familias, escuelas y equipos interdisciplinarios para generar entornos de apoyo.</p>
-
-          <h3 id="formacion">Formación académica</h3>
-          <div class="list" style="margin-top:8px">
-            <div class="badge">Título profesional en Psicología</div>
-            <div class="badge">Diplomado en Intervención en Autismo</div>
-            <div class="badge">Capacitación en evaluación TDAH y AACC</div>
-          </div>
-
-          <h3 style="margin-top:12px">Experiencia laboral</h3>
-          <p>Más de X años trabajando en consultas privadas, centros educativos y programas comunitarios. Coordinación con equipos multidisciplinarios y apoyo a procesos de inclusión escolar.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Agendamiento y costos -->
-    <section id="agendar">
-      <h3>Agendamiento de cita · Costos · Modalidad</h3>
-      <div style="display:grid; grid-template-columns:1fr 360px; gap:18px; margin-top:14px">
-        <div>
-          <p class="small">Selecciona modalidad y completa datos para solicitar una cita. Confirmación vía email y/o whatsapp.</p>
-
-          <div class="pricing" style="margin-top:12px">
-            <div class="plan">
-              <h4>Sesión individual</h4>
-              <div class="cost">$45.000 CLP</div>
-              <p class="small">50 minutos · Evaluación inicial</p>
-            </div>
-            <div class="plan">
-              <h4>Sesión de seguimiento</h4>
-              <div class="cost">$35.000 CLP</div>
-              <p class="small">45 minutos · Intervención y acompañamiento</p>
-            </div>
-            <div class="plan">
-              <h4>Taller o intervención escolar</h4>
-              <div class="cost">A convenir</div>
-              <p class="small">Presupuesto según alcance</p>
-            </div>
-          </div>
-
-          <h4 style="margin-top:14px">Modalidad de atención</h4>
-          <ul style="color:var(--muted)">
-            <li>Presencial: consulta en Santiago (dirección a confirmar al reservar)</li>
-            <li>Online: videollamada (Zoom / Google Meet)</li>
-            <li>Visitas a colegio y talleres in situ disponibles</li>
-          </ul>
-
-          <h4 style="margin-top:12px">Información de pago</h4>
-          <div class="card" style="margin-top:8px">
-            <p class="small">Transferencia bancaria / Trasferencia RUT / Webpay (si corresponde). Indicar nombre del paciente y fecha de la sesión en el comprobante.</p>
-            <p style="margin-top:8px"><strong>Banco:</strong> Banco Ejemplo<br><strong>RUT:</strong> 12.345.678-9<br><strong>Titular:</strong> Nombre Apellido</p>
-          </div>
-        </div>
-
-        <aside class="card">
-          <h4>Solicitar cita</h4>
-          <p class="small">Rellena el formulario y recibirás un email de confirmación.</p>
-          <form id="booking-form" onsubmit="return submitBooking(event)" style="margin-top:12px">
-            <div class="form-grid">
-              <input type="text" name="nombre" placeholder="Nombre completo" required />
-              <input type="text" name="telefono" placeholder="Teléfono / WhatsApp" required />
-              <input type="email" name="email" placeholder="Correo electrónico" required />
-              <select name="modalidad" required>
-                <option value="">Seleccionar modalidad</option>
-                <option value="presencial">Presencial</option>
-                <option value="online">Online</option>
-                <option value="taller">Taller / Institución</option>
-              </select>
-            </div>
-            <div style="margin-top:10px">
-              <label class="small">Fecha preferida</label>
-              <input type="date" name="fecha" required />
-            </div>
-            <div style="margin-top:10px">
-              <label class="small">Comentarios / Motivo</label>
-              <textarea name="motivo" rows="3" placeholder="Breve descripción"></textarea>
-            </div>
-            <div style="margin-top:12px; display:flex; gap:8px">
-              <button class="btn" type="submit">Enviar solicitud</button>
-              <a href="#contacto" style="align-self:center; font-weight:700; color:var(--accent)">¿Dudas?</a>
-            </div>
-          </form>
-        </aside>
-      </div>
-    </section>
-
-    <!-- Necesitas ayuda urgente -->
-    <section id="urgente">
-      <h3>¿Necesitas ayuda urgente?</h3>
-      <div style="display:flex; gap:12px; margin-top:12px; align-items:center">
-        <div class="card" style="flex:1">
-          <p style="font-weight:800; color:#b91c1c">Si tú o alguien corre riesgo inmediato: llamar a emergencias o acudir a urgencias más cercanas.</p>
-          <ul style="color:var(--muted); margin-top:8px">
-            <li>Emergencias: 131 / 133</li>
-            <li>Salud mental: Línea de ayuda local (agregar número local)</li>
-            <li>Centro de salud mental o servicio de urgencias más cercano</li>
-          </ul>
-        </div>
-        <div class="card" style="width:260px; text-align:center">
-          <div style="font-size:28px; font-weight:800; color:var(--accent-2)">Disponible</div>
-          <div class="small">Lunes a Viernes · 09:00 - 18:00</div>
-          <div style="margin-top:10px"><a class="btn" href="#contacto">Contactar ahora</a></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contacto -->
-    <section id="contacto">
-      <h3>Contacto</h3>
-      <div style="display:grid; grid-template-columns:1fr 320px; gap:18px; margin-top:12px">
-        <div>
-          <p class="small">Escríbenos para consultas, coordinación con colegios o derivaciones. Respuesta en un plazo aproximado de 24-48 horas hábiles.</p>
-          <div style="display:flex; gap:12px; margin-top:12px; flex-wrap:wrap">
-            <div class="card">
-              <strong>Email</strong>
-              <div class="small">hola@ejemplo.cl</div>
-            </div>
-            <div class="card">
-              <strong>WhatsApp</strong>
-              <div class="small">+56 9 1234 5678</div>
-            </div>
-            <div class="card">
-              <strong>Ubicación</strong>
-              <div class="small">Santiago, Chile (dirección a confirmar al reservar)</div>
-            </div>
-          </div>
-        </div>
-
-        <aside class="card">
-          <h4>Enviar mensaje</h4>
-          <form onsubmit="return submitContact(event)" style="margin-top:10px">
-            <input name="nombre" placeholder="Nombre" required />
-            <input name="email" placeholder="Correo" type="email" required style="margin-top:8px" />
-            <input name="telefono" placeholder="Teléfono" style="margin-top:8px" />
-            <textarea name="mensaje" placeholder="Mensaje" rows="4" style="margin-top:8px"></textarea>
-            <div style="margin-top:10px"><button class="btn" type="submit">Enviar</button></div>
-          </form>
-        </aside>
-      </div>
-    </section>
-
-    <footer>
-      <div class="wrap footer-grid">
-        <div>
-          <strong>Psicóloga · Consulta</strong>
-          <div class="small">Protegemos la confidencialidad y privacidad de tus datos conforme a la normativa vigente.</div>
-        </div>
-        <div class="small">© Derechos reservados · Nombre profesional · 2025</div>
-      </div>
-    </footer>
-  </main>
-
-  <!-- Modal booking -->
-  <div id="modal" class="modal" aria-hidden="true">
-    <div class="modal-card">
-      <div style="display:flex; justify-content:space-between; align-items:center">
-        <h4>Solicitar cita</h4>
-        <button onclick="closeModal()" aria-label="Cerrar">✕</button>
-      </div>
-      <form id="modal-form" style="margin-top:12px" onsubmit="return submitBooking(event)">
-        <div class="form-grid">
-          <input name="nombre" placeholder="Nombre" required />
-          <input name="telefono" placeholder="Teléfono" required />
-          <input name="email" placeholder="Correo" type="email" required />
-          <select name="modalidad" required>
-            <option value="">Modalidad</option>
-            <option value="presencial">Presencial</option>
-            <option value="online">Online</option>
-          </select>
-        </div>
-        <div style="margin-top:10px">
-          <input type="date" name="fecha" required />
-        </div>
-        <div style="margin-top:10px"><textarea name="motivo" rows="3" placeholder="Motivo"></textarea></div>
-        <div style="margin-top:12px; display:flex; gap:8px"><button class="btn" type="submit">Enviar</button><button type="button" onclick="closeModal()" style="background:#efefef;border-radius:8px;padding:10px 12px">Cancelar</button></div>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    // Smooth scroll for internal links
-    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click', e=>{
-      const href = a.getAttribute('href');
-      if(href.length>1){
-        e.preventDefault(); document.querySelector(href).scrollIntoView({behavior:'smooth', block:'start'});
-      }
-    }));
-
-    // Modal booking
-    const modal = document.getElementById('modal');
-    const openBook = document.getElementById('open-book');
-    openBook.addEventListener('click', e=>{ e.preventDefault(); openModal(); });
-    function openModal(){ modal.classList.add('active'); modal.setAttribute('aria-hidden','false'); }
-    function closeModal(){ modal.classList.remove('active'); modal.setAttribute('aria-hidden','true'); }
-
-    // Fake submit handlers (replace with integration code)
-    function submitBooking(e){ e.preventDefault(); const f = (e.target); alert('Solicitud enviada. Se contactará por correo/whatsapp para confirmar.'); closeModal(); f.reset(); return false }
-    function submitContact(e){ e.preventDefault(); alert('Mensaje enviado. Te responderemos dentro de 24-48 horas hábiles.'); e.target.reset(); return false }
-
-    // Accessibility: close modal with ESC
-    document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); })
-  </script>
-</body>
-</html>
+          <p>Planes de intervención individualizados, apoyo en habilidades sociales, regulación emocional y acompañamien
