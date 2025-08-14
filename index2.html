@@ -1,719 +1,333 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Psicóloga · Consulta | Servicios en Comunidad, Autismo y TDAH</title>
-  <meta name="description" content="Consulta psicológica especializada en Autismo, TDAH y apoyo a la comunidad. Atención presencial y online. Agendamiento de citas y modalidades de pago." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psicóloga - [Nombre de tu hermana]</title>
   <style>
-    :root{
-      --bg:#f6f8fb; --card:#ffffff; --muted:#6b7280; --accent:#0f766e; --accent-2:#0369a1; --glass: rgba(255,255,255,0.6);
-      --radius:14px; --shadow: 0 8px 30px rgba(18,18,18,0.08);
-      --fw-heading: 700; --fw-regular: 400; --container:1200px;
-    }
-    *{box-sizing:border-box}
-    body{
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      margin:0;
-      background:linear-gradient(180deg,var(--bg),#eef6fb);
-      color:#0b1220;
-      -webkit-font-smoothing:antialiased;
-      scroll-behavior: smooth;
-    }
-    .wrap{max-width:var(--container); margin:0 auto; padding:40px 24px}
-
-    /* Header */
-    header{
-      position:sticky;
-      top:0;
-      background:rgba(255,255,255,0.9);
-      backdrop-filter: blur(6px);
-      z-index:40;
-      box-shadow:0 2px 10px rgba(15,23,42,0.04);
-    }
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding:12px 24px;
-    }
-    .brand{
-      display:flex;
-      gap:12px;
-      align-items:center;
-    }
-    .logo{
-      width:52px;
-      height:52px;
-      border-radius:12px;
-      background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:white;
-      font-weight:800;
-      font-size:18px;
-      box-shadow:var(--shadow);
-    }
-    .brand h1{
-      margin:0;
-      font-size:16px;
-    }
-    nav ul{
-      display:flex;
-      gap:14px;
-      list-style:none;
-      margin:0;
-      padding:0;
-    }
-    nav a{
-      color:var(--muted);
-      text-decoration:none;
-      font-weight:600;
-    }
-    .cta{
-      background:var(--accent);
-      color:white;
-      padding:10px 16px;
-      border-radius:10px;
-      text-decoration:none;
-      font-weight:700;
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff;
+      color: #333;
     }
 
-    /* Hero */
-    .hero{
-      display:grid;
-      grid-template-columns:1fr 420px;
-      gap:32px;
-      align-items:center;
-      padding:56px 24px;
+    /* ======= Mensaje superior ======= */
+    .top-bar {
+      background-color: #a25b4e;
+      color: #fff;
+      padding: 8px 20px;
+      font-size: 0.9rem;
+      text-align: center;
     }
-    .hero-card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.95));
-      border-radius:18px;
-      padding:28px;
-      box-shadow:var(--shadow);
-    }
-    .hero h2{
-      margin:0 0 10px;
-      font-size:28px;
-      color:var(--accent-2);
-    }
-    .lead{
-      color:var(--muted);
-      margin-bottom:18px;
-    }
-    .bullets{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-    .chip{
-      background:#eef7f6;
-      color:var(--accent);
-      padding:8px 12px;
-      border-radius:999px;
-      font-weight:700;
+    .top-bar a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
     }
 
-    /* Quick contact */
-    .quick-contact{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
+    /* ======= Header ======= */
+    header {
+      background-color: #faf3eb;
+      padding: 20px;
+      text-align: center;
     }
-    .card{
-      background:var(--card);
-      border-radius:12px;
-      padding:18px;
-      box-shadow:0 6px 22px rgba(16,24,40,0.06);
-    }
-    .price{
-      font-size:20px;
-      font-weight:800;
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #a25b4e;
     }
 
-    /* Sections */
-    section{
-      padding:48px 0;
+    /* ======= Sección Quién soy ======= */
+    #about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 50px 20px;
+      background-color: #fff;
     }
-    h3{
-      font-size:22px;
-      margin:0 0 14px;
+    #about img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 20px;
     }
-    .grid-3{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
+    #about .info {
+      max-width: 500px;
+      margin: 20px;
     }
-    .service{
-      padding:20px;
-      border-radius:12px;
-      background:linear-gradient(180deg,#fff,#fbfeff);
-      box-shadow:0 6px 16px rgba(3,105,161,0.04);
-    }
-    .service h4{
-      margin:0 0 8px;
-    }
-    p{
-      color:var(--muted);
-      margin:0;
+    #about h2 {
+      color: #a25b4e;
     }
 
-    /* Profile */
-    .profile{
-      display:flex;
-      gap:24px;
-      align-items:center;
+    /* ======= Sección Servicios ======= */
+    #servicios {
+      padding: 50px 20px;
+      background-color: #faf3eb;
+      text-align: center;
     }
-    .avatar{
-      width:140px;
-      height:140px;
-      border-radius:18px;
-      overflow:hidden;
-      display:block;
-      flex-shrink:0;
-      box-shadow: 0 4px 15px rgba(3,105,161,0.25);
+    .service-icons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
     }
-    .avatar img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
+    .service-icons div {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      width: 200px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
     }
-    .meta{
-      max-width:720px;
+    .service-icons div:hover {
+      transform: translateY(-5px);
     }
-    .meta p{
-      margin:8px 0;
+    .service-icons i {
+      font-size: 2rem;
+      color: #c97b63;
+      margin-bottom: 10px;
     }
-    .list{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
+
+    /* ======= Botones de acción ======= */
+    .action-buttons {
+      margin-top: 30px;
     }
-    .badge {
+    .action-buttons a {
       display: inline-block;
-      background-color: #d0e8ff;
-      color: #0369a1;
-      padding: 6px 12px;
-      border-radius: 9999px;
-      font-weight: 600;
-      font-size: 14px;
-      margin-right: 8px;
-      margin-bottom: 8px;
-      user-select: none;
-      box-shadow: 0 2px 8px rgba(3,105,161,0.15);
+      padding: 10px 20px;
+      margin: 10px;
+      background-color: #a25b4e;
+      color: #fff;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .action-buttons a:hover {
+      background-color: #c97b63;
     }
 
-    /* Pricing table */
-    .pricing{
-      display:flex;
-      gap:16px;
-      flex-wrap:wrap;
+    /* ======= Popups ======= */
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.5);
     }
-    .plan{
-      flex:1;
-      min-width:200px;
-      border-radius:12px;
-      background:linear-gradient(180deg,#fff,#fbfdff);
-      padding:18px;
-      box-shadow:var(--shadow);
+    .popup-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 500px;
+      position: relative;
     }
-    .plan h4{
-      margin:0 0 8px;
-    }
-    .plan .cost{
-      font-size:22px;
-      font-weight:800;
-      margin-bottom:10px;
-    }
-
-    /* Booking modal */
-    .modal{
-      position:fixed;
-      inset:0;
-      display:none;
-      align-items:center;
-      justify-content:center;
-      background:rgba(2,6,23,0.45);
-      z-index:60;
-    }
-    .modal.active{
-      display:flex;
-    }
-    .modal-card{
-      background:var(--card);
-      width:720px;
-      max-width:92%;
-      border-radius:12px;
-      padding:22px;
-    }
-    .form-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-    }
-    input,textarea,select{
-      width:100%;
-      padding:10px 12px;
-      border-radius:8px;
-      border:1px solid #e6edf3;
-      font-size:14px;
-    }
-    .btn{
-      display:inline-block;
-      padding:10px 14px;
-      border-radius:10px;
-      background:var(--accent);
-      color:white;
-      font-weight:700;
-      text-decoration:none;
-      border:none;
-      cursor:pointer;
+    .close {
+      position: absolute;
+      top: 10px; right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
     }
 
-    /* Footer */
-    footer{
-      padding:28px 0;
-      border-top:1px solid rgba(10,20,30,0.04);
-      margin-top:24px;
+    /* ======= Sección de Precios ======= */
+    #precios {
+      padding: 60px 20px;
+      background-color: #faf3eb;
+      text-align: center;
     }
-    .footer-grid{
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
+    .section-title {
+      font-size: 2rem;
+      color: #a25b4e;
+      margin-bottom: 40px;
     }
-    .small{
-      font-size:13px;
-      color:var(--muted);
+    .pricing-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
     }
-
-    /* Responsive */
-    @media (max-width:960px){
-      .hero{
-        grid-template-columns:1fr;
-        padding:28px 16px;
+    .pricing-card {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 25px;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+    }
+    .pricing-card h3 {
+      font-size: 1.4rem;
+      color: #3e2f2f;
+      margin-bottom: 10px;
+    }
+    .price {
+      font-size: 1.8rem;
+      color: #c97b63;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .desc {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .pricing-card .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #a25b4e;
+      color: #fff;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .pricing-card .btn:hover {
+      background-color: #c97b63;
+    }
+    @media (max-width: 768px) {
+      #about {
+        flex-direction: column;
       }
-      .grid-3{
-        grid-template-columns:1fr;
+      .pricing-container {
+        flex-direction: column;
+        align-items: center;
       }
-      .profile{
-        flex-direction:column;
-        align-items:flex-start;
-      }
-    }
-
-    /* Micro interactions */
-    .service:hover{
-      transform:translateY(-6px);
-      transition:transform .28s ease;
-    }
-    .plan:hover{
-      transform:translateY(-6px);
-      transition:transform .28s ease;
-    }
-    .cta:active{
-      transform:translateY(1px);
     }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+
+  <!-- ======= Mensaje superior ======= -->
+  <div class="top-bar">
+    <span>📞 <a href="https://wa.me/569XXXXXXXX" target="_blank">+56 9 XXXX XXXX</a> | 📧 <a href="mailto:email@example.com">email@example.com</a></span>
+  </div>
+
+  <!-- ======= Header ======= -->
   <header>
-    <div class="wrap nav">
-      <div class="brand">
-        <div class="logo">PS</div>
-        <div>
-          <h1>Psicóloga - Consulta</h1>
-          <div class="small">Apoyo en Autismo · TDAH · AACC · Comunidad</div>
-        </div>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#quien">Quién soy</a></li>
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#autismo">Autismo</a></li>
-          <li><a href="#tdah">TDAH</a></li>
-          <li><a href="#formacion">Formación</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </nav>
-      <div style="display:flex; gap:12px; align-items:center">
-        <a class="cta" href="#agendar" id="open-book">Agendar cita</a>
-      </div>
-    </div>
+    <h1>Psicóloga - [Nombre de tu hermana]</h1>
   </header>
 
-  <main class="wrap">
+  <!-- ======= Quién soy ======= -->
+  <section id="about">
+    <img src="https://media.licdn.com/dms/image/v2/D4E35AQGqc7J65C1OkA/profile-framedphoto-shrink_400_400/B4EZblAb1VGQAc-/0/1747598818941?e=1755230400&v=beta&t=YCfcQdqubesGdBR03uHm_KjIvecZYsSOiTs8pV32Qxs" alt="Foto de la psicóloga">
+    <div class="info">
+      <h2>Quién soy</h2>
+      <p>Soy una psicóloga con amplia experiencia en arteterapia y atención a personas con autismo. Me apasiona ayudar a las personas a mejorar su bienestar emocional.</p>
+      <ul>
+        <li><b>Formación Académica:</b> Licenciada en Psicología</li>
+        <li><b>Certificaciones:</b> Arteterapia, Autismo</li>
+        <li><b>Experiencia Laboral:</b> 10 años en consulta privada y escolar</li>
+      </ul>
+    </div>
+  </section>
 
-    <!-- Quién soy al principio, destacado -->
-    <section id="quien">
-      <div class="profile">
-        <div class="avatar">
-          <img src="https://media.licdn.com/dms/image/v2/D4E35AQGqc7J65C1OkA/profile-framedphoto-shrink_400_400/B4EZblAb1VGQAc-/0/1747598818941?e=1755230400&v=beta&t=YCfcQdqubesGdBR03uHm_KjIvecZYsSOiTs8pV32Qxs" alt="Foto de la psicóloga" />
-        </div>
-        <div class="meta">
-          <h3>¿Quién soy?</h3>
-          <p>Psicóloga clínica con enfoque en desarrollo infantil y neurodiversidad. Trabajo con familias, escuelas y equipos interdisciplinarios para generar entornos de apoyo.</p><br>
-
-          <h3 id="formacion">Formación académica</h3>
-          <div class="list" style="margin-top:8px">
-            <div class="badge">Título profesional en Psicología</div>
-            <div class="badge">Registro SIS N° 842333 (Chile)</div>
-            <div class="badge">Registro Senescyt 1006-2022-2568774 (Ecuador)</div>
-            <div class="badge">Diplomada en Arteterapia y Terapias Expresivas con Enfoque Terapéutico</div>
-            <div class="badge">Diplomada en Abordaje Integral del Autismo</div>
-            <div class="badge">Diplomado en Trauma del Desarrollo en curso</div>
-            <div class="badge">Capacitación en evaluación TDAH y AACC</div>
-          </div>
-
-          <h3 style="margin-top:12px">Experiencia laboral</h3>
-          <p>Psicoterapia infantojuvenil y adultos, Intervención Psicosocial, docencia y gestión de talento humano.</p>
-        
-          <h3 style="margin-top:12px">Certificaciones</h3>
-           <div class="list" style="margin-top:8px">
-            <div class="badge">Terapia Sistémica Breve</div>
-            <div class="badge">Atención Clínica para Adultos Autistas</div>
-            <div class="badge">Seminario en Educación y Diversidad de Género</div>
-            <div class="badge">Actualizaciones en Procesos y Derechos de Adopción</div>
-            <div class="badge">Legislación Laboral y Seguro Social</div>
-            <div class="badge">Medicina Preventiva y Primeros Auxilios</div>
-            <div class="badge">Servicio al cliente y Equipos Integrados</div>
-          </div>
-        
-        </div>
+  <!-- ======= Servicios ======= -->
+  <section id="servicios">
+    <h2 class="section-title">Servicios</h2>
+    <div class="service-icons">
+      <div onclick="document.getElementById('popup1').style.display='block'">
+        <i class="fas fa-user-check"></i>
+        <p>Evaluación Clínica</p>
       </div>
-    </section>
-
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-card">
-        <h2>Atención psicológica especializada y cercana</h2>
-        <p class="lead">Apoyo para niños, adolescentes y adultos: diagnóstico y acompañamiento en Autismo, TDAH, altas capacidades (AACC) y talleres para la comunidad. Modalidad presencial y online.</p>
-        <div class="bullets">
-          <div class="chip">Evaluación clínica</div>
-          <div class="chip">Intervención individual</div>
-          <div class="chip">Terapia familiar</div>
-          <div class="chip">Intervenciones escolares</div>
-        </div>
-
-        <div style="display:flex; gap:12px; margin-top:18px">
-          <a class="btn" href="#agendar">Agendar ahora</a>
-          <a style="align-self:center; font-weight:700; color:var(--accent)" href="#contacto">Contactar</a>
-        </div>
+      <div onclick="document.getElementById('popup2').style.display='block'">
+        <i class="fas fa-user"></i>
+        <p>Intervención Individual</p>
       </div>
-
-      <aside class="hero-card quick-contact">
-        <div class="card">
-          <div class="small">Cita inicial</div>
-          <div class="price">Sesión 50 min · Evaluación desde $45.000 CLP</div>
-        </div>
-
-        <div class="card">
-          <div class="small">Modalidades</div>
-          <div class="list" style="margin-top:10px">
-            <div class="badge">Presencial - Santiago</div>
-            <div class="badge">Online - Zoom/Meet</div>
-            <div class="badge">Talleres grupales</div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="small">Necesitas ayuda urgente?</div>
-          <div style="margin-top:8px; font-weight:800; color:#b91c1c">Si existe riesgo inmediato: llamar a emergencias 131/133 o acudir a urgencias más cercana.</div>
-        </div>
-      </aside>
-    </section>
-
-    <!-- Servicios generales -->
-    <section id="servicios">
-      <h3>Servicios para la comunidad</h3>
-      <div class="grid-3" style="margin-top:14px">
-        <div class="service">
-          <p style="text-align:justify;">
-            He estado en situaciones de mucha vulnerabilidad en las que me hubiera gustado sentir que tenía la opción de pedir ayuda, y otras en las que el apoyo psicológico profesional, más las herramientas que ya había desarrollado y junto a una red solidaria y bondadosa han sido mi verdadero salvavidas, que me ayudaron a transitar serias dificultades, a sobrellevar mis actividades diarias a pesar de ellas, y reconectar con mi capacidad de ser resiliente, a sanar y empezar de nuevo.&nbsp;
-          </p>
-          <p style="text-align:justify;">
-            Esta es mi manera de expresar mi agradecimiento, de retribuir un poco de eso bonito que aún existe en el mundo, desde mi vereda y profesión, para que este mundo sea cada día mejor.&nbsp;
-          </p>
-          <blockquote>
-            <p style="text-align:justify;">
-              Así como a mí un día me dieron motivos para sentir esperanza, ser solidaria, empática y compasiva, y motivarme a seguir, anhelo que también le pase a otros.&nbsp;
-            </p>
-          </blockquote>
-          <p style="text-align:justify;">
-            También puedes ser parte de esto, o aprovechar esta oportunidad para resignificar tu historia.&nbsp;
-          </p>
-          <p style="text-align:justify;">
-            -Esta sección aún está en construcción, próximamente tendremos más Servicios a la Comunidad como Foros de apoyo(Haz click aquí) entre otros. Si te gustaría colaborar con este proyecto contáctame. Te invito a conocer lo que está disponible:
-          </p>
-        </div>
-        <div class="service">
-          <h4>Terapia familiar</h4>
-          <p>Apoyo a familias para mejorar la comunicación, manejo del estrés y estrategias prácticas.</p>
-        </div>
-        <div class="service">
-          <h4>Talleres y charlas</h4>
-          <p>Programas educativos para colegios, centros comunitarios y formaciones para cuidadores.</p>
-        </div>
+      <div onclick="document.getElementById('popup3').style.display='block'">
+        <i class="fas fa-users"></i>
+        <p>Terapia Familiar</p>
       </div>
-    </section>
-
-    <!-- Autismo -->
-    <section id="autismo">
-      <h3>Autismo</h3>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:14px">
-        <div class="card">
-          <h4>Evaluación y diagnóstico</h4>
-          <p>Valoración multidimensional que considera desarrollo, comunicación y conducta. Incluye reporte y recomendaciones para escuela y familia.</p>
-        </div>
-        <div class="card">
-           <h4>Intervención</h4>
-          <p>Planes de intervención individualizados, apoyo en habilidades sociales, regulación emocional y acompañamiento a cuidadores.</p>
-        </div>
+      <div onclick="document.getElementById('popup4').style.display='block'">
+        <i class="fas fa-school"></i>
+        <p>Intervención Escolar</p>
       </div>
-    </section>
+    </div>
 
-    <!-- TDAH -->
-    <section id="tdah">
-      <h3>TDAH</h3>
-      <div class="grid-3" style="margin-top:14px">
-        <div class="service">
-          <h4>Evaluación neuropsicológica</h4>
-          <p>Pruebas estandarizadas para diagnóstico diferencial y recomendaciones educativas.</p>
-        </div>
-        <div class="service">
-          <h4>Entrenamiento psicoeducativo</h4>
-          <p>Estrategias para manejo de impulsividad, atención y planificación en la vida diaria y escolar.</p>
-        </div>
-        <div class="service">
-          <h4>Apoyo a docentes</h4>
-          <p>Intervenciones y adaptaciones dentro del aula para favorecer el aprendizaje.</p>
-        </div>
-      </div>
-    </section>
+    <div class="action-buttons">
+      <a href="https://calendly.com/tu_calendario" target="_blank">Agendar Ahora</a>
+      <a href="https://wa.me/569XXXXXXXX" target="_blank">Contactar</a>
+    </div>
+  </section>
 
-    <!-- AACC -->
-    <section id="aacc">
-      <h3>Altas capacidades (AACC)</h3>
-      <div style="display:grid; grid-template-columns:1fr; gap:12px; margin-top:14px">
-        <div class="card">
-          <p>Detección temprana y seguimiento para potenciar talentos, estrategias de aprendizaje y acompañamiento emocional.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- AACC -->
-    <section id="aacc">
-      <h3>Altas capacidades (AACC)</h3>
-      <div style="display:grid; grid-template-columns:1fr; gap:12px; margin-top:14px">
-        <div class="card">
-          <p>Detección temprana y seguimiento para potenciar talentos, estrategias de aprendizaje y acompañamiento emocional.</p>
-        </div>
-      </div>
-    </section>
-
-    
-
-    <!-- Agendamiento y costos -->
-    <section id="agendar">
-      <h3>Agendamiento de cita · Costos · Modalidad</h3>
-      <div style="display:grid; grid-template-columns:1fr 360px; gap:18px; margin-top:14px">
-        <div>
-          <p class="small">Selecciona modalidad y completa datos para solicitar una cita. Confirmación vía email y/o whatsapp.</p>
-
-          <div class="pricing" style="margin-top:12px">
-            <div class="plan">
-              <h4>Sesión individual</h4>
-              <div class="cost">$45.000 CLP</div>
-              <p class="small">50 minutos · Evaluación inicial</p>
-            </div>
-            <div class="plan">
-              <h4>Sesión de seguimiento</h4>
-              <div class="cost">$35.000 CLP</div>
-              <p class="small">45 minutos · Intervención y acompañamiento</p>
-            </div>
-            <div class="plan">
-              <h4>Taller o intervención escolar</h4>
-              <div class="cost">A convenir</div>
-              <p class="small">Presupuesto según alcance</p>
-            </div>
-          </div>
-
-          <h4 style="margin-top:14px">Modalidad de atención</h4>
-          <ul style="color:var(--muted)">
-            <li>Presencial: consulta en Santiago (dirección a confirmar al reservar)</li>
-            <li>Online: videollamada (Zoom / Google Meet)</li>
-            <li>Visitas a colegio y talleres in situ disponibles</li>
-          </ul>
-
-          <h4 style="margin-top:12px">Información de pago</h4>
-          <div class="card" style="margin-top:8px">
-            <p class="small">Transferencia bancaria / Trasferencia RUT / Webpay (si corresponde). Indicar nombre del paciente y fecha de la sesión en el comprobante.</p>
-            <p style="margin-top:8px"><strong>Banco:</strong> Banco Ejemplo<br><strong>RUT:</strong> 12.345.678-9<br><strong>Titular:</strong> Nombre Apellido</p>
-          </div>
-        </div>
-
-        <aside class="card">
-          <h4>Solicitar cita</h4>
-          <p class="small">Rellena el formulario y recibirás un email de confirmación.</p>
-          <form id="booking-form" onsubmit="return submitBooking(event)" style="margin-top:12px">
-            <div class="form-grid">
-              <input type="text" name="nombre" placeholder="Nombre completo" required />
-              <input type="text" name="telefono" placeholder="Teléfono / WhatsApp" required />
-              <input type="email" name="email" placeholder="Correo electrónico" required />
-              <select name="modalidad" required>
-                <option value="">Seleccionar modalidad</option>
-                <option value="presencial">Presencial</option>
-                <option value="online">Online</option>
-                <option value="taller">Taller / Institución</option>
-              </select>
-            </div>
-            <div style="margin-top:10px">
-              <label class="small">Fecha preferida</label>
-              <input type="date" name="fecha" required />
-            </div>
-            <div style="margin-top:10px">
-              <label class="small">Comentarios / Motivo</label>
-              <textarea name="motivo" rows="3" placeholder="Breve descripción"></textarea>
-            </div>
-            <div style="margin-top:12px; display:flex; gap:8px">
-              <button class="btn" type="submit">Enviar solicitud</button>
-              <a href="#contacto" style="align-self:center; font-weight:700; color:var(--accent)">¿Dudas?</a>
-            </div>
-          </form>
-        </aside>
-      </div>
-    </section>
-
-    <!-- Necesitas ayuda urgente -->
-    <section id="urgente">
-      <h3>¿Necesitas ayuda urgente?</h3>
-      <div style="display:flex; gap:12px; margin-top:12px; align-items:center">
-        <div class="card" style="flex:1">
-          <p style="font-weight:800; color:#b91c1c">Si tú o alguien corre riesgo inmediato: llamar a emergencias o acudir a urgencias más cercanas.</p>
-          <ul style="color:var(--muted); margin-top:8px">
-            <li>Emergencias: 131 / 133</li>
-            <li>Salud mental: Línea de ayuda local (agregar número local)</li>
-            <li>Centro de salud mental o servicio de urgencias más cercano</li>
-          </ul>
-        </div>
-        <div class="card" style="width:260px; text-align:center">
-          <div style="font-size:28px; font-weight:800; color:var(--accent-2)">Disponible</div>
-          <div class="small">Lunes a Viernes · 09:00 - 18:00</div>
-          <div style="margin-top:10px"><a class="btn" href="#contacto">Contactar ahora</a></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contacto -->
-    <section id="contacto">
-      <h3>Contacto</h3>
-      <div style="display:grid; grid-template-columns:1fr 320px; gap:18px; margin-top:12px">
-        <div>
-          <p class="small">Escríbenos para consultas, coordinación con colegios o derivaciones. Respuesta en un plazo aproximado de 24-48 horas hábiles.</p>
-          <div style="display:flex; gap:12px; margin-top:12px; flex-wrap:wrap">
-            <div class="card">
-              <strong>Email</strong>
-              <div class="small">hola@ejemplo.cl</div>
-            </div>
-            <div class="card">
-              <strong>WhatsApp</strong>
-              <div class="small">+56 9 1234 5678</div>
-            </div>
-            <div class="card">
-              <strong>Ubicación</strong>
-              <div class="small">Santiago, Chile (dirección a confirmar al reservar)</div>
-            </div>
-          </div>
-        </div>
-
-        <aside class="card">
-          <h4>Enviar mensaje</h4>
-          <form onsubmit="return submitContact(event)" style="margin-top:10px">
-            <input name="nombre" placeholder="Nombre" required />
-            <input name="email" placeholder="Correo" type="email" required style="margin-top:8px" />
-            <input name="telefono" placeholder="Teléfono" style="margin-top:8px" />
-            <textarea name="mensaje" placeholder="Mensaje" rows="4" style="margin-top:8px"></textarea>
-            <div style="margin-top:10px"><button class="btn" type="submit">Enviar</button></div>
-          </form>
-        </aside>
-      </div>
-    </section>
-
-    <footer>
-      <div class="wrap footer-grid">
-        <div>
-          <strong>Psicóloga · Consulta</strong>
-          <div class="small">Protegemos la confidencialidad y privacidad de tus datos conforme a la normativa vigente.</div>
-        </div>
-        <div class="small">© Derechos reservados · Nombre profesional · 2025.</div>
-      </div>
-    </footer>
-  </main>
-
-  <!-- Modal booking -->
-  <div id="modal" class="modal" aria-hidden="true">
-    <div class="modal-card">
-      <div style="display:flex; justify-content:space-between; align-items:center">
-        <h4>Solicitar cita</h4>
-        <button onclick="closeModal()" aria-label="Cerrar">✕</button>
-      </div>
-      <form id="modal-form" style="margin-top:12px" onsubmit="return submitBooking(event)">
-        <div class="form-grid">
-          <input name="nombre" placeholder="Nombre" required />
-          <input name="telefono" placeholder="Teléfono" required />
-          <input name="email" placeholder="Correo" type="email" required />
-          <select name="modalidad" required>
-            <option value="">Modalidad</option>
-            <option value="presencial">Presencial</option>
-            <option value="online">Online</option>
-          </select>
-        </div>
-        <div style="margin-top:10px">
-          <input type="date" name="fecha" required />
-        </div>
-        <div style="margin-top:10px"><textarea name="motivo" rows="3" placeholder="Motivo"></textarea></div>
-        <div style="margin-top:12px; display:flex; gap:8px"><button class="btn" type="submit">Enviar</button><button type="button" onclick="closeModal()" style="background:#efefef;border-radius:8px;padding:10px 12px">Cancelar</button></div>
-      </form>
+  <!-- Popups -->
+  <div id="popup1" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="document.getElementById('popup1').style.display='none'">&times;</span>
+      <h3>Evaluación Clínica</h3>
+      <p>Evaluación psicológica completa para comprender el estado emocional y cognitivo del paciente.</p>
     </div>
   </div>
 
+  <div id="popup2" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="document.getElementById('popup2').style.display='none'">&times;</span>
+      <h3>Intervención Individual</h3>
+      <p>Sesiones personalizadas para trabajar en objetivos específicos y mejorar la calidad de vida.</p>
+    </div>
+  </div>
+
+  <div id="popup3" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="document.getElementById('popup3').style.display='none'">&times;</span>
+      <h3>Terapia Familiar</h3>
+      <p>Intervención orientada a resolver conflictos familiares y fortalecer vínculos.</p>
+    </div>
+  </div>
+
+  <div id="popup4" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="document.getElementById('popup4').style.display='none'">&times;</span>
+      <h3>Intervención Escolar</h3>
+      <p>Apoyo psicológico para estudiantes y coordinación con el entorno escolar.</p>
+    </div>
+  </div>
+
+  <!-- ======= Precios ======= -->
+  <section id="precios">
+    <h2 class="section-title">Costos de Consultas y Terapias</h2>
+    <div class="pricing-container">
+      <div class="pricing-card">
+        <h3>Consulta Individual</h3>
+        <p class="price">$25.000 CLP</p>
+        <p class="desc">Sesión de 50 minutos para abordar tus necesidades personales.</p>
+        <a href="https://calendly.com/tu_calendario" target="_blank" class="btn">Agendar</a>
+      </div>
+      <div class="pricing-card">
+        <h3>Terapia Familiar</h3>
+        <p class="price">$40.000 CLP</p>
+        <p class="desc">Sesión para mejorar la comunicación y resolver conflictos familiares.</p>
+        <a href="https://calendly.com/tu_calendario" target="_blank" class="btn">Agendar</a>
+      </div>
+      <div class="pricing-card">
+        <h3>Evaluación Escolar</h3>
+        <p class="price">$30.000 CLP</p>
+        <p class="desc">Evaluación psicopedagógica y apoyo escolar especializado.</p>
+        <a href="https://calendly.com/tu_calendario" target="_blank" class="btn">Agendar</a>
+      </div>
+    </div>
+  </section>
+
   <script>
-    // Smooth scroll for internal links
-    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click', e=>{
-      const href = a.getAttribute('href');
-      if(href.length>1){
-        e.preventDefault(); document.querySelector(href).scrollIntoView({behavior:'smooth', block:'start'});
-      }
-    }));
-
-    // Modal booking
-    const modal = document.getElementById('modal');
-    const openBook = document.getElementById('open-book');
-    openBook.addEventListener('click', e=>{ e.preventDefault(); openModal(); });
-    function openModal(){ modal.classList.add('active'); modal.setAttribute('aria-hidden','false'); }
-    function closeModal(){ modal.classList.remove('active'); modal.setAttribute('aria-hidden','true'); }
-
-    // Fake submit handlers (replace with integration code)
-    function submitBooking(e){ e.preventDefault(); const f = (e.target); alert('Solicitud enviada. Se contactará por correo/whatsapp para confirmar.'); closeModal(); f.reset(); return false }
-    function submitContact(e){ e.preventDefault(); alert('Mensaje enviado. Te responderemos dentro de 24-48 horas hábiles.'); e.target.reset(); return false }
-
-    // Accessibility: close modal with ESC
-    document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); })
+    // Cerrar popups al hacer clic fuera del contenido
+    window.onclick = function(event) {
+      document.querySelectorAll('.popup').forEach(popup => {
+        if (event.target == popup) {
+          popup.style.display = "none";
+        }
+      });
+    }
   </script>
-  <section id="contacto" style="margin-top:48px;">
-  <h3>Contacto y agendamiento</h3>
-  <p>Para consultas, agendar citas o solicitar información, puedes llenar el siguiente formulario:</p>
 
-  <!-- iframe Google Form -->
-  <iframe 
-    src="https://docs.google.com/forms/d/e/1FAIpQLSf61WnRwDv0wNFgppEMuvErxVfuXPKBOjt_JePRg2revHq-pQ/viewform?embedded=true" 
-    width="359" height="600" frameborder="0" marginheight="0" marginwidth="0">
-    Cargando…
-  </iframe>
-</section>
 </body>
 </html>
