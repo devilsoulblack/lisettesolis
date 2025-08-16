@@ -5,396 +5,282 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Psicología Lisette Solis</title>
   <style>
-    /* Reset básico */
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: "Helvetica Neue", Arial, sans-serif;
-    }
+    /* Reset */
+    * {margin:0; padding:0; box-sizing:border-box; font-family: 'Arial', sans-serif;}
 
-    body {
-      line-height: 1.6;
-      color: #333;
-    }
+    body {background:#fff; color:#333; line-height:1.6;}
 
-    /* Header */
+    a {text-decoration:none;}
+
+    /* --- HEADER --- */
     header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
+      position:fixed; top:0; left:0; width:100%;
+      background:#a25b4e; color:#fff;
+      display:flex; justify-content:space-between; align-items:center;
+      padding:15px 10%; z-index:1000;
+      box-shadow:0 2px 10px rgba(0,0,0,0.1);
     }
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #a25b4e;
+    header h1 {font-size:1.8rem;}
+    header h2 {font-size:0.9rem; font-weight:300;}
+    .header-left {display:flex; flex-direction:column;}
+    .header-buttons {display:flex; gap:15px;}
+    .btn {
+      padding:10px 18px; border-radius:30px; font-weight:bold;
+      transition:all 0.3s ease; text-align:center;
     }
-    .subtitle {
-      font-size: 0.9rem;
-      color: #555;
-    }
-    .header-buttons a {
-      margin-left: 10px;
-      padding: 8px 16px;
-      text-decoration: none;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .btn-agendar {
-      background: #a25b4e;
-      color: #fff;
-    }
-    .btn-agendar:hover {
-      background: #c97b63;
-    }
-    .btn-whatsapp {
-      background: #25d366;
-      color: #fff;
-    }
-    .btn-whatsapp:hover {
-      background: #1ebe57;
-    }
+    .btn-agendar {background:#fff; color:#a25b4e;}
+    .btn-agendar:hover {background:#f0d3c0;}
+    .btn-wsp {background:#25D366; color:#fff;}
+    .btn-wsp:hover {background:#1ebe5d;}
 
-    /* Carrusel */
+    /* --- SECCIÓN 1: CARRUSEL --- */
     .carousel {
-      margin-top: 90px;
-      position: relative;
-      height: 80vh;
-      overflow: hidden;
+      margin-top:90px;
+      position:relative; height:90vh; overflow:hidden;
     }
     .carousel-slide {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      font-size: 2rem;
-      font-weight: bold;
-      cursor: pointer;
+      position:absolute; width:100%; height:100%;
+      background-size:cover; background-position:center;
+      display:flex; justify-content:center; align-items:center;
+      flex-direction:column; color:#fff; text-align:center;
+      opacity:0; transition:opacity 1s ease-in-out;
     }
-    .carousel-slide.active {
-      opacity: 1;
+    .carousel-slide.active {opacity:1;}
+    .carousel-slide h2 {font-size:3rem; text-shadow:0 4px 10px rgba(0,0,0,0.7);}
+    .carousel-slide button {
+      margin-top:15px; padding:12px 20px; border:none; border-radius:30px;
+      background:#c97b63; color:#fff; font-size:1rem; cursor:pointer;
     }
-    .carousel-slide span {
-      background: rgba(0,0,0,0.5);
-      padding: 20px 40px;
-      border-radius: 10px;
+    .carousel-slide button:hover {background:#a25b4e;}
+
+    /* --- SECCIÓN 2: CONTACTO RESERVA --- */
+    .contacto {
+      display:flex; flex-wrap:wrap; gap:40px;
+      align-items:center; justify-content:space-between;
+      padding:80px 10%; background:#faf3eb;
+    }
+    .contacto img {
+      width:320px; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    }
+    .contacto-text {flex:1;}
+    .contacto-text h2 {font-size:2rem; margin-bottom:20px; color:#a25b4e;}
+    .contacto-text p {font-size:1.2rem; margin-bottom:20px;}
+    .btn-calendario {
+      background:#a25b4e; color:#fff; padding:12px 25px; border-radius:30px;
+    }
+    .btn-calendario:hover {background:#c97b63;}
+
+    /* --- SECCIÓN 3: QUIÉN SOY --- */
+    .quien-soy {
+      padding:80px 10%;
+      background:linear-gradient(135deg, #faf3eb, #ffffff);
+    }
+    .quien-soy-container {
+      display:flex; align-items:center; justify-content:space-between;
+      gap:50px; flex-wrap:wrap;
+    }
+    .quien-soy-img img {
+      width:320px; height:320px; object-fit:cover;
+      border-radius:50%; border:6px solid #a25b4e;
+      box-shadow:0 10px 25px rgba(0,0,0,0.1);
+      transition:transform 0.4s ease;
+    }
+    .quien-soy-img img:hover {transform:scale(1.05);}
+    .quien-soy-text {flex:1; color:#3e2f2f;}
+    .quien-soy-text h2 {
+      font-size:2.5rem; margin-bottom:15px; color:#a25b4e; position:relative;
+    }
+    .quien-soy-text h2::after {
+      content:""; position:absolute; width:60px; height:4px; background:#c97b63;
+      bottom:-10px; left:0; border-radius:2px;
+    }
+    .quien-soy-text p {font-size:1.2rem; margin-bottom:25px;}
+    .quien-soy-text h3 {font-size:1.5rem; margin-bottom:15px; color:#a25b4e;}
+    .quien-soy-text ul {list-style:none; padding:0;}
+    .quien-soy-text ul li {
+      font-size:1.1rem; margin-bottom:12px; padding-left:30px; position:relative;
+    }
+    .quien-soy-text ul li::before {
+      content:"✔"; position:absolute; left:0; color:#c97b63; font-weight:bold;
     }
 
-    /* Popups */
-    .popup {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
+    /* --- SECCIÓN 4: EVENTOS --- */
+    .eventos {
+      padding:80px 10%; background:#fff5f0; text-align:center;
     }
-    .popup-content {
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      max-width: 500px;
-      text-align: center;
+    .eventos h2 {font-size:2.5rem; color:#a25b4e; margin-bottom:40px;}
+    .evento-card {
+      background:#fff; padding:20px; border-radius:15px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.1);
+      margin-bottom:20px; display:inline-block; width:280px;
     }
-    .popup-content a {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: #a25b4e;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 20px;
+    .evento-card h3 {margin-bottom:10px;}
+    .evento-card a {
+      display:inline-block; margin-top:10px; color:#fff;
+      background:#a25b4e; padding:10px 20px; border-radius:20px;
     }
-    .close-popup {
-      cursor: pointer;
-      display: block;
-      margin-top: 15px;
-      color: #555;
-      font-weight: bold;
-    }
+    .evento-card a:hover {background:#c97b63;}
 
-    /* Sección 2 - Contacto rápido */
-    .contact-section {
-      display: flex;
-      align-items: center;
-      padding: 80px 10%;
-      gap: 40px;
-      background: #faf3eb;
+    /* --- SECCIÓN 5: PRECIOS --- */
+    .precios {
+      padding:80px 10%; background:#faf3eb; text-align:center;
     }
-    .contact-section img {
-      max-width: 300px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    .precios h2 {font-size:2.5rem; margin-bottom:40px; color:#a25b4e;}
+    .precio-card {
+      display:inline-block; background:#fff; padding:30px; margin:15px;
+      border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,0.1);
+      width:280px; position:relative;
     }
-    .contact-section div {
-      flex: 1;
-    }
-    .contact-section .btn {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
-      border-radius: 20px;
-      background: #a25b4e;
-      color: #fff;
-      text-decoration: none;
-    }
-
-    /* Sección 3 - Quién soy */
-    .about {
-      padding: 80px 10%;
-      text-align: center;
-    }
-    .about h2 {
-      margin-bottom: 20px;
-      color: #a25b4e;
-    }
-
-    /* Sección 4 - Eventos */
-    .events {
-      background: #f5f5f5;
-      padding: 80px 10%;
-      text-align: center;
-    }
-    .events h2 {
-      color: #a25b4e;
-      margin-bottom: 20px;
-    }
-    .events ul {
-      list-style: none;
-    }
-    .events li {
-      margin: 15px 0;
-    }
-    .events a {
-      color: #a25b4e;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    /* Sección 5 - Precios */
-    .pricing {
-      padding: 80px 10%;
-      text-align: center;
-    }
-    .pricing h2 {
-      margin-bottom: 40px;
-      color: #a25b4e;
-    }
-    .pricing-cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-    .card {
-      background: #fff;
-      border-radius: 10px;
-      padding: 25px;
-      width: 280px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      position: relative;
-    }
-    .card h3 {
-      margin-bottom: 10px;
-      color: #3e2f2f;
-    }
-    .card p {
-      margin-bottom: 15px;
-    }
+    .precio-card h3 {margin-bottom:15px;}
     .badge {
-      position: absolute;
-      top: -10px; right: -10px;
-      background: #25d366;
-      color: #fff;
-      padding: 5px 10px;
-      border-radius: 10px;
-      font-size: 0.8rem;
+      position:absolute; top:20px; right:-10px;
+      background:#ff9800; color:#fff; padding:5px 15px;
+      border-radius:20px; font-size:0.9rem; font-weight:bold;
     }
 
-    /* Sección 6 - Redes */
-    .social {
-      padding: 60px 10%;
-      text-align: center;
-      background: #faf3eb;
+    /* --- SECCIÓN 6: REDES --- */
+    .redes {
+      padding:60px 10%; background:#fff; text-align:center;
     }
-    .social h2 {
-      margin-bottom: 20px;
-      color: #a25b4e;
+    .redes h2 {font-size:2rem; margin-bottom:20px; color:#a25b4e;}
+    .redes a {
+      margin:0 10px; font-size:1.2rem; padding:12px 20px;
+      border-radius:30px; background:#a25b4e; color:#fff; display:inline-block;
     }
-    .social a {
-      margin: 0 10px;
-      font-size: 1.2rem;
-      text-decoration: none;
-      color: #a25b4e;
-    }
+    .redes a:hover {background:#c97b63;}
 
-    /* Footer */
+    /* --- FOOTER --- */
     footer {
-      background: #3e2f2f;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
+      padding:20px; text-align:center;
+      background:#3e2f2f; color:#fff; font-size:0.9rem;
     }
 
-    /* Responsive */
-    @media(max-width: 768px){
-      .contact-section {
-        flex-direction: column;
-        text-align: center;
-      }
+    /* --- RESPONSIVE --- */
+    @media(max-width:768px){
+      .header-buttons {flex-direction:column; gap:10px;}
+      .carousel-slide h2 {font-size:2rem;}
+      .contacto {flex-direction:column;}
+      .quien-soy-container {flex-direction:column; text-align:center;}
+      .quien-soy-text h2::after {left:50%; transform:translateX(-50%);}
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- HEADER -->
   <header>
-    <div>
-      <div class="logo">Psicología Lisette Solis</div>
-      <div class="subtitle">Psicoterapias - Arteterapia & Autismo</div>
+    <div class="header-left">
+      <h1>Psicología Lisette Solis</h1>
+      <h2>Psicoterapias - Arteterapia & Autismo</h2>
     </div>
     <div class="header-buttons">
-      <a href="https://calendly.com/tu_calendario" target="_blank" class="btn-agendar">Agendar</a>
-      <a href="https://wa.me/56965437654" target="_blank" class="btn-whatsapp">WhatsApp</a>
+      <a href="https://calendar.google.com" target="_blank" class="btn btn-agendar">Agendar Consulta</a>
+      <a href="https://wa.me/56965437654" target="_blank" class="btn btn-wsp">WhatsApp</a>
     </div>
   </header>
 
-  <!-- Carrusel -->
+  <!-- CARRUSEL -->
   <section class="carousel">
-    <div class="carousel-slide active" style="background-image: url('https://picsum.photos/1200/800?random=1');" onclick="openPopup('clinica')">
-      <span>Evaluación Clínica</span>
+    <div class="carousel-slide active" style="background-image:url('img/evaluacion.jpg')">
+      <h2>Evaluación Clínica</h2>
+      <button>Más información</button>
     </div>
-    <div class="carousel-slide" style="background-image: url('https://picsum.photos/1200/800?random=2');" onclick="openPopup('individual')">
-      <span>Intervención Individual</span>
+    <div class="carousel-slide" style="background-image:url('img/individual.jpg')">
+      <h2>Intervención Individual</h2>
+      <button>Más información</button>
     </div>
-    <div class="carousel-slide" style="background-image: url('https://picsum.photos/1200/800?random=3');" onclick="openPopup('familiar')">
-      <span>Terapia Familiar</span>
+    <div class="carousel-slide" style="background-image:url('img/familiar.jpg')">
+      <h2>Terapia Familiar</h2>
+      <button>Más información</button>
     </div>
-    <div class="carousel-slide" style="background-image: url('https://picsum.photos/1200/800?random=4');" onclick="openPopup('escolar')">
-      <span>Intervención Escolar</span>
+    <div class="carousel-slide" style="background-image:url('img/escolar.jpg')">
+      <h2>Intervención Escolar</h2>
+      <button>Más información</button>
     </div>
   </section>
 
-  <!-- Popups -->
-  <div class="popup" id="popup-clinica">
-    <div class="popup-content">
-      <h2>Evaluación Clínica</h2>
-      <p>Exploración integral del estado emocional y psicológico del paciente.</p>
-      <a href="#">Más información</a>
-      <div class="close-popup" onclick="closePopup('clinica')">Cerrar</div>
-    </div>
-  </div>
-
-  <div class="popup" id="popup-individual">
-    <div class="popup-content">
-      <h2>Intervención Individual</h2>
-      <p>Acompañamiento personalizado para el desarrollo emocional.</p>
-      <a href="#">Más información</a>
-      <div class="close-popup" onclick="closePopup('individual')">Cerrar</div>
-    </div>
-  </div>
-
-  <div class="popup" id="popup-familiar">
-    <div class="popup-content">
-      <h2>Terapia Familiar</h2>
-      <p>Sesiones dirigidas a fortalecer la comunicación en el núcleo familiar.</p>
-      <a href="#">Más información</a>
-      <div class="close-popup" onclick="closePopup('familiar')">Cerrar</div>
-    </div>
-  </div>
-
-  <div class="popup" id="popup-escolar">
-    <div class="popup-content">
-      <h2>Intervención Escolar</h2>
-      <p>Apoyo psicopedagógico y emocional en el ámbito educativo.</p>
-      <a href="#">Más información</a>
-      <div class="close-popup" onclick="closePopup('escolar')">Cerrar</div>
-    </div>
-  </div>
-
-  <!-- Sección 2 -->
-  <section class="contact-section">
-    <img src="https://picsum.photos/300/400" alt="Psicóloga">
-    <div>
+  <!-- CONTACTO -->
+  <section class="contacto">
+    <img src="img/lissette.jpg" alt="Lisette Solis">
+    <div class="contacto-text">
       <h2>¿Quieres hacer una reserva o tienes preguntas?</h2>
       <p>Puedes escribirme al <strong>+56 9 65437654</strong> o reservar una cita conmigo.</p>
-      <a href="https://calendly.com/tu_calendario" target="_blank" class="btn">Reservar ahora</a>
+      <a href="https://calendar.google.com" target="_blank" class="btn-calendario">Agendar en Google Calendar</a>
     </div>
   </section>
 
-  <!-- Sección 3 -->
-  <section class="about">
-    <h2>Quién Soy</h2>
-    <p>Soy Lisette Solis, psicóloga especializada en psicoterapia, arteterapia y autismo.</p>
-    <p><strong>Formación Académica:</strong> Licenciada en Psicología, Diplomados en Arteterapia y Autismo.</p>
+  <!-- QUIÉN SOY -->
+  <section id="quien-soy" class="quien-soy">
+    <div class="quien-soy-container">
+      <div class="quien-soy-img">
+        <img src="img/lissette.jpg" alt="Psicóloga Lisette Solis">
+      </div>
+      <div class="quien-soy-text">
+        <h2>¿Quién Soy?</h2>
+        <p>
+          Soy Lisette Solis, psicóloga especializada en psicoterapias, 
+          arteterapia y acompañamiento a familias y personas con autismo. 
+          Mi misión es brindar un espacio seguro y acogedor donde puedas sanar y crecer.
+        </p>
+        <h3>Formación Académica</h3>
+        <ul>
+          <li>Licenciada en Psicología - Universidad de Chile</li>
+          <li>Diplomado en Arteterapia</li>
+          <li>Diplomado en Trastorno del Espectro Autista (TEA)</li>
+          <li>Experiencia en clínica y consultas privadas</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
-  <!-- Sección 4 -->
-  <section class="events">
-    <h2>Eventos Próximos</h2>
-    <ul>
-      <li><a href="#">Taller de Arteterapia - 25 de Agosto (Zoom)</a></li>
-      <li><a href="#">Conferencia sobre Autismo - 10 de Septiembre (Zoom)</a></li>
-    </ul>
+  <!-- EVENTOS -->
+  <section class="eventos">
+    <h2>Próximos Eventos</h2>
+    <div class="evento-card">
+      <h3>Taller de Arteterapia</h3>
+      <p>Fecha: 20 de Agosto</p>
+      <a href="#">Unirme por Zoom</a>
+    </div>
+    <div class="evento-card">
+      <h3>Apoyo a Familias TEA</h3>
+      <p>Fecha: 5 de Septiembre</p>
+      <a href="#">Unirme por Zoom</a>
+    </div>
   </section>
 
-  <!-- Sección 5 -->
-  <section class="pricing">
+  <!-- PRECIOS -->
+  <section class="precios">
     <h2>Precios de Consultas</h2>
-    <div class="pricing-cards">
-      <div class="card">
-        <h3>Consulta Individual</h3>
-        <p>$25.000 CLP</p>
-      </div>
-      <div class="card">
-        <h3>Terapia Familiar</h3>
-        <p>$40.000 CLP</p>
-      </div>
-      <div class="card">
-        <h3>Paquete 5 sesiones</h3>
-        <span class="badge">Recomendado</span>
-        <p>$110.000 CLP</p>
-      </div>
-      <div class="card">
-        <h3>Evaluación Escolar</h3>
-        <p>$30.000 CLP</p>
-      </div>
+    <div class="precio-card">
+      <h3>Consulta Individual</h3>
+      <p>$35.000</p>
+    </div>
+    <div class="precio-card">
+      <h3>Consulta Online</h3>
+      <p>$30.000</p>
+    </div>
+    <div class="precio-card">
+      <span class="badge">Recomendado</span>
+      <h3>Paquete 4 sesiones</h3>
+      <p>$120.000</p>
     </div>
   </section>
 
-  <!-- Sección 6 -->
-  <section class="social">
-    <h2>Contáctame</h2>
-    <a href="https://wa.me/56965437654" target="_blank">WhatsApp</a>
-    <a href="#">Facebook</a>
+  <!-- REDES -->
+  <section class="redes">
+    <h2>Contáctame en Redes Sociales</h2>
     <a href="#">Instagram</a>
-    <a href="#">LinkedIn</a>
+    <a href="#">Facebook</a>
+    <a href="https://wa.me/56965437654" target="_blank">WhatsApp</a>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
-    © 2025 Psicología Lisette Solis. Todos los derechos reservados.  
-    Desarrollado con ❤️ y gratitud.
+    © 2025 Psicología Lisette Solis - Todos los derechos reservados | Gracias por tu visita
   </footer>
 
-  <!-- Scripts -->
+  <!-- JS Carrusel -->
   <script>
-    // Carrusel automático
     let slides = document.querySelectorAll('.carousel-slide');
     let index = 0;
     setInterval(()=>{
@@ -402,14 +288,6 @@
       index = (index+1) % slides.length;
       slides[index].classList.add('active');
     },8000);
-
-    // Popups
-    function openPopup(type){
-      document.getElementById('popup-'+type).style.display='flex';
-    }
-    function closePopup(type){
-      document.getElementById('popup-'+type).style.display='none';
-    }
   </script>
 </body>
 </html>
