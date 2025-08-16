@@ -3,331 +3,413 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Psicóloga - [Nombre de tu hermana]</title>
+  <title>Psicología Lisette Solis</title>
   <style>
+    /* Reset básico */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+    }
+
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #fff;
+      line-height: 1.6;
       color: #333;
     }
 
-    /* ======= Mensaje superior ======= */
-    .top-bar {
-      background-color: #a25b4e;
-      color: #fff;
-      padding: 8px 20px;
-      font-size: 0.9rem;
-      text-align: center;
-    }
-    .top-bar a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-
-    /* ======= Header ======= */
+    /* Header */
     header {
-      background-color: #faf3eb;
-      padding: 20px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-      color: #a25b4e;
-    }
-
-    /* ======= Sección Quién soy ======= */
-    #about {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 15px 30px;
       display: flex;
-      flex-wrap: wrap;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      padding: 50px 20px;
-      background-color: #fff;
+      z-index: 1000;
     }
-    #about img {
-      width: 250px;
-      height: 250px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 20px;
-    }
-    #about .info {
-      max-width: 500px;
-      margin: 20px;
-    }
-    #about h2 {
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
       color: #a25b4e;
     }
-
-    /* ======= Sección Servicios ======= */
-    #servicios {
-      padding: 50px 20px;
-      background-color: #faf3eb;
-      text-align: center;
+    .subtitle {
+      font-size: 0.9rem;
+      color: #555;
     }
-    .service-icons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-    .service-icons div {
-      background-color: #fff;
-      border-radius: 10px;
-      padding: 20px;
-      width: 200px;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease;
-    }
-    .service-icons div:hover {
-      transform: translateY(-5px);
-    }
-    .service-icons i {
-      font-size: 2rem;
-      color: #c97b63;
-      margin-bottom: 10px;
-    }
-
-    /* ======= Botones de acción ======= */
-    .action-buttons {
-      margin-top: 30px;
-    }
-    .action-buttons a {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 10px;
-      background-color: #a25b4e;
-      color: #fff;
-      border-radius: 25px;
+    .header-buttons a {
+      margin-left: 10px;
+      padding: 8px 16px;
       text-decoration: none;
+      border-radius: 20px;
+      font-size: 0.9rem;
       font-weight: bold;
-      transition: background 0.3s ease;
+      transition: 0.3s;
     }
-    .action-buttons a:hover {
-      background-color: #c97b63;
+    .btn-agendar {
+      background: #a25b4e;
+      color: #fff;
+    }
+    .btn-agendar:hover {
+      background: #c97b63;
+    }
+    .btn-whatsapp {
+      background: #25d366;
+      color: #fff;
+    }
+    .btn-whatsapp:hover {
+      background: #1ebe57;
     }
 
-    /* ======= Popups ======= */
+    /* Carrusel */
+    .carousel {
+      margin-top: 90px;
+      position: relative;
+      height: 80vh;
+      overflow: hidden;
+    }
+    .carousel-slide {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .carousel-slide.active {
+      opacity: 1;
+    }
+    .carousel-slide span {
+      background: rgba(0,0,0,0.5);
+      padding: 20px 40px;
+      border-radius: 10px;
+    }
+
+    /* Popups */
     .popup {
       display: none;
       position: fixed;
-      z-index: 1000;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.5);
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
     }
     .popup-content {
-      background-color: #fff;
-      margin: 10% auto;
-      padding: 20px;
+      background: #fff;
+      padding: 30px;
       border-radius: 10px;
-      width: 80%;
       max-width: 500px;
-      position: relative;
-    }
-    .close {
-      position: absolute;
-      top: 10px; right: 20px;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    /* ======= Sección de Precios ======= */
-    #precios {
-      padding: 60px 20px;
-      background-color: #faf3eb;
       text-align: center;
     }
-    .section-title {
-      font-size: 2rem;
-      color: #a25b4e;
-      margin-bottom: 40px;
+    .popup-content a {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #a25b4e;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 20px;
     }
-    .pricing-container {
+    .close-popup {
+      cursor: pointer;
+      display: block;
+      margin-top: 15px;
+      color: #555;
+      font-weight: bold;
+    }
+
+    /* Sección 2 - Contacto rápido */
+    .contact-section {
+      display: flex;
+      align-items: center;
+      padding: 80px 10%;
+      gap: 40px;
+      background: #faf3eb;
+    }
+    .contact-section img {
+      max-width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .contact-section div {
+      flex: 1;
+    }
+    .contact-section .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      border-radius: 20px;
+      background: #a25b4e;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* Sección 3 - Quién soy */
+    .about {
+      padding: 80px 10%;
+      text-align: center;
+    }
+    .about h2 {
+      margin-bottom: 20px;
+      color: #a25b4e;
+    }
+
+    /* Sección 4 - Eventos */
+    .events {
+      background: #f5f5f5;
+      padding: 80px 10%;
+      text-align: center;
+    }
+    .events h2 {
+      color: #a25b4e;
+      margin-bottom: 20px;
+    }
+    .events ul {
+      list-style: none;
+    }
+    .events li {
+      margin: 15px 0;
+    }
+    .events a {
+      color: #a25b4e;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Sección 5 - Precios */
+    .pricing {
+      padding: 80px 10%;
+      text-align: center;
+    }
+    .pricing h2 {
+      margin-bottom: 40px;
+      color: #a25b4e;
+    }
+    .pricing-cards {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
     }
-    .pricing-card {
-      background-color: #fff;
+    .card {
+      background: #fff;
       border-radius: 10px;
       padding: 25px;
-      width: 300px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 280px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: relative;
     }
-    .pricing-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.12);
-    }
-    .pricing-card h3 {
-      font-size: 1.4rem;
-      color: #3e2f2f;
+    .card h3 {
       margin-bottom: 10px;
+      color: #3e2f2f;
     }
-    .price {
-      font-size: 1.8rem;
-      color: #c97b63;
-      font-weight: bold;
+    .card p {
       margin-bottom: 15px;
     }
-    .desc {
-      font-size: 0.95rem;
-      color: #555;
-      margin-bottom: 20px;
-    }
-    .pricing-card .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #a25b4e;
+    .badge {
+      position: absolute;
+      top: -10px; right: -10px;
+      background: #25d366;
       color: #fff;
-      border-radius: 25px;
+      padding: 5px 10px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+    }
+
+    /* Sección 6 - Redes */
+    .social {
+      padding: 60px 10%;
+      text-align: center;
+      background: #faf3eb;
+    }
+    .social h2 {
+      margin-bottom: 20px;
+      color: #a25b4e;
+    }
+    .social a {
+      margin: 0 10px;
+      font-size: 1.2rem;
       text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s ease;
+      color: #a25b4e;
     }
-    .pricing-card .btn:hover {
-      background-color: #c97b63;
+
+    /* Footer */
+    footer {
+      background: #3e2f2f;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
     }
-    @media (max-width: 768px) {
-      #about {
+
+    /* Responsive */
+    @media(max-width: 768px){
+      .contact-section {
         flex-direction: column;
-      }
-      .pricing-container {
-        flex-direction: column;
-        align-items: center;
+        text-align: center;
       }
     }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-  <!-- ======= Mensaje superior ======= -->
-  <div class="top-bar">
-    <span>📞 <a href="https://wa.me/569XXXXXXXX" target="_blank">+56 9 XXXX XXXX</a> | 📧 <a href="mailto:email@example.com">email@example.com</a></span>
-  </div>
-
-  <!-- ======= Header ======= -->
+  <!-- Header -->
   <header>
-    <h1>Psicóloga - [Nombre de tu hermana]</h1>
+    <div>
+      <div class="logo">Psicología Lisette Solis</div>
+      <div class="subtitle">Psicoterapias - Arteterapia & Autismo</div>
+    </div>
+    <div class="header-buttons">
+      <a href="https://calendly.com/tu_calendario" target="_blank" class="btn-agendar">Agendar</a>
+      <a href="https://wa.me/56965437654" target="_blank" class="btn-whatsapp">WhatsApp</a>
+    </div>
   </header>
 
-  <!-- ======= Quién soy ======= -->
-  <section id="about">
-    <img src="https://media.licdn.com/dms/image/v2/D4E35AQGqc7J65C1OkA/profile-framedphoto-shrink_400_400/B4EZblAb1VGQAc-/0/1747598818941?e=1755230400&v=beta&t=YCfcQdqubesGdBR03uHm_KjIvecZYsSOiTs8pV32Qxs" alt="Foto de la psicóloga">
-    <div class="info">
-      <h2>Quién soy</h2>
-      <p>Soy una psicóloga con amplia experiencia en arteterapia y atención a personas con autismo. Me apasiona ayudar a las personas a mejorar su bienestar emocional.</p>
-      <ul>
-        <li><b>Formación Académica:</b> Licenciada en Psicología</li>
-        <li><b>Certificaciones:</b> Arteterapia, Autismo</li>
-        <li><b>Experiencia Laboral:</b> 10 años en consulta privada y escolar</li>
-      </ul>
+  <!-- Carrusel -->
+  <section class="carousel">
+    <div class="carousel-slide active" style="background-image: url('https://picsum.photos/1200/800?random=1');" onclick="openPopup('clinica')">
+      <span>Evaluación Clínica</span>
     </div>
-  </section>
-
-  <!-- ======= Servicios ======= -->
-  <section id="servicios">
-    <h2 class="section-title">Servicios</h2>
-    <div class="service-icons">
-      <div onclick="document.getElementById('popup1').style.display='block'">
-        <i class="fas fa-user-check"></i>
-        <p>Evaluación Clínica</p>
-      </div>
-      <div onclick="document.getElementById('popup2').style.display='block'">
-        <i class="fas fa-user"></i>
-        <p>Intervención Individual</p>
-      </div>
-      <div onclick="document.getElementById('popup3').style.display='block'">
-        <i class="fas fa-users"></i>
-        <p>Terapia Familiar</p>
-      </div>
-      <div onclick="document.getElementById('popup4').style.display='block'">
-        <i class="fas fa-school"></i>
-        <p>Intervención Escolar</p>
-      </div>
+    <div class="carousel-slide" style="background-image: url('https://picsum.photos/1200/800?random=2');" onclick="openPopup('individual')">
+      <span>Intervención Individual</span>
     </div>
-
-    <div class="action-buttons">
-      <a href="https://calendly.com/tu_calendario" target="_blank">Agendar Ahora</a>
-      <a href="https://wa.me/569XXXXXXXX" target="_blank">Contactar</a>
+    <div class="carousel-slide" style="background-image: url('https://picsum.photos/1200/800?random=3');" onclick="openPopup('familiar')">
+      <span>Terapia Familiar</span>
+    </div>
+    <div class="carousel-slide" style="background-image: url('https://picsum.photos/1200/800?random=4');" onclick="openPopup('escolar')">
+      <span>Intervención Escolar</span>
     </div>
   </section>
 
   <!-- Popups -->
-  <div id="popup1" class="popup">
+  <div class="popup" id="popup-clinica">
     <div class="popup-content">
-      <span class="close" onclick="document.getElementById('popup1').style.display='none'">&times;</span>
-      <h3>Evaluación Clínica</h3>
-      <p>Evaluación psicológica completa para comprender el estado emocional y cognitivo del paciente.</p>
+      <h2>Evaluación Clínica</h2>
+      <p>Exploración integral del estado emocional y psicológico del paciente.</p>
+      <a href="#">Más información</a>
+      <div class="close-popup" onclick="closePopup('clinica')">Cerrar</div>
     </div>
   </div>
 
-  <div id="popup2" class="popup">
+  <div class="popup" id="popup-individual">
     <div class="popup-content">
-      <span class="close" onclick="document.getElementById('popup2').style.display='none'">&times;</span>
-      <h3>Intervención Individual</h3>
-      <p>Sesiones personalizadas para trabajar en objetivos específicos y mejorar la calidad de vida.</p>
+      <h2>Intervención Individual</h2>
+      <p>Acompañamiento personalizado para el desarrollo emocional.</p>
+      <a href="#">Más información</a>
+      <div class="close-popup" onclick="closePopup('individual')">Cerrar</div>
     </div>
   </div>
 
-  <div id="popup3" class="popup">
+  <div class="popup" id="popup-familiar">
     <div class="popup-content">
-      <span class="close" onclick="document.getElementById('popup3').style.display='none'">&times;</span>
-      <h3>Terapia Familiar</h3>
-      <p>Intervención orientada a resolver conflictos familiares y fortalecer vínculos.</p>
+      <h2>Terapia Familiar</h2>
+      <p>Sesiones dirigidas a fortalecer la comunicación en el núcleo familiar.</p>
+      <a href="#">Más información</a>
+      <div class="close-popup" onclick="closePopup('familiar')">Cerrar</div>
     </div>
   </div>
 
-  <div id="popup4" class="popup">
+  <div class="popup" id="popup-escolar">
     <div class="popup-content">
-      <span class="close" onclick="document.getElementById('popup4').style.display='none'">&times;</span>
-      <h3>Intervención Escolar</h3>
-      <p>Apoyo psicológico para estudiantes y coordinación con el entorno escolar.</p>
+      <h2>Intervención Escolar</h2>
+      <p>Apoyo psicopedagógico y emocional en el ámbito educativo.</p>
+      <a href="#">Más información</a>
+      <div class="close-popup" onclick="closePopup('escolar')">Cerrar</div>
     </div>
   </div>
 
-  <!-- ======= Precios ======= -->
-  <section id="precios">
-    <h2 class="section-title">Costos de Consultas y Terapias</h2>
-    <div class="pricing-container">
-      <div class="pricing-card">
+  <!-- Sección 2 -->
+  <section class="contact-section">
+    <img src="https://picsum.photos/300/400" alt="Psicóloga">
+    <div>
+      <h2>¿Quieres hacer una reserva o tienes preguntas?</h2>
+      <p>Puedes escribirme al <strong>+56 9 65437654</strong> o reservar una cita conmigo.</p>
+      <a href="https://calendly.com/tu_calendario" target="_blank" class="btn">Reservar ahora</a>
+    </div>
+  </section>
+
+  <!-- Sección 3 -->
+  <section class="about">
+    <h2>Quién Soy</h2>
+    <p>Soy Lisette Solis, psicóloga especializada en psicoterapia, arteterapia y autismo.</p>
+    <p><strong>Formación Académica:</strong> Licenciada en Psicología, Diplomados en Arteterapia y Autismo.</p>
+  </section>
+
+  <!-- Sección 4 -->
+  <section class="events">
+    <h2>Eventos Próximos</h2>
+    <ul>
+      <li><a href="#">Taller de Arteterapia - 25 de Agosto (Zoom)</a></li>
+      <li><a href="#">Conferencia sobre Autismo - 10 de Septiembre (Zoom)</a></li>
+    </ul>
+  </section>
+
+  <!-- Sección 5 -->
+  <section class="pricing">
+    <h2>Precios de Consultas</h2>
+    <div class="pricing-cards">
+      <div class="card">
         <h3>Consulta Individual</h3>
-        <p class="price">$25.000 CLP</p>
-        <p class="desc">Sesión de 50 minutos para abordar tus necesidades personales.</p>
-        <a href="https://calendly.com/tu_calendario" target="_blank" class="btn">Agendar</a>
+        <p>$25.000 CLP</p>
       </div>
-      <div class="pricing-card">
+      <div class="card">
         <h3>Terapia Familiar</h3>
-        <p class="price">$40.000 CLP</p>
-        <p class="desc">Sesión para mejorar la comunicación y resolver conflictos familiares.</p>
-        <a href="https://calendly.com/tu_calendario" target="_blank" class="btn">Agendar</a>
+        <p>$40.000 CLP</p>
       </div>
-      <div class="pricing-card">
+      <div class="card">
+        <h3>Paquete 5 sesiones</h3>
+        <span class="badge">Recomendado</span>
+        <p>$110.000 CLP</p>
+      </div>
+      <div class="card">
         <h3>Evaluación Escolar</h3>
-        <p class="price">$30.000 CLP</p>
-        <p class="desc">Evaluación psicopedagógica y apoyo escolar especializado.</p>
-        <a href="https://calendly.com/tu_calendario" target="_blank" class="btn">Agendar</a>
+        <p>$30.000 CLP</p>
       </div>
     </div>
   </section>
 
+  <!-- Sección 6 -->
+  <section class="social">
+    <h2>Contáctame</h2>
+    <a href="https://wa.me/56965437654" target="_blank">WhatsApp</a>
+    <a href="#">Facebook</a>
+    <a href="#">Instagram</a>
+    <a href="#">LinkedIn</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Psicología Lisette Solis. Todos los derechos reservados.  
+    Desarrollado con ❤️ y gratitud.
+  </footer>
+
+  <!-- Scripts -->
   <script>
-    // Cerrar popups al hacer clic fuera del contenido
-    window.onclick = function(event) {
-      document.querySelectorAll('.popup').forEach(popup => {
-        if (event.target == popup) {
-          popup.style.display = "none";
-        }
-      });
+    // Carrusel automático
+    let slides = document.querySelectorAll('.carousel-slide');
+    let index = 0;
+    setInterval(()=>{
+      slides[index].classList.remove('active');
+      index = (index+1) % slides.length;
+      slides[index].classList.add('active');
+    },8000);
+
+    // Popups
+    function openPopup(type){
+      document.getElementById('popup-'+type).style.display='flex';
+    }
+    function closePopup(type){
+      document.getElementById('popup-'+type).style.display='none';
     }
   </script>
-
 </body>
 </html>
