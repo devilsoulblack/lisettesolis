@@ -12,57 +12,29 @@
   --text:#3b2f2f;
   --highlight:#c97b63;
 }
-/* RESET Y BASE */
+
+/* RESET */
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Roboto',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
 a{text-decoration:none;}
-/* HEADER ANIMADO */
-@keyframes gradientShift {
-  0%{background:linear-gradient(90deg,#d77a61,#c97b63);}
-  25%{background:linear-gradient(90deg,#c97b63,#f5a97a);}
-  50%{background:linear-gradient(90deg,#f5a97a,#d77a61);}
-  75%{background:linear-gradient(90deg,#d77a61,#c97b63);}
-  100%{background:linear-gradient(90deg,#d77a61,#c97b63);}
-}
-header{
-  position:fixed; top:0; left:0; width:100%; color:white; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center;
-  z-index:1000; box-shadow:0 4px 15px rgba(0,0,0,0.2);
-  animation:gradientShift 15s ease infinite, fadeDown 1s ease;
-}
+
+/* HEADER */
+@keyframes gradientShift {0%{background:linear-gradient(90deg,#d77a61,#c97b63);}25%{background:linear-gradient(90deg,#c97b63,#f5a97a);}50%{background:linear-gradient(90deg,#f5a97a,#d77a61);}75%{background:linear-gradient(90deg,#d77a61,#c97b63);}100%{background:linear-gradient(90deg,#d77a61,#c97b63);}}
+header{position:fixed; top:0; left:0; width:100%; color:white; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; z-index:1000; box-shadow:0 4px 15px rgba(0,0,0,0.2); animation:gradientShift 15s ease infinite, fadeDown 1s ease;}
 .header-left{display:flex; flex-direction:column;}
 .header-left h1{margin:0;font-size:2rem;font-family:'Playfair Display',serif;}
 .header-left p{margin:0;font-size:1rem;font-weight:300;}
 .header-buttons{display:flex; gap:1rem;}
-/* BOTONES CON GRADIENTE */
-@keyframes btnGradientAgendar {
-  0%{background:linear-gradient(45deg,#f5a97a,#d77a61);}
-  25%{background:linear-gradient(45deg,#d77a61,#f5a97a);}
-  50%{background:linear-gradient(45deg,#f5a97a,#c97b63);}
-  75%{background:linear-gradient(45deg,#c97b63,#d77a61);}
-  100%{background:linear-gradient(45deg,#f5a97a,#d77a61);}
-}
-@keyframes btnGradientWhatsapp {
-  0%{background:linear-gradient(45deg,#25d366,#1ebe5d);}
-  25%{background:linear-gradient(45deg,#1ebe5d,#25d366);}
-  50%{background:linear-gradient(45deg,#25d366,#1abc57);}
-  75%{background:linear-gradient(45deg,#1abc57,#25d366);}
-  100%{background:linear-gradient(45deg,#25d366,#1ebe5d);}
-}
-.btn-agendar, .btn-whatsapp{
-  padding:0.6rem 1.2rem; border-radius:30px; font-weight:bold; transition:0.4s; box-shadow:0 4px 12px rgba(0,0,0,0.3);
-}
+@keyframes btnGradientAgendar {0%{background:linear-gradient(45deg,#f5a97a,#d77a61);}25%{background:linear-gradient(45deg,#d77a61,#f5a97a);}50%{background:linear-gradient(45deg,#f5a97a,#c97b63);}75%{background:linear-gradient(45deg,#c97b63,#d77a61);}100%{background:linear-gradient(45deg,#f5a97a,#d77a61);}}
+@keyframes btnGradientWhatsapp {0%{background:linear-gradient(45deg,#25d366,#1ebe5d);}25%{background:linear-gradient(45deg,#1ebe5d,#25d366);}50%{background:linear-gradient(45deg,#25d366,#1abc57);}75%{background:linear-gradient(45deg,#1abc57,#25d366);}100%{background:linear-gradient(45deg,#25d366,#1ebe5d);}}
+.btn-agendar, .btn-whatsapp{padding:0.6rem 1.2rem; border-radius:30px; font-weight:bold; transition:0.4s; box-shadow:0 4px 12px rgba(0,0,0,0.3);}
 .btn-agendar{color:white; animation:btnGradientAgendar 8s ease infinite;}
 .btn-whatsapp{color:white; animation:btnGradientWhatsapp 8s ease infinite;}
 .btn-agendar:hover,.btn-whatsapp:hover{transform:scale(1.05);}
 
 /* CARRUSEL */
 .carousel-container{margin-top:90px; position:relative; overflow:hidden; height:70vh;}
-.carousel-slide{
-  position:absolute; top:0; left:0; width:100%; height:100%;
-  background-size:cover; background-position:center; display:flex; justify-content:center; align-items:center; flex-direction:column;
-  color:white; text-align:center; opacity:0; transition:opacity 1s ease-in-out, transform 1s ease-in-out;
-  transform: scale(1.05);
-}
+.carousel-slide{position:absolute; top:0; left:0; width:100%; height:100%; background-size:cover; background-position:center; display:flex; justify-content:center; align-items:center; flex-direction:column; color:white; text-align:center; opacity:0; transition:opacity 1s ease-in-out, transform 1s ease-in-out; transform: scale(1.05);}
 .carousel-slide.active{opacity:1; transform: scale(1);}
 .carousel-slide h2{font-size:3rem; margin-bottom:20px; text-shadow:2px 2px 12px rgba(0,0,0,0.6); font-family:'Playfair Display',serif;}
 .carousel-slide button{padding:15px 35px; border:none; border-radius:30px; background:var(--highlight); color:white; font-size:1.3rem; cursor:pointer; transition:0.5s; box-shadow:0 4px 15px rgba(0,0,0,0.4);}
@@ -128,6 +100,11 @@ footer{background: var(--header); color:white; text-align:center; padding:2rem; 
   .contacto,.quien-soy{flex-direction:column; text-align:center;}
   .quien-soy div{text-align:center;}
 }
+
+/* ANIMACIONES */
+@keyframes fadeDown {from {opacity:0; transform:translateY(-20px);} to{opacity:1; transform:translateY(0);}}
+.fadeUp{opacity:0; transform:translateY(40px); transition:1s ease;}
+.fadeUp.show{opacity:1; transform:translateY(0);}
 </style>
 </head>
 <body>
@@ -143,11 +120,35 @@ footer{background: var(--header); color:white; text-align:center; padding:2rem; 
   </div>
 </header>
 
-<!-- Aquí insertarías el Carrusel con modales -->
+<!-- CARRUSEL -->
+<section class="carousel-container">
+  <div class="carousel-slide active" style="background-image:url('fondo1.jpg');">
+    <h2>Evaluación Clínica</h2>
+    <button onclick="openModal('modal1')">Más info</button>
+  </div>
+  <div class="carousel-slide" style="background-image:url('fondo2.jpg');">
+    <h2>Intervención Individual</h2>
+    <button onclick="openModal('modal2')">Más info</button>
+  </div>
+  <div class="carousel-slide" style="background-image:url('fondo3.jpg');">
+    <h2>Terapia Familiar</h2>
+    <button onclick="openModal('modal3')">Más info</button>
+  </div>
+  <div class="carousel-slide" style="background-image:url('fondo4.jpg');">
+    <h2>Intervención Escolar</h2>
+    <button onclick="openModal('modal4')">Más info</button>
+  </div>
+</section>
 
-<!-- Sección Contacto -->
+<!-- MODALES -->
+<div id="modal1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal1')">&times;</span><h3>Evaluación Clínica</h3><p>Detalles completos de evaluación clínica y procesos.</p></div></div>
+<div id="modal2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal2')">&times;</span><h3>Intervención Individual</h3><p>Detalles completos de intervención individual.</p></div></div>
+<div id="modal3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal3')">&times;</span><h3>Terapia Familiar</h3><p>Detalles completos de terapia familiar.</p></div></div>
+<div id="modal4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal4')">&times;</span><h3>Intervención Escolar</h3><p>Detalles completos de intervención escolar.</p></div></div>
+
+<!-- Contacto -->
 <section class="contacto fadeUp">
-  <img src="tu-foto.jpg" alt="Foto Lisette Solis">
+  <img src="foto-contacto.jpg" alt="Foto Lisette Solis">
   <div class="contacto-text">
     <h2>¿Quieres hacer una reserva o tienes preguntas?</h2>
     <p>Puedes escribirme al +56 9 65437654 o reserva una cita conmigo.</p>
@@ -157,7 +158,7 @@ footer{background: var(--header); color:white; text-align:center; padding:2rem; 
 
 <!-- Sección Quién Soy -->
 <section class="quien-soy fadeUp">
-  <img src="tu-foto.jpg" alt="Lisette Solis">
+  <img src="foto-quien-soy.jpg" alt="Lisette Solis">
   <div>
     <h2>Quién Soy</h2>
     <ul>
@@ -173,11 +174,11 @@ footer{background: var(--header); color:white; text-align:center; padding:2rem; 
   <h2>Próximos Eventos por Zoom</h2>
   <div class="evento-card">
     <h3>Taller de Arteterapia</h3>
-    <a href="https://zoom.us/tu-link" target="_blank">Participar</a>
+    <a href="https://zoom.us/tu-link1" target="_blank">Participar</a>
   </div>
   <div class="evento-card">
     <h3>Seminario Autismo</h3>
-    <a href="https://zoom.us/tu-link" target="_blank">Participar</a>
+    <a href="https://zoom.us/tu-link2" target="_blank">Participar</a>
   </div>
 </section>
 
@@ -186,11 +187,11 @@ footer{background: var(--header); color:white; text-align:center; padding:2rem; 
   <h2>Precios de Consultas y Terapias</h2>
   <div class="pricing">
     <div class="card">
-      <h3>Individual</h3>
+      <h3>Consulta Individual</h3>
       <p class="price">$40.000 CLP</p>
     </div>
     <div class="card">
-      <h3>Familiar</h3>
+      <h3>Consulta Familiar</h3>
       <p class="price">$60.000 CLP</p>
     </div>
     <div class="card">
@@ -198,10 +199,14 @@ footer{background: var(--header); color:white; text-align:center; padding:2rem; 
       <span class="badge">Recomendado</span>
       <p class="price">$180.000 CLP</p>
     </div>
+    <div class="card">
+      <h3>Paquete 10 sesiones</h3>
+      <p class="price">$350.000 CLP</p>
+    </div>
   </div>
 </section>
 
-<!-- Sección Redes -->
+<!-- Sección Redes Sociales -->
 <section class="redes fadeUp">
   <h2>Sígueme en Redes</h2>
   <a href="#">Facebook</a>
@@ -209,6 +214,7 @@ footer{background: var(--header); color:white; text-align:center; padding:2rem; 
   <a href="https://wa.me/56965437654" target="_blank">WhatsApp</a>
 </section>
 
+<!-- Footer -->
 <footer>
   &copy; 2025 Psicología Lisette Solis. Todos los derechos reservados.
 </footer>
@@ -218,11 +224,15 @@ footer{background: var(--header); color:white; text-align:center; padding:2rem; 
   const faders = document.querySelectorAll('.fadeUp');
   const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
   const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll){
-    entries.forEach(entry=>{ if(!entry.isIntersecting) return; entry.target.classList.add('show'); appearOnScroll.unobserve(entry.target); });
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      entry.target.classList.add('show');
+      appearOnScroll.unobserve(entry.target);
+    });
   }, appearOptions);
   faders.forEach(fader=>appearOnScroll.observe(fader));
 
-  // Carrusel ejemplo
+  // Carrusel
   const slides = document.querySelectorAll('.carousel-slide');
   let currentSlide = 0;
   setInterval(()=> {
@@ -230,7 +240,17 @@ footer{background: var(--header); color:white; text-align:center; padding:2rem; 
     slides[currentSlide].classList.add('active');
     currentSlide = (currentSlide+1)%slides.length;
   },5000); // 5 segundos
-</script>
 
+  // Modales
+  function openModal(id){ document.getElementById(id).style.display='flex'; }
+  function closeModal(id){ document.getElementById(id).style.display='none'; }
+  window.onclick = function(event){
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(modal=>{
+      if(event.target == modal){ modal.style.display='none'; }
+    });
+  }
+</script>
 </body>
 </html>
+
