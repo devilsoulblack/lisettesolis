@@ -3,46 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Psicología Lisette Solis - Premium</title>
+<title>Psicología Lisette Solis</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg:#fff8f3;
   --header:#c97b63;
-  --btn-agendar:#f5a97a;
-  --btn-agendar-hover:#d77a61;
-  --btn-whatsapp:#25d366;
-  --btn-whatsapp-hover:#1ebe5d;
   --text:#3b2f2f;
-  --card-bg:#ffffff;
   --highlight:#c97b63;
 }
-
-/* Reset y base */
+/* RESET Y BASE */
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Roboto',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; overflow-x:hidden;}
+body{font-family:'Roboto',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
 a{text-decoration:none;}
-
-/* HEADER PREMIUM */
+/* HEADER ANIMADO */
+@keyframes gradientShift {
+  0%{background:linear-gradient(90deg,#d77a61,#c97b63);}
+  25%{background:linear-gradient(90deg,#c97b63,#f5a97a);}
+  50%{background:linear-gradient(90deg,#f5a97a,#d77a61);}
+  75%{background:linear-gradient(90deg,#d77a61,#c97b63);}
+  100%{background:linear-gradient(90deg,#d77a61,#c97b63);}
+}
 header{
-  position:fixed; top:0; left:0; width:100%;
-  background: linear-gradient(90deg,#d77a61,#c97b63);
-  color:white; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center;
-  z-index:1000; box-shadow:0 4px 15px rgba(0,0,0,0.2); animation:fadeDown 1s ease;
+  position:fixed; top:0; left:0; width:100%; color:white; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center;
+  z-index:1000; box-shadow:0 4px 15px rgba(0,0,0,0.2);
+  animation:gradientShift 15s ease infinite, fadeDown 1s ease;
 }
 .header-left{display:flex; flex-direction:column;}
 .header-left h1{margin:0;font-size:2rem;font-family:'Playfair Display',serif;}
 .header-left p{margin:0;font-size:1rem;font-weight:300;}
 .header-buttons{display:flex; gap:1rem;}
+/* BOTONES CON GRADIENTE */
+@keyframes btnGradientAgendar {
+  0%{background:linear-gradient(45deg,#f5a97a,#d77a61);}
+  25%{background:linear-gradient(45deg,#d77a61,#f5a97a);}
+  50%{background:linear-gradient(45deg,#f5a97a,#c97b63);}
+  75%{background:linear-gradient(45deg,#c97b63,#d77a61);}
+  100%{background:linear-gradient(45deg,#f5a97a,#d77a61);}
+}
+@keyframes btnGradientWhatsapp {
+  0%{background:linear-gradient(45deg,#25d366,#1ebe5d);}
+  25%{background:linear-gradient(45deg,#1ebe5d,#25d366);}
+  50%{background:linear-gradient(45deg,#25d366,#1abc57);}
+  75%{background:linear-gradient(45deg,#1abc57,#25d366);}
+  100%{background:linear-gradient(45deg,#25d366,#1ebe5d);}
+}
 .btn-agendar, .btn-whatsapp{
   padding:0.6rem 1.2rem; border-radius:30px; font-weight:bold; transition:0.4s; box-shadow:0 4px 12px rgba(0,0,0,0.3);
 }
-.btn-agendar{background:linear-gradient(45deg,var(--btn-agendar),var(--btn-agendar-hover)); color:white;}
-.btn-agendar:hover{transform:scale(1.05);}
-.btn-whatsapp{background:linear-gradient(45deg,var(--btn-whatsapp),var(--btn-whatsapp-hover)); color:white;}
-.btn-whatsapp:hover{transform:scale(1.05);}
+.btn-agendar{color:white; animation:btnGradientAgendar 8s ease infinite;}
+.btn-whatsapp{color:white; animation:btnGradientWhatsapp 8s ease infinite;}
+.btn-agendar:hover,.btn-whatsapp:hover{transform:scale(1.05);}
 
-/* CARRUSEL PREMIUM CON PARALLAX */
+/* CARRUSEL */
 .carousel-container{margin-top:90px; position:relative; overflow:hidden; height:70vh;}
 .carousel-slide{
   position:absolute; top:0; left:0; width:100%; height:100%;
@@ -56,11 +69,11 @@ header{
 .carousel-slide button:hover{background: var(--btn-agendar); transform:scale(1.1);}
 
 /* MODALES */
-.modal{display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; animation:fadeIn 0.4s;}
-.modal-content{background:var(--bg); padding:30px; border-radius:15px; width:90%; max-width:500px; position:relative; transform:translateY(-50px); opacity:0; animation:slideDown 0.4s forwards;}
+.modal{display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center;}
+.modal-content{background:var(--bg); padding:30px; border-radius:15px; width:90%; max-width:500px; position:relative;}
 .close{position:absolute; top:10px; right:15px; font-size:1.5rem; cursor:pointer; color:var(--header);}
 
-/* CONTACTO PREMIUM */
+/* CONTACTO */
 .contacto{display:flex; flex-wrap:wrap; gap:40px; align-items:center; justify-content:space-between; padding:80px 10%; background:linear-gradient(120deg,#fff8f3,#ffe6d1);}
 .contacto img{width:320px; border-radius:20px; box-shadow:0 8px 25px rgba(0,0,0,0.15); transition: transform 0.5s;}
 .contacto img:hover{transform:scale(1.05);}
@@ -68,9 +81,9 @@ header{
 .contacto-text h2{font-size:2rem; margin-bottom:20px; color: var(--header);}
 .contacto-text p{font-size:1.2rem; margin-bottom:20px;}
 .btn-calendario{background: linear-gradient(45deg,#f5a97a,#d77a61); color:white; padding:12px 25px; border-radius:30px; transition:0.4s; box-shadow:0 4px 12px rgba(0,0,0,0.2);}
-.btn-calendario:hover{background: var(--btn-agendar-hover); transform:scale(1.05);}
+.btn-calendario:hover{background: var(--btn-agendar); transform:scale(1.05);}
 
-/* QUIÉN SOY PREMIUM */
+/* QUIEN SOY */
 .quien-soy{display:flex; align-items:center; justify-content:flex-start; gap:3rem; flex-wrap:wrap; padding:80px 10%; background:linear-gradient(120deg,#ffe6d1,#fff8f3);}
 .quien-soy img{width:250px; height:250px; object-fit:cover; border-radius:50%; box-shadow:0 5px 25px rgba(0,0,0,0.3); transition: transform 0.5s;}
 .quien-soy img:hover{transform:scale(1.05);}
@@ -80,32 +93,32 @@ header{
 .quien-soy ul li{margin-bottom:0.6rem; padding-left:20px; position:relative;}
 .quien-soy ul li::before{content:"✔"; position:absolute; left:0; color: var(--highlight); font-weight:bold;}
 
-/* EVENTOS PREMIUM */
+/* EVENTOS */
 .eventos{padding:80px 10%; text-align:center; background:linear-gradient(120deg,#fff8f3,#ffe6d1);}
 .eventos h2{margin-bottom:2rem; color: var(--header); font-family:'Playfair Display',serif;}
-.evento-card{display:inline-block; background: var(--card-bg); padding:20px; border-radius:15px; box-shadow:0 8px 25px rgba(0,0,0,0.1); margin:10px; width:280px; transition: transform 0.4s, box-shadow 0.4s;}
+.evento-card{display:inline-block; background: #fff; padding:20px; border-radius:15px; box-shadow:0 8px 25px rgba(0,0,0,0.1); margin:10px; width:280px; transition: transform 0.4s, box-shadow 0.4s;}
 .evento-card:hover{transform:translateY(-8px) scale(1.02); box-shadow:0 12px 30px rgba(0,0,0,0.2);}
 .evento-card h3{margin-bottom:0.5rem; color: var(--highlight);}
 .evento-card a{display:inline-block; margin-top:10px; background: var(--btn-agendar); color:white; padding:10px 20px; border-radius:20px; transition:0.3s;}
 .evento-card a:hover{background: var(--btn-agendar-hover); transform:scale(1.05);}
 
-/* PRECIOS PREMIUM */
+/* PRECIOS */
 .precios{padding:80px 10%; text-align:center;}
 .precios h2{margin-bottom:2rem; color: var(--header); font-family:'Playfair Display',serif;}
 .pricing{display:flex; justify-content:center; gap:2rem; flex-wrap:wrap;}
-.card{background: var(--card-bg); border-radius:15px; box-shadow:0 6px 25px rgba(0,0,0,0.1); padding:2rem; width:280px; position:relative; transition: transform 0.5s, box-shadow 0.5s;}
+.card{background: #fff; border-radius:15px; box-shadow:0 6px 25px rgba(0,0,0,0.1); padding:2rem; width:280px; position:relative; transition: transform 0.5s, box-shadow 0.5s;}
 .card:hover{transform:translateY(-10px) scale(1.02); box-shadow:0 12px 30px rgba(0,0,0,0.2);}
 .card h3{color: var(--header);}
 .price{font-size:1.5rem; font-weight:bold; margin:1rem 0; color: var(--btn-agendar);}
 .badge{position:absolute; top:-10px; right:-10px; background: var(--btn-agendar); color:white; padding:0.4rem 0.8rem; border-radius:8px; font-size:0.8rem; font-weight:bold;}
 
-/* REDES PREMIUM */
+/* REDES */
 .redes{padding:60px 10%; text-align:center; background:linear-gradient(120deg,#ffe6d1,#fff8f3);}
 .redes h2{margin-bottom:1rem; color: var(--header); font-family:'Playfair Display',serif;}
 .redes a{margin:0 10px; font-size:1.2rem; padding:12px 20px; border-radius:30px; background: var(--btn-agendar); color:white; display:inline-block; transition:0.5s;}
 .redes a:hover{background: var(--btn-agendar-hover); transform:scale(1.05);}
 
-/* FOOTER PREMIUM */
+/* FOOTER */
 footer{background: var(--header); color:white; text-align:center; padding:2rem; font-size:0.9rem;}
 
 /* RESPONSIVE */
@@ -115,13 +128,6 @@ footer{background: var(--header); color:white; text-align:center; padding:2rem; 
   .contacto,.quien-soy{flex-direction:column; text-align:center;}
   .quien-soy div{text-align:center;}
 }
-
-/* ANIMACIONES */
-@keyframes fadeDown {from {opacity:0; transform:translateY(-20px);} to{opacity:1; transform:translateY(0);}}
-.fadeUp{opacity:0; transform:translateY(40px); transition:1s ease;}
-.fadeUp.show{opacity:1; transform:translateY(0);}
-@keyframes fadeIn {from {opacity:0;} to{opacity:1;}}
-@keyframes slideDown {to {transform:translateY(0); opacity:1;}}
 </style>
 </head>
 <body>
@@ -137,27 +143,93 @@ footer{background: var(--header); color:white; text-align:center; padding:2rem; 
   </div>
 </header>
 
-<!-- Carrusel y modales, secciones contacto, quien soy, eventos, precios y redes, igual que antes -->
+<!-- Aquí insertarías el Carrusel con modales -->
+
+<!-- Sección Contacto -->
+<section class="contacto fadeUp">
+  <img src="tu-foto.jpg" alt="Foto Lisette Solis">
+  <div class="contacto-text">
+    <h2>¿Quieres hacer una reserva o tienes preguntas?</h2>
+    <p>Puedes escribirme al +56 9 65437654 o reserva una cita conmigo.</p>
+    <a href="https://calendar.google.com" target="_blank" class="btn-calendario">Agendar Cita</a>
+  </div>
+</section>
+
+<!-- Sección Quién Soy -->
+<section class="quien-soy fadeUp">
+  <img src="tu-foto.jpg" alt="Lisette Solis">
+  <div>
+    <h2>Quién Soy</h2>
+    <ul>
+      <li>Psicóloga clínica con experiencia en Arteterapia y Autismo</li>
+      <li>Formación académica destacada</li>
+      <li>Certificaciones en terapias individuales y familiares</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Sección Eventos -->
+<section class="eventos fadeUp">
+  <h2>Próximos Eventos por Zoom</h2>
+  <div class="evento-card">
+    <h3>Taller de Arteterapia</h3>
+    <a href="https://zoom.us/tu-link" target="_blank">Participar</a>
+  </div>
+  <div class="evento-card">
+    <h3>Seminario Autismo</h3>
+    <a href="https://zoom.us/tu-link" target="_blank">Participar</a>
+  </div>
+</section>
+
+<!-- Sección Precios -->
+<section class="precios fadeUp">
+  <h2>Precios de Consultas y Terapias</h2>
+  <div class="pricing">
+    <div class="card">
+      <h3>Individual</h3>
+      <p class="price">$40.000 CLP</p>
+    </div>
+    <div class="card">
+      <h3>Familiar</h3>
+      <p class="price">$60.000 CLP</p>
+    </div>
+    <div class="card">
+      <h3>Paquete 5 sesiones</h3>
+      <span class="badge">Recomendado</span>
+      <p class="price">$180.000 CLP</p>
+    </div>
+  </div>
+</section>
+
+<!-- Sección Redes -->
+<section class="redes fadeUp">
+  <h2>Sígueme en Redes</h2>
+  <a href="#">Facebook</a>
+  <a href="#">Instagram</a>
+  <a href="https://wa.me/56965437654" target="_blank">WhatsApp</a>
+</section>
+
+<footer>
+  &copy; 2025 Psicología Lisette Solis. Todos los derechos reservados.
+</footer>
 
 <script>
-  const slides = document.querySelectorAll('.carousel-slide');
-  let current = 0;
-  function showSlide(index){ slides.forEach((s,i)=>s.classList.remove('active')); slides[index].classList.add('active'); }
-  setInterval(()=>{ current=(current+1)%slides.length; showSlide(current); },5000);
-  
-  const modalButtons = document.querySelectorAll('[data-modal]');
-  const modals = document.querySelectorAll('.modal');
-  const closeButtons = document.querySelectorAll('.close');
-  modalButtons.forEach(btn=>{btn.addEventListener('click',()=>{document.getElementById(btn.dataset.modal).style.display='flex';});});
-  closeButtons.forEach(btn=>{btn.addEventListener('click',()=>{btn.parentElement.parentElement.style.display='none';});});
-  window.addEventListener('click',e=>{modals.forEach(modal=>{if(e.target==modal) modal.style.display='none';});});
-
+  // Scroll animation
   const faders = document.querySelectorAll('.fadeUp');
   const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
   const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll){
     entries.forEach(entry=>{ if(!entry.isIntersecting) return; entry.target.classList.add('show'); appearOnScroll.unobserve(entry.target); });
   }, appearOptions);
   faders.forEach(fader=>appearOnScroll.observe(fader));
+
+  // Carrusel ejemplo
+  const slides = document.querySelectorAll('.carousel-slide');
+  let currentSlide = 0;
+  setInterval(()=> {
+    slides.forEach(s=>s.classList.remove('active'));
+    slides[currentSlide].classList.add('active');
+    currentSlide = (currentSlide+1)%slides.length;
+  },5000); // 5 segundos
 </script>
 
 </body>
