@@ -1,127 +1,289 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Psic. Lisette Solís</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #ffffff;
-      color: #111111;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-    }
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CSH4GPHQ1N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    .container {
-      padding: 2rem;
-      max-width: 600px;
-      width: 100%;
-    }
+  gtag('config', 'G-CSH4GPHQ1N');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="apple-mobile-web-app-capable" content="YES"/>
+<link rel="icon" href="https://raw.githubusercontent.com/devilsoulblack/lisettesolis/refs/heads/main/favicon.ico" type="image/x-icon">
+<title>Psicologa Lisette Solis - Santiago - Chile</title>
+<meta name="description" content="Psicóloga en Santiago de Chile, terapia online, psicólogo, ansiedad, depresión, estrés laboral en Santiago">
+<link rel="canonical" href="https://lisettesolis.cl/"/>
+<link rel='shortlink' href='https://lisettesolis.cl/'/>
+<meta property="og:site_name" content="Psicologa Lisette Solis - Santiago - Chile"/>
+<meta property="og:url" content="https://lisettesolis.cl/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Psicologa Lisette Solis - Santiago - Chile"/>
+<meta name="twitter:title" content="Psicologa Lisette Solis - Santiago - Chile"/>
+<meta name="twitter:card" content="Psicologa Lisette Solis - Santiago - Chile"/>
+<meta name="twitter:site" content="@devilsoulblack"/>
+<meta name="twitter:creator" content="@devilsoulblack"/>
+<meta property="og:url" content="https://lisettesolis.cl/"/>
+<meta property="og:title" content="Psicologa Lisette Solis - Santiago - Chile"/>
+<meta property="og:description" content="Psicologa Lisette Solis - Santiago - Chile"/>
+<meta property="og:image" content="https://raw.githubusercontent.com/devilsoulblack/lisettesolis/refs/heads/main/logo_lisette_solis.jpg"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --bg:#fff8f3;
+  --header:#c97b63;
+  --text:#3b2f2f;
+  --highlight:#c97b63;
+  --whatsapp:#25d366;
+  --agendar:#f5a97a;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Roboto',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
+a{text-decoration:none;}
 
-    img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-    }
+/* HEADER */
+header{position:fixed; top:0; left:0; width:100%; color:white; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; z-index:1000; box-shadow:0 4px 15px rgba(0,0,0,0.2); background:linear-gradient(90deg,#d77a61,#c97b63);}
+.header-left{display:flex; flex-direction:column;}
+.header-left h1{margin:0;font-size:2rem;font-family:'Playfair Display',serif;}
+.header-left p{margin:0;font-size:1rem;font-weight:300;}
+.header-buttons{display:flex; gap:1rem;}
+.btn-agendar, .btn-whatsapp{padding:0.6rem 1.2rem; border-radius:30px; font-weight:bold; transition:0.4s; box-shadow:0 4px 12px rgba(0,0,0,0.3);}
+.btn-agendar{background:var(--agendar); color:white;}
+.btn-whatsapp{background:var(--whatsapp); color:white;}
+.btn-agendar:hover{transform:scale(1.1); background:#d77a61;}
+.btn-whatsapp:hover{transform:scale(1.1); background:#1ebe5d;}
 
-    h1 {
-      font-size: 1.75rem;
-      margin-bottom: 0.5rem;
-    }
+/* CARRUSEL */
+.carousel-container{margin-top:90px; position:relative; overflow:hidden; height:70vh;}
+.carousel-slide{position:absolute; top:0; left:0; width:100%; height:100%; background-size:cover; background-position:center; display:flex; justify-content:center; align-items:center; flex-direction:column; color:white; text-align:center; opacity:0; transform: scale(1.05); transition:opacity 1s ease-in-out, transform 1s ease-in-out;}
+.carousel-slide.active{opacity:1; transform: scale(1);}
+.carousel-slide h2{font-size:3rem; margin-bottom:20px; text-shadow:2px 2px 12px rgba(0,0,0,0.6); font-family:'Playfair Display',serif;}
+.carousel-slide button{padding:15px 35px; border:none; border-radius:30px; background:var(--highlight); color:white; font-size:1.3rem; cursor:pointer; transition:0.5s; box-shadow:0 4px 15px rgba(0,0,0,0.4);}
+.carousel-slide button:hover{background:#d77a61; transform:scale(1.1);}
 
-    p {
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-      color: #444;
-    }
+/* MODALES */
+.modal{display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; animation:fadeIn 0.4s;}
+.modal-content{background:var(--bg); padding:30px; border-radius:15px; width:90%; max-width:500px; position:relative; box-shadow:0 8px 25px rgba(0,0,0,0.2); transform:scale(0.8); animation:zoomIn 0.4s forwards;}
+.close{position:absolute; top:10px; right:15px; font-size:1.5rem; cursor:pointer; color:var(--header);}
 
-    a.button {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      background: #000000;
-      color: #ffffff;
-      text-decoration: none;
-      border-radius: 4px;
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-    }
+/* ANIMACIONES */
+@keyframes fadeIn{from{opacity:0;} to{opacity:1;}}
+@keyframes zoomIn{from{transform:scale(0.8); opacity:0;} to{transform:scale(1); opacity:1;}}
 
-    .summary {
-      margin-top: 2rem;
-      font-size: 0.95rem;
-      color: #333;
-    }
+/* SECCIONES */
+section{padding:80px 10%;}
+section h2{margin-bottom:2rem; color: var(--header); font-family:'Playfair Display',serif; text-align:center;}
 
-    .social-links {
-      margin-top: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
+/* CONTACTO */
+.contacto{display:flex; flex-wrap:wrap; gap:40px; align-items:center; justify-content:space-between; background:linear-gradient(120deg,#fff8f3,#ffe6d1); transform:translateY(40px); opacity:0; transition:1s ease;}
+.contacto.show{transform:translateY(0); opacity:1;}
+.contacto img{width:320px; border-radius:20px; box-shadow:0 8px 25px rgba(0,0,0,0.15); transition: transform 0.5s;}
+.contacto img:hover{transform:scale(1.05);}
+.contacto-text{flex:1;}
+.contacto-text p{margin-bottom:20px;}
+.btn-calendario{background: linear-gradient(45deg,#f5a97a,#d77a61); color:white; padding:12px 25px; border-radius:30px; transition:0.4s; box-shadow:0 4px 12px rgba(0,0,0,0.2);}
+.btn-calendario:hover{transform:scale(1.1); background:#d77a61;}
 
-    .social-links a {
-      text-decoration: none;
-      color: #111;
-      font-size: 1.25rem;
-    }
+/* QUIEN SOY */
+.quien-soy{display:flex; align-items:center; justify-content:flex-start; gap:3rem; flex-wrap:wrap; background:linear-gradient(120deg,#ffe6d1,#fff8f3); transform:translateY(40px); opacity:0; transition:1s ease;}
+.quien-soy.show{transform:translateY(0); opacity:1;}
+.quien-soy img{width:250px; height:250px; object-fit:cover; border-radius:50%; box-shadow:0 5px 25px rgba(0,0,0,0.3); transition: transform 0.5s;}
+.quien-soy img:hover{transform:scale(1.05);}
+.quien-soy div ul{list-style:none; padding:0;}
+.quien-soy div ul li{margin-bottom:0.6rem; padding-left:25px; position:relative;}
+.quien-soy div ul li::before{content:"✔"; position:absolute; left:0; color: var(--highlight); font-weight:bold;}
 
-    .social-links svg {
-      width: 24px;
-      height: 24px;
-      fill: #111;
-      transition: fill 0.2s;
-    }
+/* EVENTOS */
+.eventos .evento-card{display:inline-block; background: #fff; padding:20px; border-radius:15px; box-shadow:0 8px 25px rgba(0,0,0,0.1); margin:10px; width:280px; transition: transform 0.4s, box-shadow 0.4s;}
+.eventos .evento-card:hover{transform:translateY(-8px) scale(1.03); box-shadow:0 12px 30px rgba(0,0,0,0.2);}
+.eventos .evento-card a{display:inline-block; margin-top:10px; background: var(--agendar); color:white; padding:10px 20px; border-radius:20px; transition:0.3s;}
+.eventos .evento-card a:hover{background: #d77a61; transform:scale(1.05);}
 
-    .social-links a:hover svg {
-      fill: #555;
-    }
+/* PRECIOS */
+.pricing{display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; transform:translateY(40px); opacity:0; transition:1s ease;}
+.pricing.show{transform:translateY(0); opacity:1;}
+.card{background: #fff; border-radius:15px; box-shadow:0 6px 25px rgba(0,0,0,0.1); padding:2rem; width:280px; position:relative; transition: transform 0.5s, box-shadow 0.5s;}
+.card:hover{transform:translateY(-10px) scale(1.03); box-shadow:0 12px 30px rgba(0,0,0,0.2);}
+.card .price{font-size:1.5rem; font-weight:bold; margin:1rem 0; color: var(--agendar);}
+.card .badge{position:absolute; top:-10px; right:-10px; background: var(--agendar); color:white; padding:0.4rem 0.8rem; border-radius:8px; font-size:0.8rem; font-weight:bold;}
 
-    footer {
-      margin-top: 2rem;
-      font-size: 0.75rem;
-      color: #888;
-    }
-  </style>
+/* REDES */
+.redes{transform:translateY(40px); opacity:0; transition:1s ease;}
+.redes.show{transform:translateY(0); opacity:1;}
+.redes a{margin:0 10px; font-size:1.2rem; padding:12px 20px; border-radius:30px; background: var(--agendar); color:white; display:inline-block; transition:0.5s;}
+.redes a:hover{background:#d77a61; transform:scale(1.05);}
+
+/* FOOTER */
+footer{background: var(--header); color:white; text-align:center; padding:2rem; font-size:0.9rem;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .header-buttons{flex-direction:column; gap:0.5rem;}
+  .carousel-slide h2{font-size:2rem;}
+  .contacto,.quien-soy{flex-direction:column; text-align:center;}
+  .quien-soy div{text-align:center;}
+}
+</style>
 </head>
 <body>
-  <div class="container">
-    <img src="https://media.licdn.com/dms/image/v2/D4E35AQGqc7J65C1OkA/profile-framedphoto-shrink_400_400/B4EZblAb1VGQAc-/0/1747598818941?e=1752253200&v=beta&t=gEwxeMNyOgGi0K5L4kgl6dL89D0XJWGWetSH-40lj-0" alt="Foto de Psic. Lisette Solís" />
-    <h1>Psic. Lisette Solís</h1>
-    <p>Psicóloga Clínica Infantojuvenil & Adultos | Autismo | Traumas del Desarrollo</p>
-    <a class="button" href="https://www.linkedin.com/in/lisette-s-04226bb3/" target="_blank">Visita mi LinkedIn</a>
 
-    <div class="summary">
-      <p>Psicóloga Infantojuvenil & Adultos. 
-
-Especializándome continuamente en temáticas de Adopción, en el Abordaje Integral del Autismo, en Traumas del Desarrollo, en Arteterapia y Terapias Expresivas con enfoque terapéutico.
-
-Actualmente ejerzo la atención clínica desde un enfoque integrativo, biopsicosocial, y adaptativo. Atiendo en modalidad online y presencial a personas con enfermedades crónicas, neurodivergentes, historial de trauma complejo, duelos, con procesos de cambio y adaptación migratoria, desafios emocionales, 
-
-He trabajado anteriormente en: evaluación de sistemas familiares, estimulación lúdica en primera infancia, docencia escolar a niños y adolescentes, en procesos de diagnóstico e intervención Psicosocial.
-En el ámbito organizacional he estado a cargo de la Gestión del Talento Humano. 
-Culminé una investigación acerca de Las Habilidades Sociales en Adolescentes,</p>
-    </div>
-
-    <div class="social-links">
-      <a href="https://wa.me/56935817051" target="_blank" aria-label="WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.157 5.3 5.488 0 12.02 0c3.183 0 6.167 1.24 8.413 3.488a11.86 11.86 0 013.495 8.409c-.003 6.531-5.337 11.861-11.87 11.861a11.9 11.9 0 01-5.936-1.574L.057 24zM6.403 19.427c1.676.995 3.276 1.591 5.617 1.592 5.448 0 9.89-4.438 9.893-9.885.002-5.462-4.43-9.897-9.893-9.9-5.452 0-9.89 4.439-9.892 9.896a9.867 9.867 0 001.599 5.51l-.999 3.648 3.675-.861zm11.387-5.465c-.197-.099-1.17-.578-1.351-.643-.181-.066-.313-.099-.445.1-.133.198-.512.643-.627.775-.114.132-.231.148-.428.05-.197-.099-.832-.307-1.586-.982-.586-.521-.98-1.164-1.096-1.362-.114-.198-.012-.305.086-.403.089-.089.198-.231.297-.347.1-.116.132-.198.198-.33.066-.132.033-.248-.017-.347-.05-.099-.445-1.073-.61-1.47-.16-.388-.323-.334-.445-.34-.114-.006-.248-.007-.38-.007a.73.73 0 00-.53.248c-.181.198-.693.677-.693 1.646s.709 1.91.807 2.043c.099.132 1.397 2.136 3.392 2.996.474.204.844.326 1.133.418.476.152.91.131 1.252.08.382-.057 1.17-.478 1.336-.94.165-.462.165-.857.116-.94-.05-.082-.182-.132-.38-.231z"/></svg>
-      </a>
-      <a href="https://www.instagram.com/lisettesolis.cl/" target="_blank" aria-label="Instagram">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.056 1.97.247 2.43.415a4.9 4.9 0 011.77 1.03 4.9 4.9 0 011.03 1.77c.168.46.36 1.26.415 2.43.058 1.265.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.247 1.97-.415 2.43a4.9 4.9 0 01-1.03 1.77 4.9 4.9 0 01-1.77 1.03c-.46.168-1.26.36-2.43.415-1.265.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.247-2.43-.415a4.9 4.9 0 01-1.77-1.03 4.9 4.9 0 01-1.03-1.77c-.168-.46-.36-1.26-.415-2.43C2.212 15.784 2.2 15.4 2.2 12s.012-3.584.07-4.85c.056-1.17.247-1.97.415-2.43a4.9 4.9 0 011.03-1.77A4.9 4.9 0 015.485 2.685c.46-.168 1.26-.36 2.43-.415C8.416 2.212 8.8 2.2 12 2.2zm0 1.8c-3.16 0-3.523.012-4.763.068-.99.045-1.526.21-1.882.35a3.1 3.1 0 00-1.135.74 3.1 3.1 0 00-.74 1.134c-.14.356-.305.893-.35 1.883-.056 1.24-.068 1.603-.068 4.763s.012 3.523.068 4.763c.045.99.21 1.526.35 1.882.162.41.39.775.74 1.135.36.35.725.578 1.135.74.356.14.893.305 1.883.35 1.24.056 1.603.068 4.763.068s3.523-.012 4.763-.068c.99-.045 1.526-.21 1.882-.35a3.1 3.1 0 001.135-.74 3.1 3.1 0 00.74-1.135c.14-.356.305-.892.35-1.882.056-1.24.068-1.603.068-4.763s-.012-3.523-.068-4.763c-.045-.99-.21-1.526-.35-1.882a3.1 3.1 0 00-.74-1.135 3.1 3.1 0 00-1.135-.74c-.356-.14-.892-.305-1.882-.35-1.24-.056-1.603-.068-4.763-.068zm0 3.8a6.2 6.2 0 110 12.4 6.2 6.2 0 010-12.4zm0 1.8a4.4 4.4 0 100 8.8 4.4 4.4 0 000-8.8zm6.6-1.2a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"/></svg>
-      </a>
-    </div>
-
-    <footer>
-      <p>© 2025 Psic. Lisette Solís</p>
-    </footer>
+<header>
+  <div class="header-left">
+    <h1>Psicologa Lisette Solis</h1>
+    <p>Psicoterapia en Traumas, Ansiedad, Habilidades Emocionales, Autismo, Tdah, Duelos, Acompañamiento en Enfermedades Catastróficas o Crónicas, Estrés, Arteterapia, Desarrollo Personal, Adopción</p>
   </div>
+  <div class="header-buttons">
+    <a href="https://calendar.google.com" target="_blank" class="btn-agendar"><i class="fa fa-calendar"></i> Agendar</a>
+    <a href="https://wa.me/56935817051" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+  </div>
+</header>
+
+<!-- CARRUSEL -->
+<section class="carousel-container">
+  <div class="carousel-slide active" style="background-image:url('https://paularmorellpsicologia.com/wp-content/uploads/2023/08/evaluacion.jpg');">
+    <h2>Evaluación Clínica</h2>
+    <button onclick="openModal('modal1')"><i class="fa fa-info-circle"></i> Más info</button>
+  </div>
+  <div class="carousel-slide" style="background-image:url('https://raw.githubusercontent.com/devilsoulblack/lisettesolis/refs/heads/main/intervencion_individual.jpg');">
+    <h2>Intervención Individual</h2>
+    <button onclick="openModal('modal2')"><i class="fa fa-info-circle"></i> Más info</button>
+  </div>
+  <div class="carousel-slide" style="background-image:url('https://raw.githubusercontent.com/devilsoulblack/lisettesolis/refs/heads/main/terapia_familiar.jpg');">
+    <h2>Terapia Familiar</h2>
+    <button onclick="openModal('modal3')"><i class="fa fa-info-circle"></i> Más info</button>
+  </div>
+  <div class="carousel-slide" style="background-image:url('https://raw.githubusercontent.com/devilsoulblack/lisettesolis/refs/heads/main/formacion.jpg');">
+    <h2>Intervención Escolar</h2>
+    <button onclick="openModal('modal4')"><i class="fa fa-info-circle"></i> Más info</button>
+  </div>
+</section>
+
+<!-- MODALES -->
+<div id="modal1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal1')">&times;</span><h3>Evaluación Clínica</h3><p>Detalles completos de evaluación clínica y procesos.</p></div></div>
+<div id="modal2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal2')">&times;</span><h3>Intervención Individual</h3><p>Detalles completos de intervención individual.</p></div></div>
+<div id="modal3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal3')">&times;</span><h3>Terapia Familiar</h3><p>Detalles completos de terapia familiar.</p></div></div>
+<div id="modal4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal4')">&times;</span><h3>Intervención Escolar</h3><p>Detalles completos de intervención escolar.</p></div></div>
+
+<!-- CONTACTO -->
+<section class="contacto">
+  <img src="https://cdn-icons-png.flaticon.com/256/2043/2043285.png" alt="Foto Lisette Solis">
+  <div class="contacto-text">
+    <h2>¿Quieres hacer una reserva o tienes preguntas?</h2>
+    <p>Puedes escribirme al +56 9 3581 7051 o reserva una cita conmigo.</p>
+    <a href="https://calendar.app.google/fSwhp8sda9DwgnPW9 target="_blank" class="btn-calendario"><i class="fa fa-calendar"></i> Agendar Cita</a>
+  </div>
+</section>
+
+<!-- QUIEN SOY -->
+<section class="quien-soy">
+  <img src="https://raw.githubusercontent.com/devilsoulblack/lisettesolis/refs/heads/main/lisette_solis_paredes_v1.jpg" alt="Lisette Solis">
+  <div>
+    <h2>Quién Soy</h2>
+    <ul>
+      <li>Psicóloga clínica con experiencia en Arteterapia y Autismo</li>
+      <li>Formación académica destacada</li>
+      <li>Certificaciones en terapias individuales y familiares</li>
+    </ul>
+  </div>
+</section>
+
+<!-- EVENTOS -->
+<section class="eventos">
+  <h2>Próximos Eventos por Zoom</h2>
+  <center>
+    <div class="evento-card">
+    <h3>Taller de Arteterapia</h3>
+    <a href="https://zoom.us/tu-link1" target="_blank"><i class="fa fa-video"></i> Participar</a>
+  </div>
+  <div class="evento-card">
+    <h3>Seminario Autismo</h3>
+    <a href="https://zoom.us/tu-link2" target="_blank"><i class="fa fa-video"></i> Participar</a>
+  </div>
+    <div class="evento-card">
+    <h3>Seminario Autismo</h3>
+    <a href="https://zoom.us/tu-link2" target="_blank"><i class="fa fa-video"></i> Participar</a>
+  </div>
+    <div class="evento-card">
+    <h3>Seminario Autismo</h3>
+    <a href="https://zoom.us/tu-link2" target="_blank"><i class="fa fa-video"></i> Participar</a>
+  </div>
+  </center>
+</section>
+
+<!-- PRECIOS -->
+<section class="precios">
+  <h2>Precios de Consultas y Terapias</h2>
+  <div class="pricing">
+    <div class="card">
+      <h3>Consulta Individual</h3>
+      <p class="price">$40.000 CLP</p>
+    </div>
+    <div class="card">
+      <h3>Consulta Familiar</h3>
+      <p class="price">$60.000 CLP</p>
+    </div>
+    <div class="card">
+      <span class="badge">Recomendado</span>
+      <h3>Paquete 5 sesiones</h3>
+      <p class="price">$180.000 CLP</p>
+    </div>
+    <div class="card">
+      <h3>Paquete 10 sesiones</h3>
+      <p class="price">$350.000 CLP</p>
+    </div>
+  </div>
+</section>
+
+<!-- REDES -->
+<section class="redes">
+  <h2>Sígueme en Redes</h2>
+  <center>
+    <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+  <a href="https://www.instagram.com/psicologa.lisettesolis"><i class="fab fa-instagram"></i> Instagram</a>
+  <a href="https://wa.me/56935817051" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+</center>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2025 Psicología Lisette Solis. Todos los derechos reservados.
+</footer>
+
+<script>
+const slides = document.querySelectorAll('.carousel-slide');
+let currentSlide = 0;
+setInterval(()=> {
+  slides.forEach(s=>s.classList.remove('active'));
+  slides[currentSlide].classList.add('active');
+  currentSlide = (currentSlide+1)%slides.length;
+},5000);
+
+function openModal(id){ document.getElementById(id).style.display='flex'; }
+function closeModal(id){ document.getElementById(id).style.display='none'; }
+window.onclick = function(event){
+  const modals = document.querySelectorAll('.modal');
+  modals.forEach(modal=>{
+    if(event.target == modal){ modal.style.display='none'; }
+  });
+}
+
+// Animaciones al hacer scroll
+const faders = document.querySelectorAll('.contacto, .quien-soy, .pricing, .redes');
+const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver(function(entries, observer){
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting) return;
+    entry.target.classList.add('show');
+    observer.unobserve(entry.target);
+  });
+}, appearOptions);
+faders.forEach(fader=>appearOnScroll.observe(fader));
+</script>
+
 </body>
 </html>
