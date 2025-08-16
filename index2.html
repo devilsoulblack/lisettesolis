@@ -19,7 +19,7 @@
 
   body {margin:0; font-family:'Arial', sans-serif; background:var(--bg); color:var(--text); line-height:1.6;}
   a{text-decoration:none;}
-  
+
   /* HEADER */
   header {
     position:fixed; top:0; left:0; width:100%;
@@ -38,11 +38,19 @@
   .header-buttons a{transition: transform 0.3s, box-shadow 0.3s;}
   .header-buttons a:hover{transform: scale(1.1); box-shadow: 0 8px 20px rgba(0,0,0,0.3);}
 
-  /* CARRUSEL CON TRANSICIÓN DESLIZANTE */
+  /* CARRUSEL DESLIZANTE */
   .carousel-container{margin-top:90px; position:relative; overflow:hidden; height:70vh;}
   .carousel-wrapper{display:flex; transition: transform 1s ease-in-out; height:100%;}
   .carousel-slide{min-width:100%; height:100%; background-size:cover; background-position:center; display:flex; justify-content:center; align-items:center; flex-direction:column; color:white; text-align:center; position:relative;}
-  .carousel-slide h2{font-size:2.5rem; text-shadow:0 4px 10px rgba(0,0,0,0.7);}
+  .carousel-slide h2, .carousel-slide button {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .carousel-slide.active h2, .carousel-slide.active button {
+    opacity: 1;
+    transform: translateY(0);
+  }
   .carousel-slide button{margin-top:15px; padding:12px 25px; border:none; border-radius:30px; background:var(--highlight); color:white; font-size:1rem; cursor:pointer;}
   .carousel-slide button:hover{background: var(--btn-agendar);}
 
@@ -122,7 +130,7 @@
   </div>
   <div class="header-buttons">
     <a href="https://calendar.google.com" target="_blank" class="btn-agendar">Agendar</a>
-    <a href="https://wa.me/56912345678" target="_blank" class="btn-whatsapp">WhatsApp</a>
+    <a href="https://wa.me/56965437654" target="_blank" class="btn-whatsapp">WhatsApp</a>
   </div>
 </header>
 
@@ -190,7 +198,7 @@
 
 <!-- CONTACTO -->
 <section class="contacto">
-  <img src="https://cdn-icons-png.flaticon.com/256/2043/2043285.png" alt="Lisette Solis">
+  <img src="https://via.placeholder.com/320" alt="Lisette Solis">
   <div class="contacto-text">
     <h2>¿Quieres hacer una reserva o tienes preguntas?</h2>
     <p>Puedes escribirme al <strong>+56 9 65437654</strong> o reservar una cita conmigo.</p>
@@ -200,7 +208,7 @@
 
 <!-- QUIÉN SOY -->
 <section id="quien-soy" class="quien-soy">
-  <img src="https://raw.githubusercontent.com/devilsoulblack/lisettesolis/refs/heads/main/lisette_solis_paredes_v1.jpg" alt="Foto Lisette">
+  <img src="https://via.placeholder.com/250" alt="Foto Lisette">
   <div>
     <h2>¿Quién Soy?</h2>
     <p>Soy Lisette Solis, psicóloga especializada en psicoterapias, arteterapia y apoyo a personas con autismo. Mi compromiso es acompañarte en tu proceso personal y brindar herramientas efectivas para tu bienestar emocional.</p>
@@ -261,23 +269,33 @@
 </footer>
 
 <script>
-  // CARRUSEL DESLIZANTE
+  // CARRUSEL DESLIZANTE CON ANIMACIÓN DE TEXTO
   const wrapper = document.querySelector('.carousel-wrapper');
   const slides = document.querySelectorAll('.carousel-slide');
   const thumbs = document.querySelectorAll('.carousel-thumb');
   let currentIndex = 0;
+
   function showSlide(index){
     wrapper.style.transform = `translateX(-${index * 100}%)`;
-    thumbs.forEach(t=>t.classList.remove('active'));
+    slides.forEach(slide => slide.classList.remove('active'));
+    slides[index].classList.add('active');
+    thumbs.forEach(t => t.classList.remove('active'));
     thumbs[index].classList.add('active');
   }
+
   thumbs.forEach(t=>{
-    t.addEventListener('click',()=>{currentIndex=parseInt(t.dataset.index); showSlide(currentIndex);});
+    t.addEventListener('click',()=>{
+      currentIndex = parseInt(t.dataset.index);
+      showSlide(currentIndex);
+    });
   });
+
   setInterval(()=>{
     currentIndex = (currentIndex+1)%slides.length;
     showSlide(currentIndex);
   },5000);
+
+  showSlide(currentIndex);
 
   // MODALES
   const modalButtons = document.querySelectorAll('[data-modal]');
@@ -294,12 +312,4 @@
       btn.parentElement.parentElement.style.display='none';
     });
   });
-  window.addEventListener('click', e=>{
-    modals.forEach(modal=>{
-      if(e.target==modal) modal.style.display='none';
-    });
-  });
-</script>
-
-</body>
-</html>
+  window.addEventListener('click', e
