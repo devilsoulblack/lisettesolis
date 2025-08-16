@@ -1,293 +1,287 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Psicología Lisette Solis</title>
-  <style>
-    /* Reset */
-    * {margin:0; padding:0; box-sizing:border-box; font-family: 'Arial', sans-serif;}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psicología Lisette Solis</title>
+<style>
+  :root {
+    --bg: #fff8f3;
+    --header: #a25b4e;
+    --button: #d77a61;
+    --button-hover: #b85d4e;
+    --text: #3b2f2f;
+    --card-bg: #ffffff;
+    --highlight: #c97b63;
+  }
 
-    body {background:#fff; color:#333; line-height:1.6;}
+  body {margin:0; font-family:'Arial', sans-serif; background:var(--bg); color:var(--text); line-height:1.6;}
+  a{text-decoration:none;}
+  
+  header {
+    position:fixed; top:0; left:0; width:100%;
+    background: var(--header); color:white;
+    padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center;
+    z-index:1000;
+  }
+  .header-left{display:flex; flex-direction:column;}
+  .header-left h1{margin:0; font-size:1.8rem;}
+  .header-left p{margin:0; font-size:0.9rem; font-weight:300;}
+  .header-buttons{display:flex; gap:1rem;}
+  .btn{background:var(--button); color:white; padding:0.6rem 1.2rem; border-radius:30px; font-weight:bold; transition:0.3s;}
+  .btn:hover{background:var(--button-hover);}
 
-    a {text-decoration:none;}
+  /* CARRUSEL */
+  .carousel{margin-top:90px; position:relative; height:70vh; overflow:hidden;}
+  .carousel-slide{
+    position:absolute; width:100%; height:100%; background-size:cover; background-position:center;
+    display:flex; justify-content:center; align-items:center; flex-direction:column; color:white; text-align:center;
+    opacity:0; transition:opacity 1s ease-in-out;
+  }
+  .carousel-slide.active{opacity:1;}
+  .carousel-slide h2{font-size:2.5rem; text-shadow:0 4px 10px rgba(0,0,0,0.7);}
+  .carousel-slide button{margin-top:15px; padding:12px 25px; border:none; border-radius:30px; background:var(--highlight); color:white; font-size:1rem; cursor:pointer;}
+  .carousel-slide button:hover{background: var(--button);}
 
-    /* --- HEADER --- */
-    header {
-      position:fixed; top:0; left:0; width:100%;
-      background:#a25b4e; color:#fff;
-      display:flex; justify-content:space-between; align-items:center;
-      padding:15px 10%; z-index:1000;
-      box-shadow:0 2px 10px rgba(0,0,0,0.1);
-    }
-    header h1 {font-size:1.8rem;}
-    header h2 {font-size:0.9rem; font-weight:300;}
-    .header-left {display:flex; flex-direction:column;}
-    .header-buttons {display:flex; gap:15px;}
-    .btn {
-      padding:10px 18px; border-radius:30px; font-weight:bold;
-      transition:all 0.3s ease; text-align:center;
-    }
-    .btn-agendar {background:#fff; color:#a25b4e;}
-    .btn-agendar:hover {background:#f0d3c0;}
-    .btn-wsp {background:#25D366; color:#fff;}
-    .btn-wsp:hover {background:#1ebe5d;}
+  /* MODAL */
+  .modal{
+    display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%;
+    overflow:auto; background:rgba(0,0,0,0.5); justify-content:center; align-items:center;
+  }
+  .modal-content{
+    background:var(--bg); padding:30px; border-radius:15px; width:90%; max-width:500px; position:relative;
+  }
+  .close{position:absolute; top:10px; right:15px; font-size:1.5rem; cursor:pointer; color:var(--header);}
 
-    /* --- SECCIÓN 1: CARRUSEL --- */
-    .carousel {
-      margin-top:90px;
-      position:relative; height:90vh; overflow:hidden;
-    }
-    .carousel-slide {
-      position:absolute; width:100%; height:100%;
-      background-size:cover; background-position:center;
-      display:flex; justify-content:center; align-items:center;
-      flex-direction:column; color:#fff; text-align:center;
-      opacity:0; transition:opacity 1s ease-in-out;
-    }
-    .carousel-slide.active {opacity:1;}
-    .carousel-slide h2 {font-size:3rem; text-shadow:0 4px 10px rgba(0,0,0,0.7);}
-    .carousel-slide button {
-      margin-top:15px; padding:12px 20px; border:none; border-radius:30px;
-      background:#c97b63; color:#fff; font-size:1rem; cursor:pointer;
-    }
-    .carousel-slide button:hover {background:#a25b4e;}
+  /* CONTACTO */
+  .contacto{display:flex; flex-wrap:wrap; gap:40px; align-items:center; justify-content:space-between; padding:80px 10%; background:#fef3ec;}
+  .contacto img{width:320px; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,0.1);}
+  .contacto-text{flex:1;}
+  .contacto-text h2{font-size:2rem; margin-bottom:20px; color: var(--header);}
+  .contacto-text p{font-size:1.2rem; margin-bottom:20px;}
+  .btn-calendario{background: var(--button); color:white; padding:12px 25px; border-radius:30px;}
+  .btn-calendario:hover{background: var(--button-hover);}
 
-    /* --- SECCIÓN 2: CONTACTO RESERVA --- */
-    .contacto {
-      display:flex; flex-wrap:wrap; gap:40px;
-      align-items:center; justify-content:space-between;
-      padding:80px 10%; background:#faf3eb;
-    }
-    .contacto img {
-      width:320px; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,0.1);
-    }
-    .contacto-text {flex:1;}
-    .contacto-text h2 {font-size:2rem; margin-bottom:20px; color:#a25b4e;}
-    .contacto-text p {font-size:1.2rem; margin-bottom:20px;}
-    .btn-calendario {
-      background:#a25b4e; color:#fff; padding:12px 25px; border-radius:30px;
-    }
-    .btn-calendario:hover {background:#c97b63;}
+  /* QUIÉN SOY */
+  .quien-soy{display:flex; align-items:center; justify-content:center; gap:2rem; flex-wrap:wrap; padding:80px 10%;}
+  .quien-soy img{width:250px; height:250px; object-fit:cover; border-radius:50%; box-shadow:0 5px 15px rgba(0,0,0,0.2); transition: transform 0.4s;}
+  .quien-soy img:hover{transform:scale(1.05);}
+  .quien-soy div{max-width:500px; text-align:left;}
+  .quien-soy h2{color: var(--header); margin-bottom:1rem;}
+  .quien-soy ul{list-style:none; padding:0;}
+  .quien-soy ul li{margin-bottom:0.6rem; padding-left:20px; position:relative;}
+  .quien-soy ul li::before{content:"✔"; position:absolute; left:0; color: var(--highlight); font-weight:bold;}
 
-    /* --- SECCIÓN 3: QUIÉN SOY --- */
-    .quien-soy {
-      padding:80px 10%;
-      background:linear-gradient(135deg, #faf3eb, #ffffff);
-    }
-    .quien-soy-container {
-      display:flex; align-items:center; justify-content:space-between;
-      gap:50px; flex-wrap:wrap;
-    }
-    .quien-soy-img img {
-      width:320px; height:320px; object-fit:cover;
-      border-radius:50%; border:6px solid #a25b4e;
-      box-shadow:0 10px 25px rgba(0,0,0,0.1);
-      transition:transform 0.4s ease;
-    }
-    .quien-soy-img img:hover {transform:scale(1.05);}
-    .quien-soy-text {flex:1; color:#3e2f2f;}
-    .quien-soy-text h2 {
-      font-size:2.5rem; margin-bottom:15px; color:#a25b4e; position:relative;
-    }
-    .quien-soy-text h2::after {
-      content:""; position:absolute; width:60px; height:4px; background:#c97b63;
-      bottom:-10px; left:0; border-radius:2px;
-    }
-    .quien-soy-text p {font-size:1.2rem; margin-bottom:25px;}
-    .quien-soy-text h3 {font-size:1.5rem; margin-bottom:15px; color:#a25b4e;}
-    .quien-soy-text ul {list-style:none; padding:0;}
-    .quien-soy-text ul li {
-      font-size:1.1rem; margin-bottom:12px; padding-left:30px; position:relative;
-    }
-    .quien-soy-text ul li::before {
-      content:"✔"; position:absolute; left:0; color:#c97b63; font-weight:bold;
-    }
+  /* EVENTOS */
+  .eventos{padding:80px 10%; text-align:center;}
+  .eventos h2{margin-bottom:2rem; color: var(--header);}
+  .evento-card{display:inline-block; background: var(--card-bg); padding:20px; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.1); margin:10px; width:280px;}
+  .evento-card h3{margin-bottom:0.5rem;}
+  .evento-card a{display:inline-block; margin-top:10px; background: var(--button); color:white; padding:10px 20px; border-radius:20px;}
+  .evento-card a:hover{background: var(--button-hover);}
 
-    /* --- SECCIÓN 4: EVENTOS --- */
-    .eventos {
-      padding:80px 10%; background:#fff5f0; text-align:center;
-    }
-    .eventos h2 {font-size:2.5rem; color:#a25b4e; margin-bottom:40px;}
-    .evento-card {
-      background:#fff; padding:20px; border-radius:15px;
-      box-shadow:0 8px 20px rgba(0,0,0,0.1);
-      margin-bottom:20px; display:inline-block; width:280px;
-    }
-    .evento-card h3 {margin-bottom:10px;}
-    .evento-card a {
-      display:inline-block; margin-top:10px; color:#fff;
-      background:#a25b4e; padding:10px 20px; border-radius:20px;
-    }
-    .evento-card a:hover {background:#c97b63;}
+  /* PRECIOS */
+  .precios{padding:80px 10%; text-align:center;}
+  .precios h2{margin-bottom:2rem; color: var(--header);}
+  .pricing{display:flex; justify-content:center; gap:2rem; flex-wrap:wrap;}
+  .card{background: var(--card-bg); border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.1); padding:2rem; width:280px; position:relative; transition: transform 0.3s;}
+  .card:hover{transform:translateY(-5px);}
+  .card h3{color: var(--header);}
+  .price{font-size:1.5rem; font-weight:bold; margin:1rem 0; color: var(--button);}
+  .badge{position:absolute; top:-10px; right:-10px; background: var(--button); color:white; padding:0.4rem 0.8rem; border-radius:8px; font-size:0.8rem; font-weight:bold;}
 
-    /* --- SECCIÓN 5: PRECIOS --- */
-    .precios {
-      padding:80px 10%; background:#faf3eb; text-align:center;
-    }
-    .precios h2 {font-size:2.5rem; margin-bottom:40px; color:#a25b4e;}
-    .precio-card {
-      display:inline-block; background:#fff; padding:30px; margin:15px;
-      border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,0.1);
-      width:280px; position:relative;
-    }
-    .precio-card h3 {margin-bottom:15px;}
-    .badge {
-      position:absolute; top:20px; right:-10px;
-      background:#ff9800; color:#fff; padding:5px 15px;
-      border-radius:20px; font-size:0.9rem; font-weight:bold;
-    }
+  /* REDES */
+  .redes{padding:60px 10%; text-align:center;}
+  .redes h2{margin-bottom:1rem; color: var(--header);}
+  .redes a{margin:0 10px; font-size:1.2rem; padding:12px 20px; border-radius:30px; background: var(--button); color:white; display:inline-block;}
+  .redes a:hover{background: var(--button-hover);}
 
-    /* --- SECCIÓN 6: REDES --- */
-    .redes {
-      padding:60px 10%; background:#fff; text-align:center;
-    }
-    .redes h2 {font-size:2rem; margin-bottom:20px; color:#a25b4e;}
-    .redes a {
-      margin:0 10px; font-size:1.2rem; padding:12px 20px;
-      border-radius:30px; background:#a25b4e; color:#fff; display:inline-block;
-    }
-    .redes a:hover {background:#c97b63;}
+  /* FOOTER */
+  footer{background: var(--header); color:white; text-align:center; padding:2rem;}
 
-    /* --- FOOTER --- */
-    footer {
-      padding:20px; text-align:center;
-      background:#3e2f2f; color:#fff; font-size:0.9rem;
-    }
-
-    /* --- RESPONSIVE --- */
-    @media(max-width:768px){
-      .header-buttons {flex-direction:column; gap:10px;}
-      .carousel-slide h2 {font-size:2rem;}
-      .contacto {flex-direction:column;}
-      .quien-soy-container {flex-direction:column; text-align:center;}
-      .quien-soy-text h2::after {left:50%; transform:translateX(-50%);}
-    }
-  </style>
+  /* RESPONSIVE */
+  @media(max-width:768px){
+    .header-buttons{flex-direction:column; gap:0.5rem;}
+    .carousel-slide h2{font-size:1.8rem;}
+    .contacto,.quien-soy{flex-direction:column; text-align:center;}
+    .quien-soy div{text-align:center;}
+  }
+</style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-left">
-      <h1>Psicología Lisette Solis</h1>
-      <h2>Psicoterapias - Arteterapia & Autismo</h2>
-    </div>
-    <div class="header-buttons">
-      <a href="https://calendar.google.com" target="_blank" class="btn btn-agendar">Agendar Consulta</a>
-      <a href="https://wa.me/56965437654" target="_blank" class="btn btn-wsp">WhatsApp</a>
-    </div>
-  </header>
+<header>
+  <div class="header-left">
+    <h1>Psicología Lisette Solis</h1>
+    <p>Psicoterapias - Arteterapia & Autismo</p>
+  </div>
+  <div class="header-buttons">
+    <a href="https://calendar.google.com" target="_blank" class="btn">Agendar</a>
+    <a href="https://wa.me/56912345678" target="_blank" class="btn">WhatsApp</a>
+  </div>
+</header>
 
-  <!-- CARRUSEL -->
-  <section class="carousel">
-    <div class="carousel-slide active" style="background-image:url('img/evaluacion.jpg')">
-      <h2>Evaluación Clínica</h2>
-      <button>Más información</button>
-    </div>
-    <div class="carousel-slide" style="background-image:url('img/individual.jpg')">
-      <h2>Intervención Individual</h2>
-      <button>Más información</button>
-    </div>
-    <div class="carousel-slide" style="background-image:url('img/familiar.jpg')">
-      <h2>Terapia Familiar</h2>
-      <button>Más información</button>
-    </div>
-    <div class="carousel-slide" style="background-image:url('img/escolar.jpg')">
-      <h2>Intervención Escolar</h2>
-      <button>Más información</button>
-    </div>
-  </section>
+<!-- CARRUSEL -->
+<section class="carousel">
+  <div class="carousel-slide active" style="background-image:url('https://via.placeholder.com/1200x700?text=Evaluacion+Clinica');">
+    <h2>Evaluación Clínica</h2>
+    <button data-modal="modal1">Más información</button>
+  </div>
+  <div class="carousel-slide" style="background-image:url('https://via.placeholder.com/1200x700?text=Intervencion+Individual');">
+    <h2>Intervención Individual</h2>
+    <button data-modal="modal2">Más información</button>
+  </div>
+  <div class="carousel-slide" style="background-image:url('https://via.placeholder.com/1200x700?text=Terapia+Familiar');">
+    <h2>Terapia Familiar</h2>
+    <button data-modal="modal3">Más información</button>
+  </div>
+  <div class="carousel-slide" style="background-image:url('https://via.placeholder.com/1200x700?text=Intervencion+Escolar');">
+    <h2>Intervención Escolar</h2>
+    <button data-modal="modal4">Más información</button>
+  </div>
+</section>
 
-  <!-- CONTACTO -->
-  <section class="contacto">
-    <img src="img/lissette.jpg" alt="Lisette Solis">
-    <div class="contacto-text">
-      <h2>¿Quieres hacer una reserva o tienes preguntas?</h2>
-      <p>Puedes escribirme al <strong>+56 9 65437654</strong> o reservar una cita conmigo.</p>
-      <a href="https://calendar.google.com" target="_blank" class="btn-calendario">Agendar en Google Calendar</a>
-    </div>
-  </section>
+<!-- MODALES -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Evaluación Clínica</h2>
+    <p>Se realiza un diagnóstico completo y detallado de la situación emocional y psicológica del paciente.</p>
+    <a href="#">Más información</a>
+  </div>
+</div>
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Intervención Individual</h2>
+    <p>Sesiones personalizadas para trabajar emociones, hábitos y desarrollo personal del paciente.</p>
+    <a href="#">Más información</a>
+  </div>
+</div>
+<div id="modal3" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Terapia Familiar</h2>
+    <p>Apoyo y orientación para mejorar la dinámica familiar y resolución de conflictos.</p>
+    <a href="#">Más información</a>
+  </div>
+</div>
+<div id="modal4" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Intervención Escolar</h2>
+    <p>Programas y estrategias para apoyar el desarrollo académico y social de estudiantes.</p>
+    <a href="#">Más información</a>
+  </div>
+</div>
 
-  <!-- QUIÉN SOY -->
-  <section id="quien-soy" class="quien-soy">
-    <div class="quien-soy-container">
-      <div class="quien-soy-img">
-        <img src="img/lissette.jpg" alt="Psicóloga Lisette Solis">
-      </div>
-      <div class="quien-soy-text">
-        <h2>¿Quién Soy?</h2>
-        <p>
-          Soy Lisette Solis, psicóloga especializada en psicoterapias, 
-          arteterapia y acompañamiento a familias y personas con autismo. 
-          Mi misión es brindar un espacio seguro y acogedor donde puedas sanar y crecer.
-        </p>
-        <h3>Formación Académica</h3>
-        <ul>
-          <li>Licenciada en Psicología - Universidad de Chile</li>
-          <li>Diplomado en Arteterapia</li>
-          <li>Diplomado en Trastorno del Espectro Autista (TEA)</li>
-          <li>Experiencia en clínica y consultas privadas</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+<!-- CONTACTO -->
+<section class="contacto">
+  <img src="https://via.placeholder.com/320" alt="Lisette Solis">
+  <div class="contacto-text">
+    <h2>¿Quieres hacer una reserva o tienes preguntas?</h2>
+    <p>Puedes escribirme al <strong>+56 9 65437654</strong> o reservar una cita conmigo.</p>
+    <a href="https://calendar.google.com" target="_blank" class="btn-calendario">Agendar en Google Calendar</a>
+  </div>
+</section>
 
-  <!-- EVENTOS -->
-  <section class="eventos">
-    <h2>Próximos Eventos</h2>
-    <div class="evento-card">
-      <h3>Taller de Arteterapia</h3>
-      <p>Fecha: 20 de Agosto</p>
-      <a href="#">Unirme por Zoom</a>
+<!-- QUIÉN SOY -->
+<section id="quien-soy" class="quien-soy">
+  <div class="quien-soy">
+    <img src="https://via.placeholder.com/250" alt="Foto Lisette">
+    <div>
+      <h2>¿Quién Soy?</h2>
+      <p>Soy Lisette Solis, psicóloga especializada en psicoterapias, arteterapia y apoyo a personas con autismo. Mi compromiso es acompañarte en tu proceso personal y brindar herramientas efectivas para tu bienestar emocional.</p>
+      <p><strong>Formación Académica:</strong><br>Licenciada en Psicología - Universidad de Chile<br>Diplomado en Arteterapia<br>Diplomado en Autismo</p>
     </div>
-    <div class="evento-card">
-      <h3>Apoyo a Familias TEA</h3>
-      <p>Fecha: 5 de Septiembre</p>
-      <a href="#">Unirme por Zoom</a>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- PRECIOS -->
-  <section class="precios">
-    <h2>Precios de Consultas</h2>
-    <div class="precio-card">
+<!-- EVENTOS -->
+<section class="eventos">
+  <h2>Próximos Eventos</h2>
+  <div class="evento-card">
+    <h3>Taller de Arteterapia</h3>
+    <p>Fecha: 20 de Agosto</p>
+    <a href="#">Unirme por Zoom</a>
+  </div>
+  <div class="evento-card">
+    <h3>Apoyo a Familias TEA</h3>
+    <p>Fecha: 5 de Septiembre</p>
+    <a href="#">Unirme por Zoom</a>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section class="precios">
+  <h2>Tarifas de Consultas</h2>
+  <div class="pricing">
+    <div class="card">
       <h3>Consulta Individual</h3>
-      <p>$35.000</p>
+      <p class="price">$25.000 CLP</p>
+      <p>Sesión de 50 minutos</p>
     </div>
-    <div class="precio-card">
-      <h3>Consulta Online</h3>
-      <p>$30.000</p>
+    <div class="card">
+      <h3>Terapia Familiar</h3>
+      <p class="price">$40.000 CLP</p>
+      <p>Sesión de 70 minutos</p>
     </div>
-    <div class="precio-card">
+    <div class="card">
       <span class="badge">Recomendado</span>
-      <h3>Paquete 4 sesiones</h3>
-      <p>$120.000</p>
+      <h3>Paquete 4 Sesiones</h3>
+      <p class="price">$90.000 CLP</p>
+      <p>4 sesiones individuales</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- REDES -->
-  <section class="redes">
-    <h2>Contáctame en Redes Sociales</h2>
-    <a href="#">Instagram</a>
-    <a href="#">Facebook</a>
-    <a href="https://wa.me/56965437654" target="_blank">WhatsApp</a>
-  </section>
+<!-- REDES -->
+<section class="redes">
+  <h2>Contáctame en Redes Sociales</h2>
+  <a href="#">Instagram</a>
+  <a href="#">Facebook</a>
+  <a href="https://wa.me/56965437654" target="_blank">WhatsApp</a>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    © 2025 Psicología Lisette Solis - Todos los derechos reservados | Gracias por tu visita
-  </footer>
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 Psicología Lisette Solis - Todos los derechos reservados.</p>
+  <p>Desarrollado con ❤️ por Alfredo Andaluz</p>
+</footer>
 
-  <!-- JS Carrusel -->
-  <script>
-    let slides = document.querySelectorAll('.carousel-slide');
-    let index = 0;
-    setInterval(()=>{
-      slides[index].classList.remove('active');
-      index = (index+1) % slides.length;
-      slides[index].classList.add('active');
-    },8000);
-  </script>
+<script>
+  // CARRUSEL
+  let slides = document.querySelectorAll('.carousel-slide');
+  let index = 0;
+  setInterval(() => {
+    slides[index].classList.remove('active');
+    index = (index+1)%slides.length;
+    slides[index].classList.add('active');
+  }, 8000);
+
+  // MODALES
+  const modalButtons = document.querySelectorAll('[data-modal]');
+  const modals = document.querySelectorAll('.modal');
+  const closeButtons = document.querySelectorAll('.close');
+
+  modalButtons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.getElementById(btn.dataset.modal).style.display='flex';
+    });
+  });
+
+  closeButtons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      btn.parentElement.parentElement.style.display='none';
+    });
+  });
+
+  window.addEventListener('click', e=>{
+    modals.forEach(modal=>{
+      if(e.target==modal) modal.style.display='none';
+    });
+  });
+</script>
+
 </body>
 </html>
