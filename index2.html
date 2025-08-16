@@ -198,7 +198,7 @@
 
 <!-- CONTACTO -->
 <section class="contacto">
-  <img src="https://via.placeholder.com/320" alt="Lisette Solis">
+  <img src="https://cdn-icons-png.flaticon.com/256/2043/2043285.png" alt="Lisette Solis">
   <div class="contacto-text">
     <h2>¿Quieres hacer una reserva o tienes preguntas?</h2>
     <p>Puedes escribirme al <strong>+56 9 65437654</strong> o reservar una cita conmigo.</p>
@@ -208,7 +208,7 @@
 
 <!-- QUIÉN SOY -->
 <section id="quien-soy" class="quien-soy">
-  <img src="https://via.placeholder.com/250" alt="Foto Lisette">
+  <img src="https://raw.githubusercontent.com/devilsoulblack/lisettesolis/refs/heads/main/lisette_solis_paredes_v1.jpg" alt="Foto Lisette">
   <div>
     <h2>¿Quién Soy?</h2>
     <p>Soy Lisette Solis, psicóloga especializada en psicoterapias, arteterapia y apoyo a personas con autismo. Mi compromiso es acompañarte en tu proceso personal y brindar herramientas efectivas para tu bienestar emocional.</p>
@@ -269,7 +269,7 @@
 </footer>
 
 <script>
-  // CARRUSEL DESLIZANTE CON ANIMACIÓN DE TEXTO
+  // CARRUSEL
   const wrapper = document.querySelector('.carousel-wrapper');
   const slides = document.querySelectorAll('.carousel-slide');
   const thumbs = document.querySelectorAll('.carousel-thumb');
@@ -284,7 +284,7 @@
   }
 
   thumbs.forEach(t=>{
-    t.addEventListener('click',()=>{
+    t.addEventListener('click', ()=>{
       currentIndex = parseInt(t.dataset.index);
       showSlide(currentIndex);
     });
@@ -307,9 +307,19 @@
       document.getElementById(btn.dataset.modal).style.display='flex';
     });
   });
+
   closeButtons.forEach(btn=>{
     btn.addEventListener('click', ()=>{
       btn.parentElement.parentElement.style.display='none';
     });
   });
-  window.addEventListener('click', e
+
+  window.addEventListener('click', e=>{
+    modals.forEach(modal=>{
+      if(e.target==modal) modal.style.display='none';
+    });
+  });
+</script>
+
+</body>
+</html>
