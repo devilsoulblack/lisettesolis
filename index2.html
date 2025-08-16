@@ -6,61 +6,52 @@
 <title>Psicología Lisette Solis</title>
 <style>
   :root {
-    --bg: #fff8f3;
-    --header: #a25b4e;
-    --btn-agendar: #d77a61;
-    --btn-agendar-hover: #b85d4e;
-    --btn-whatsapp: #25d366;
-    --btn-whatsapp-hover: #1ebe5d;
-    --text: #3b2f2f;
-    --card-bg: #ffffff;
-    --highlight: #c97b63;
+    --bg:#fff8f3;
+    --header:#c97b63;
+    --btn-agendar:#d77a61;
+    --btn-agendar-hover:#b85d4e;
+    --btn-whatsapp:#25d366;
+    --btn-whatsapp-hover:#1ebe5d;
+    --text:#3b2f2f;
+    --card-bg:#ffffff;
+    --highlight:#c97b63;
   }
 
-  body {margin:0; font-family:'Arial', sans-serif; background:var(--bg); color:var(--text); line-height:1.6;}
+  body{margin:0; font-family:'Arial',sans-serif; background:var(--bg); color:var(--text); line-height:1.6;}
   a{text-decoration:none;}
 
   /* HEADER */
-  header {
+  header{
     position:fixed; top:0; left:0; width:100%;
     background: var(--header); color:white;
     padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center;
-    z-index:1000;
+    z-index:1000; box-shadow:0 4px 10px rgba(0,0,0,0.1);
   }
   .header-left{display:flex; flex-direction:column;}
   .header-left h1{margin:0; font-size:1.8rem;}
   .header-left p{margin:0; font-size:0.9rem; font-weight:300;}
   .header-buttons{display:flex; gap:1rem;}
-  .btn-agendar{background:var(--btn-agendar); color:white; padding:0.6rem 1.2rem; border-radius:30px; font-weight:bold; transition:0.3s;}
+  .btn-agendar{background: linear-gradient(45deg, #f5a97a, #d77a61); color:white; padding:0.6rem 1.2rem; border-radius:30px; font-weight:bold; transition:0.3s;}
   .btn-agendar:hover{background: var(--btn-agendar-hover);}
-  .btn-whatsapp{background:var(--btn-whatsapp); color:white; padding:0.6rem 1.2rem; border-radius:30px; font-weight:bold; transition:0.3s;}
+  .btn-whatsapp{background: linear-gradient(45deg, #25d366, #1ebe5d); color:white; padding:0.6rem 1.2rem; border-radius:30px; font-weight:bold; transition:0.3s;}
   .btn-whatsapp:hover{background: var(--btn-whatsapp-hover);}
   .header-buttons a{transition: transform 0.3s, box-shadow 0.3s;}
   .header-buttons a:hover{transform: scale(1.1); box-shadow: 0 8px 20px rgba(0,0,0,0.3);}
 
-  /* CARRUSEL DESLIZANTE */
+  /* CARRUSEL FADE */
   .carousel-container{margin-top:90px; position:relative; overflow:hidden; height:70vh;}
-  .carousel-wrapper{display:flex; transition: transform 1s ease-in-out; height:100%;}
-  .carousel-slide{min-width:100%; height:100%; background-size:cover; background-position:center; display:flex; justify-content:center; align-items:center; flex-direction:column; color:white; text-align:center; position:relative;}
-  .carousel-slide h2, .carousel-slide button {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+  .carousel-slide{
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    background-size:cover; background-position:center; display:flex; justify-content:center; align-items:center; flex-direction:column;
+    color:white; text-align:center; opacity:0; transition:opacity 1s ease-in-out;
   }
-  .carousel-slide.active h2, .carousel-slide.active button {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .carousel-slide button{margin-top:15px; padding:12px 25px; border:none; border-radius:30px; background:var(--highlight); color:white; font-size:1rem; cursor:pointer;}
-  .carousel-slide button:hover{background: var(--btn-agendar);}
-
-  /* MINIATURAS */
-  .carousel-thumbs{display:flex; justify-content:center; margin-top:10px; gap:10px;}
-  .carousel-thumb{width:12px; height:12px; border-radius:50%; background:#ccc; cursor:pointer; transition:0.3s;}
-  .carousel-thumb.active{background:var(--highlight); transform:scale(1.3);}
+  .carousel-slide.active{opacity:1;}
+  .carousel-slide h2{font-size:2.5rem; margin-bottom:20px; text-shadow:2px 2px 8px rgba(0,0,0,0.6);}
+  .carousel-slide button{padding:15px 30px; border:none; border-radius:30px; background:var(--highlight); color:white; font-size:1.2rem; cursor:pointer; transition:0.4s;}
+  .carousel-slide button:hover{background: var(--btn-agendar); transform:scale(1.05);}
 
   /* MODAL */
-  .modal{display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; overflow:auto; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; animation:fadeIn 0.4s;}
+  .modal{display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; overflow:auto; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; animation:fadeIn 0.4s;}
   .modal-content{background:var(--bg); padding:30px; border-radius:15px; width:90%; max-width:500px; position:relative; transform:translateY(-50px); opacity:0; animation:slideDown 0.4s forwards;}
   .close{position:absolute; top:10px; right:15px; font-size:1.5rem; cursor:pointer; color:var(--header);}
   @keyframes fadeIn {from {opacity:0;} to{opacity:1;}}
@@ -68,16 +59,17 @@
 
   /* CONTACTO */
   .contacto{display:flex; flex-wrap:wrap; gap:40px; align-items:center; justify-content:space-between; padding:80px 10%; background:#fef3ec;}
-  .contacto img{width:320px; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,0.1);}
+  .contacto img{width:320px; border-radius:20px; box-shadow:0 8px 20px rgba(0,0,0,0.1); transition: transform 0.4s;}
+  .contacto img:hover{transform:scale(1.05);}
   .contacto-text{flex:1;}
   .contacto-text h2{font-size:2rem; margin-bottom:20px; color: var(--header);}
   .contacto-text p{font-size:1.2rem; margin-bottom:20px;}
-  .btn-calendario{background: var(--btn-agendar); color:white; padding:12px 25px; border-radius:30px;}
-  .btn-calendario:hover{background: var(--btn-agendar-hover);}
+  .btn-calendario{background: linear-gradient(45deg,#f5a97a,#d77a61); color:white; padding:12px 25px; border-radius:30px; transition:0.3s;}
+  .btn-calendario:hover{background: var(--btn-agendar-hover); transform:scale(1.05);}
 
   /* QUIÉN SOY */
   .quien-soy{display:flex; align-items:center; justify-content:flex-start; gap:2rem; flex-wrap:wrap; padding:80px 10%;}
-  .quien-soy img{width:250px; height:250px; object-fit:cover; border-radius:50%; box-shadow:0 5px 15px rgba(0,0,0,0.2); transition: transform 0.4s;}
+  .quien-soy img{width:250px; height:250px; object-fit:cover; border-radius:50%; box-shadow:0 5px 20px rgba(0,0,0,0.3); transition: transform 0.5s;}
   .quien-soy img:hover{transform:scale(1.05);}
   .quien-soy div{max-width:600px; text-align:left;}
   .quien-soy h2{color: var(--header); margin-bottom:1rem;}
@@ -88,17 +80,18 @@
   /* EVENTOS */
   .eventos{padding:80px 10%; text-align:center;}
   .eventos h2{margin-bottom:2rem; color: var(--header);}
-  .evento-card{display:inline-block; background: var(--card-bg); padding:20px; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.1); margin:10px; width:280px;}
-  .evento-card h3{margin-bottom:0.5rem;}
-  .evento-card a{display:inline-block; margin-top:10px; background: var(--btn-agendar); color:white; padding:10px 20px; border-radius:20px;}
-  .evento-card a:hover{background: var(--btn-agendar-hover);}
+  .evento-card{display:inline-block; background: var(--card-bg); padding:20px; border-radius:15px; box-shadow:0 8px 25px rgba(0,0,0,0.1); margin:10px; width:280px; transition: transform 0.4s;}
+  .evento-card:hover{transform:translateY(-8px);}
+  .evento-card h3{margin-bottom:0.5rem; color: var(--highlight);}
+  .evento-card a{display:inline-block; margin-top:10px; background: var(--btn-agendar); color:white; padding:10px 20px; border-radius:20px; transition:0.3s;}
+  .evento-card a:hover{background: var(--btn-agendar-hover); transform:scale(1.05);}
 
   /* PRECIOS */
   .precios{padding:80px 10%; text-align:center;}
   .precios h2{margin-bottom:2rem; color: var(--header);}
   .pricing{display:flex; justify-content:center; gap:2rem; flex-wrap:wrap;}
-  .card{background: var(--card-bg); border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.1); padding:2rem; width:280px; position:relative; transition: transform 0.3s;}
-  .card:hover{transform:translateY(-5px);}
+  .card{background: var(--card-bg); border-radius:15px; box-shadow:0 6px 25px rgba(0,0,0,0.1); padding:2rem; width:280px; position:relative; transition: transform 0.4s, box-shadow 0.4s;}
+  .card:hover{transform:translateY(-10px); box-shadow:0 12px 30px rgba(0,0,0,0.2);}
   .card h3{color: var(--header);}
   .price{font-size:1.5rem; font-weight:bold; margin:1rem 0; color: var(--btn-agendar);}
   .badge{position:absolute; top:-10px; right:-10px; background: var(--btn-agendar); color:white; padding:0.4rem 0.8rem; border-radius:8px; font-size:0.8rem; font-weight:bold;}
@@ -106,8 +99,8 @@
   /* REDES */
   .redes{padding:60px 10%; text-align:center;}
   .redes h2{margin-bottom:1rem; color: var(--header);}
-  .redes a{margin:0 10px; font-size:1.2rem; padding:12px 20px; border-radius:30px; background: var(--btn-agendar); color:white; display:inline-block;}
-  .redes a:hover{background: var(--btn-agendar-hover);}
+  .redes a{margin:0 10px; font-size:1.2rem; padding:12px 20px; border-radius:30px; background: var(--btn-agendar); color:white; display:inline-block; transition:0.4s;}
+  .redes a:hover{background: var(--btn-agendar-hover); transform:scale(1.05);}
 
   /* FOOTER */
   footer{background: var(--header); color:white; text-align:center; padding:2rem;}
@@ -134,71 +127,35 @@
   </div>
 </header>
 
-<!-- CARRUSEL -->
+<!-- CARRUSEL FADE -->
 <section class="carousel-container">
-  <div class="carousel-wrapper">
-    <div class="carousel-slide" style="background-image:url('https://via.placeholder.com/1200x700?text=Evaluacion+Clinica');">
-      <h2>Evaluación Clínica</h2>
-      <button data-modal="modal1">Más información</button>
-    </div>
-    <div class="carousel-slide" style="background-image:url('https://via.placeholder.com/1200x700?text=Intervencion+Individual');">
-      <h2>Intervención Individual</h2>
-      <button data-modal="modal2">Más información</button>
-    </div>
-    <div class="carousel-slide" style="background-image:url('https://via.placeholder.com/1200x700?text=Terapia+Familiar');">
-      <h2>Terapia Familiar</h2>
-      <button data-modal="modal3">Más información</button>
-    </div>
-    <div class="carousel-slide" style="background-image:url('https://via.placeholder.com/1200x700?text=Intervencion+Escolar');">
-      <h2>Intervención Escolar</h2>
-      <button data-modal="modal4">Más información</button>
-    </div>
+  <div class="carousel-slide active" style="background-image:url('https://via.placeholder.com/1200x700?text=Evaluacion+Clinica');">
+    <h2>Evaluación Clínica</h2>
+    <button data-modal="modal1">Más información</button>
   </div>
-  <div class="carousel-thumbs">
-    <div class="carousel-thumb active" data-index="0"></div>
-    <div class="carousel-thumb" data-index="1"></div>
-    <div class="carousel-thumb" data-index="2"></div>
-    <div class="carousel-thumb" data-index="3"></div>
+  <div class="carousel-slide" style="background-image:url('https://via.placeholder.com/1200x700?text=Intervencion+Individual');">
+    <h2>Intervención Individual</h2>
+    <button data-modal="modal2">Más información</button>
+  </div>
+  <div class="carousel-slide" style="background-image:url('https://via.placeholder.com/1200x700?text=Terapia+Familiar');">
+    <h2>Terapia Familiar</h2>
+    <button data-modal="modal3">Más información</button>
+  </div>
+  <div class="carousel-slide" style="background-image:url('https://via.placeholder.com/1200x700?text=Intervencion+Escolar');">
+    <h2>Intervención Escolar</h2>
+    <button data-modal="modal4">Más información</button>
   </div>
 </section>
 
-<!-- MODALES -->
-<div id="modal1" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2>Evaluación Clínica</h2>
-    <p>Se realiza un diagnóstico completo y detallado de la situación emocional y psicológica del paciente.</p>
-    <a href="#">Más información</a>
-  </div>
-</div>
-<div id="modal2" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2>Intervención Individual</h2>
-    <p>Sesiones personalizadas para trabajar emociones, hábitos y desarrollo personal del paciente.</p>
-    <a href="#">Más información</a>
-  </div>
-</div>
-<div id="modal3" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2>Terapia Familiar</h2>
-    <p>Apoyo y orientación para mejorar la dinámica familiar y resolución de conflictos.</p>
-    <a href="#">Más información</a>
-  </div>
-</div>
-<div id="modal4" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2>Intervención Escolar</h2>
-    <p>Programas y estrategias para apoyar el desarrollo académico y social de estudiantes.</p>
-    <a href="#">Más información</a>
-  </div>
-</div>
+<!-- MODALES (igual que antes) -->
+<div id="modal1" class="modal"><div class="modal-content"><span class="close">&times;</span><h2>Evaluación Clínica</h2><p>Se realiza un diagnóstico completo y detallado.</p><a href="#">Más información</a></div></div>
+<div id="modal2" class="modal"><div class="modal-content"><span class="close">&times;</span><h2>Intervención Individual</h2><p>Sesiones personalizadas para trabajar emociones.</p><a href="#">Más información</a></div></div>
+<div id="modal3" class="modal"><div class="modal-content"><span class="close">&times;</span><h2>Terapia Familiar</h2><p>Apoyo y orientación para mejorar la dinámica familiar.</p><a href="#">Más información</a></div></div>
+<div id="modal4" class="modal"><div class="modal-content"><span class="close">&times;</span><h2>Intervención Escolar</h2><p>Programas y estrategias para apoyar desarrollo académico.</p><a href="#">Más información</a></div></div>
 
 <!-- CONTACTO -->
 <section class="contacto">
-  <img src="https://cdn-icons-png.flaticon.com/256/2043/2043285.png" alt="Lisette Solis">
+  <img src="https://via.placeholder.com/320" alt="Lisette Solis">
   <div class="contacto-text">
     <h2>¿Quieres hacer una reserva o tienes preguntas?</h2>
     <p>Puedes escribirme al <strong>+56 9 65437654</strong> o reservar una cita conmigo.</p>
@@ -208,7 +165,7 @@
 
 <!-- QUIÉN SOY -->
 <section id="quien-soy" class="quien-soy">
-  <img src="https://raw.githubusercontent.com/devilsoulblack/lisettesolis/refs/heads/main/lisette_solis_paredes_v1.jpg" alt="Foto Lisette">
+  <img src="https://via.placeholder.com/250" alt="Foto Lisette">
   <div>
     <h2>¿Quién Soy?</h2>
     <p>Soy Lisette Solis, psicóloga especializada en psicoterapias, arteterapia y apoyo a personas con autismo. Mi compromiso es acompañarte en tu proceso personal y brindar herramientas efectivas para tu bienestar emocional.</p>
@@ -219,38 +176,17 @@
 <!-- EVENTOS -->
 <section class="eventos">
   <h2>Próximos Eventos</h2>
-  <div class="evento-card">
-    <h3>Taller de Arteterapia</h3>
-    <p>Fecha: 20 de Agosto</p>
-    <a href="#">Unirme por Zoom</a>
-  </div>
-  <div class="evento-card">
-    <h3>Apoyo a Familias TEA</h3>
-    <p>Fecha: 5 de Septiembre</p>
-    <a href="#">Unirme por Zoom</a>
-  </div>
+  <div class="evento-card"><h3>Taller de Arteterapia</h3><p>Fecha: 20 de Agosto</p><a href="#">Unirme por Zoom</a></div>
+  <div class="evento-card"><h3>Apoyo a Familias TEA</h3><p>Fecha: 5 de Septiembre</p><a href="#">Unirme por Zoom</a></div>
 </section>
 
 <!-- PRECIOS -->
 <section class="precios">
   <h2>Tarifas de Consultas</h2>
   <div class="pricing">
-    <div class="card">
-      <h3>Consulta Individual</h3>
-      <p class="price">$25.000 CLP</p>
-      <p>Sesión de 50 minutos</p>
-    </div>
-    <div class="card">
-      <h3>Terapia Familiar</h3>
-      <p class="price">$40.000 CLP</p>
-      <p>Sesión de 70 minutos</p>
-    </div>
-    <div class="card">
-      <span class="badge">Recomendado</span>
-      <h3>Paquete 4 Sesiones</h3>
-      <p class="price">$90.000 CLP</p>
-      <p>4 sesiones individuales</p>
-    </div>
+    <div class="card"><h3>Consulta Individual</h3><p class="price">$25.000 CLP</p><p>Sesión de 50 minutos</p></div>
+    <div class="card"><h3>Terapia Familiar</h3><p class="price">$40.000 CLP</p><p>Sesión de 70 minutos</p></div>
+    <div class="card"><span class="badge">Recomendado</span><h3>Paquete 4 Sesiones</h3><p class="price">$90.000 CLP</p><p>4 sesiones individuales</p></div>
   </div>
 </section>
 
@@ -262,63 +198,31 @@
   <a href="https://wa.me/56965437654" target="_blank">WhatsApp</a>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <p>&copy; 2025 Psicología Lisette Solis - Todos los derechos reservados.</p>
   <p>Desarrollado con ❤️ por Alfredo Andaluz</p>
 </footer>
 
 <script>
-  // CARRUSEL
-  const wrapper = document.querySelector('.carousel-wrapper');
+  // CARRUSEL FADE
   const slides = document.querySelectorAll('.carousel-slide');
-  const thumbs = document.querySelectorAll('.carousel-thumb');
-  let currentIndex = 0;
-
+  let current = 0;
   function showSlide(index){
-    wrapper.style.transform = `translateX(-${index * 100}%)`;
-    slides.forEach(slide => slide.classList.remove('active'));
+    slides.forEach((s,i)=>s.classList.remove('active'));
     slides[index].classList.add('active');
-    thumbs.forEach(t => t.classList.remove('active'));
-    thumbs[index].classList.add('active');
   }
-
-  thumbs.forEach(t=>{
-    t.addEventListener('click', ()=>{
-      currentIndex = parseInt(t.dataset.index);
-      showSlide(currentIndex);
-    });
-  });
-
   setInterval(()=>{
-    currentIndex = (currentIndex+1)%slides.length;
-    showSlide(currentIndex);
+    current = (current+1)%slides.length;
+    showSlide(current);
   },5000);
-
-  showSlide(currentIndex);
 
   // MODALES
   const modalButtons = document.querySelectorAll('[data-modal]');
   const modals = document.querySelectorAll('.modal');
   const closeButtons = document.querySelectorAll('.close');
-
-  modalButtons.forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      document.getElementById(btn.dataset.modal).style.display='flex';
-    });
-  });
-
-  closeButtons.forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      btn.parentElement.parentElement.style.display='none';
-    });
-  });
-
-  window.addEventListener('click', e=>{
-    modals.forEach(modal=>{
-      if(e.target==modal) modal.style.display='none';
-    });
-  });
+  modalButtons.forEach(btn=>{btn.addEventListener('click',()=>{document.getElementById(btn.dataset.modal).style.display='flex';});});
+  closeButtons.forEach(btn=>{btn.addEventListener('click',()=>{btn.parentElement.parentElement.style.display='none';});});
+  window.addEventListener('click',e=>{modals.forEach(modal=>{if(e.target==modal) modal.style.display='none';});});
 </script>
 
 </body>
