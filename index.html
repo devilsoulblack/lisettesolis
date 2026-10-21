@@ -190,11 +190,70 @@ details p{padding:0 1.4rem 1.2rem}
 .ticket::before,.ticket::after{content:"";position:absolute;right:190px;width:28px;height:28px;border-radius:50%;background:var(--bg);transform:translateX(50%)}
 .ticket::before{top:-14px}.ticket::after{bottom:-14px}
 @media(max-width:640px){.ticket{grid-template-columns:1fr}.tstub{border-left:0;border-top:2px dashed var(--line)}.ticket::before,.ticket::after{display:none}}
+/* ---- trayectoria / frase / historia ---- */
+.nav{flex-wrap:wrap;justify-content:flex-end;gap:.3rem 1.1rem;font-size:.95rem}
+@media(max-width:520px){.nav{font-size:.85rem;gap:.2rem .8rem}}
+:root{--c0:#E8825F;--c1:#C94F8A;--c2:#7A4FD1;--c3:#4F86D6}
+.wide{width:min(1080px,calc(100vw - 48px));margin:0 0 1rem 50%;transform:translateX(-50%)}
+.tray{background:#fff;border-radius:28px;padding:2.8rem 2rem}
+.tray h2{text-align:center;font-size:clamp(1.6rem,4.5vw,2.4rem);max-width:18em;margin:0 auto .6rem;line-height:1.15}
+.tray .sub{text-align:center;margin:0 auto 2rem}
+.tgrid{display:grid;grid-template-columns:1fr minmax(240px,320px) 1fr;grid-template-areas:"a t b" "c t d";gap:1.8rem 2.2rem;align-items:start}
+.temple{grid-area:t;align-self:center}
+.ped{height:62px;background:var(--c0);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.ent{height:18px;background:var(--c0);margin:2px 0 14px;border-radius:2px}
+.cols{display:flex;justify-content:space-between;gap:12px;height:230px}
+.col{flex:1;position:relative;border:0;background:var(--c);color:#fff;font-size:1.6rem;cursor:pointer;opacity:.55;transition:opacity .2s,transform .25s;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.2) 0 2px,transparent 2px 9px)}
+.col::before,.col::after{content:"";position:absolute;left:-5px;right:-5px;height:9px;background:var(--c)}
+.col::before{top:-12px}.col::after{bottom:-12px}
+.col:hover{opacity:.85}
+.col[aria-pressed=true]{opacity:1;transform:translateY(-8px)}
+.base{height:18px;background:var(--c0);margin-top:20px;border-radius:2px}
+.pt{border-top:6px solid var(--c);padding-top:1rem;transition:border-color .2s}
+.pt h3{font-size:1.45rem;line-height:1.15;margin-bottom:.7rem}
+.pt.on h3{color:var(--c)}
+.pt.on{border-top-width:10px;padding-top:.8rem}
+.pt-a{grid-area:a}.pt-b{grid-area:b}.pt-c{grid-area:c}.pt-d{grid-area:d}
+.tl{margin:0;padding-left:1.1rem;font-size:.95rem}
+.tl li{margin-bottom:.4rem}
+@media(max-width:860px){
+  .tray{padding:2rem 1.3rem}
+  .tgrid{grid-template-columns:1fr;grid-template-areas:"t" "p"}
+  .pt-a,.pt-b,.pt-c,.pt-d{grid-area:p;display:none}
+  .pt.on{display:block}
+  .cols{height:180px}
+}
+.quote{border-radius:28px;overflow:hidden;margin-bottom:1rem;color:#fff}
+.q1{background:var(--accent);padding:3rem 2.5rem 3.6rem;position:relative;overflow:hidden}
+.qm{position:absolute;left:1.4rem;top:-1rem;font:700 9rem/1 var(--serif);color:var(--coral)}
+.qt{position:relative;font:700 clamp(1.5rem,4.8vw,2.4rem)/1.22 var(--serif);letter-spacing:-.02em;max-width:22em;margin:1.8rem 0 0}
+.q2{background:var(--ink);margin-top:-16px;padding:3.2rem 2.5rem 2.5rem;clip-path:polygon(0.0% 16px, 3.125% 0, 6.25% 16px, 9.375% 0, 12.5% 16px, 15.625% 0, 18.75% 16px, 21.875% 0, 25.0% 16px, 28.125% 0, 31.25% 16px, 34.375% 0, 37.5% 16px, 40.625% 0, 43.75% 16px, 46.875% 0, 50.0% 16px, 53.125% 0, 56.25% 16px, 59.375% 0, 62.5% 16px, 65.625% 0, 68.75% 16px, 71.875% 0, 75.0% 16px, 78.125% 0, 81.25% 16px, 84.375% 0, 87.5% 16px, 90.625% 0, 93.75% 16px, 96.875% 0, 100.0% 16px, 100% 100%, 0 100%)}
+.q2 p{max-width:40em;margin:0;font-size:1.05rem}
+.q2 b{color:#F4B79D}
+@media(max-width:520px){.q1,.q2{padding-left:1.4rem;padding-right:1.4rem}.qm{font-size:7rem}}
+.story{background:#fff;border-radius:28px;padding:2.5rem;margin-bottom:1rem}
+.story h2{margin-bottom:.4rem}
+.track{position:relative;display:flex;justify-content:space-between;margin:1.8rem .3rem .4rem}
+.track::before{content:"";position:absolute;left:0;right:0;top:27px;height:6px;border-radius:9px;background:linear-gradient(90deg,var(--ink),var(--accent),var(--coral))}
+.ch{position:relative;display:flex;flex-direction:column;align-items:center;gap:.5rem;background:none;border:0;cursor:pointer;font:500 .9rem/1.3 var(--sans);color:var(--ink);width:30%;text-align:center}
+.ch i{width:60px;height:60px;border-radius:50%;background:#fff;border:3px solid var(--ink);display:grid;place-items:center;font:700 1.3rem var(--serif);font-style:normal;transition:all .25s}
+.ch[aria-pressed=true] i{background:var(--coral);border-color:var(--coral);color:#fff;box-shadow:0 0 0 7px var(--peach)}
+.ends{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted);margin:0 .3rem 1.4rem}
+.chp{background:var(--bg);border-radius:22px;padding:1.6rem;animation:up .3s ease}
+.chp p:last-child{margin-bottom:0}
+.daily{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;list-style:none;padding:0;margin:1.2rem 0 0}
+.daily li{background:#fff;border-radius:16px;padding:.8rem 1rem;border-left:6px solid var(--c0);font-size:.96rem;line-height:1.45}
+.daily li:nth-child(4n+2){border-color:var(--c1)}.daily li:nth-child(4n+3){border-color:var(--c2)}.daily li:nth-child(4n){border-color:var(--c3)}
+.skills{margin-top:2.2rem;padding-top:2rem;border-top:1px solid var(--line)}
+.srow{display:flex;flex-wrap:wrap;gap:.5rem;margin:.6rem 0}
+.srow span{padding:.55rem 1.2rem;border-radius:999px;font:500 1.02rem var(--sans)}
+.s1 span{background:var(--peach)}.s2 span{background:var(--lilac)}.s3 span{background:var(--ink);color:#fff}
+@media(max-width:520px){.story{padding:1.6rem 1.3rem}.ch i{width:50px;height:50px}.track::before{top:22px}}
 </style>
 </head>
 <body>
 
-<div class="top"><div class="wrap"><a class="brand" href="#">Lisette Solís</a><nav class="nav"><a href="#sobre-mi">Sobre mí</a><a href="#agendar">Agendar</a></nav></div></div>
+<div class="top"><div class="wrap"><a class="brand" href="#">Lisette Solís</a><nav class="nav"><a href="#sobre-mi">Sobre mí</a><a href="#trayectoria">Trayectoria</a><a href="#historia">Mi historia</a><a href="#agendar">Agendar</a></nav></div></div>
 
 <div class="wrap">
   <div class="hero">
@@ -212,7 +271,7 @@ details p{padding:0 1.4rem 1.2rem}
   <section class="about" id="sobre-mi" data-tab="a">
     <div class="portrait">
       <div class="halo" aria-hidden="true"></div>
-      <img src="https://raw.githubusercontent.com/devilsoulblack/lisettesolis/refs/heads/main/lisette.jpeg" width="535" height="969" loading="lazy" alt="Lisette Solís, psicóloga clínica, sentada en su consulta con una libreta en las manos">
+      <img src="lisette.jpg" width="535" height="969" loading="lazy" alt="Lisette Solís, psicóloga clínica, sentada en su consulta con una libreta en las manos">
       <div class="tag"><b>Lisette Solís</b><span>Psicóloga clínica</span></div>
     </div>
     <div class="about-body">
@@ -237,6 +296,88 @@ details p{padding:0 1.4rem 1.2rem}
         <p>Experta en Regulación Emocional y Procesamiento Sensorial. Certificada en ADOS-2 y ADI-R. Diplomada en Arteterapia.</p>
         <ul class="chips"><li>Regulación emocional</li><li>Procesamiento sensorial</li><li>ADOS-2</li><li>ADI-R</li><li>Arteterapia</li></ul>
       </div>
+    </div>
+  </section>
+
+  <section class="wide" id="trayectoria">
+    <div class="tray">
+      <h2>Trayectoria clínica y especialización de alto nivel</h2>
+      <p class="sub">Toca cada columna para destacar su contenido.</p>
+      <div class="tgrid">
+        <div class="temple">
+          <div class="ped" aria-hidden="true"></div><div class="ent" aria-hidden="true"></div>
+          <div class="cols">
+            <button class="col" style="--c:var(--c0)" data-c="0" aria-pressed="true" aria-label="Formación y registros oficiales">🎓</button>
+            <button class="col" style="--c:var(--c1)" data-c="1" aria-pressed="false" aria-label="Especialización en trauma">💓</button>
+            <button class="col" style="--c:var(--c2)" data-c="2" aria-pressed="false" aria-label="Enfoque neuroafirmativo">🧠</button>
+            <button class="col" style="--c:var(--c3)" data-c="3" aria-pressed="false" aria-label="Herramientas terapéuticas">🔧</button>
+          </div>
+          <div class="base" aria-hidden="true"></div>
+        </div>
+        <div class="pt pt-a on" data-c="0" style="--c:var(--c0)"><h3>Formación y registros oficiales</h3><ul class="tl">
+          <li>Psicóloga Clínica, Universidad de Guayaquil (Ecuador) y UNIACC (Chile).</li>
+          <li>Registro Nacional de Salud (Chile): SIS N° 842333.</li>
+          <li>Registro Senescyt (Ecuador): 1006-2022-2568774.</li></ul></div>
+        <div class="pt pt-b" data-c="1" style="--c:var(--c1)"><h3>Especialización en trauma</h3><ul class="tl">
+          <li>Diplomada en Traumas del Desarrollo.</li>
+          <li>Especialista en Procesos y Derechos de Adopción.</li>
+          <li>Experiencia clínica en Trauma Complejo, Regulación Emocional y Migración.</li>
+          <li>Supervisión Clínica Continua.</li></ul></div>
+        <div class="pt pt-c" data-c="2" style="--c:var(--c2)"><h3>Enfoque neuroafirmativo</h3><ul class="tl">
+          <li>Diplomada en Abordaje Integral del Autismo.</li>
+          <li>Especialización en Atención Clínica para Adultos Autistas (Harvard).</li>
+          <li>Evaluación y Diagnóstico de TDAH.</li>
+          <li>Seminario en Educación y Diversidad de Género.</li>
+          <li>Certificación para evaluación y diagnóstico de Autismo.</li></ul></div>
+        <div class="pt pt-d" data-c="3" style="--c:var(--c3)"><h3>Herramientas terapéuticas</h3><ul class="tl">
+          <li>Certificada en ADOS 2 y ADI-R.</li>
+          <li>Certificada en Supervisión Clínica por la OMS.</li>
+          <li>Diplomada en Arteterapia y Terapias Expresivas.</li>
+          <li>Diplomada en Terapia Cognitivo Conductual (TCC).</li>
+          <li>Formación en Terapia Sistémica Breve.</li>
+          <li>Formación en Trastornos de ánimo y en Trastornos de la personalidad.</li>
+          <li>Especialización en Sexología.</li>
+          <li>Certificaciones en Medicina Preventiva y Primeros Auxilios.</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote" aria-label="Frase motivadora">
+    <div class="q1"><span class="qm" aria-hidden="true">“</span>
+      <p class="qt">Cuando transformas la relación contigo y fortaleces tu estructura interna, todo lo demás se alinea: tus vínculos, tu economía y tu calidad de vida comienzan a reflejar tu verdadera esencia.</p></div>
+    <div class="q2"><p>Sin embargo, sanar no es un camino lineal ni cómodo. Habrá momentos de frustración, de sentir que retrocedes o que el entorno entra en caos. <b>Ese quiebre no es un error, es parte del proceso.</b> El dolor y la dificultad son la antesala de una reinvención profunda; una oportunidad para descubrir de lo que realmente eres capaz cuando dejas de vivir para los demás y comienzas a vivir para ti.</p></div>
+  </section>
+
+  <section class="story" id="historia">
+    <h2>Sobre mi vida: de la supervivencia a la autenticidad</h2>
+    <div class="track">
+      <button class="ch" data-h="h1" aria-pressed="true"><i>1</i>Mi historia</button>
+      <button class="ch" data-h="h2" aria-pressed="false"><i>2</i>Cambiar y pedir ayuda</button>
+      <button class="ch" data-h="h3" aria-pressed="false"><i>3</i>Tu día a día</button>
+    </div>
+    <div class="ends"><span>Supervivencia</span><span>Autenticidad</span></div>
+    <div aria-live="polite">
+      <div class="chp" id="h1"><h3>Mi historia</h3>
+        <p>Crecí creyendo que no encajaba, que estaba «rota» y que jamás podría repararme. Soy sobreviviente de una historia de violencia, estuve en situaciones de mucha vulnerabilidad y soy migrante (nací en Ecuador y me mudé a Chile), hija de madre ecuatoriana y padre biológico (migrante) japonés. En mi adultez recibí el diagnóstico tardío de neurodivergencia, que le dio sentido a muchas cosas de mi vida. Todo me motiva para acompañar a otros.</p></div>
+      <div class="chp" id="h2" hidden><h3>Hacer cambios, sentirme segura de mí misma, abrazar mi historia y pedir ayuda</h3>
+        <p>Transformar mi historia en fortaleza y en propósito para ayudar a otros no fue magia; fue un proceso de sanación, resiliencia, muchas horas de estudio y bloqueo, paciencia y trabajo en equipo. Hoy sé que pedir ayuda es una <b>VIRTUD</b> que deseo transmitirte.</p>
+        <p>También aprendí a soltar el disfraz: ya no invierto mi energía en encajar en lugares donde no puedo ser yo misma, sino en acompañarte en tu proceso.</p></div>
+      <div class="chp" id="h3" hidden><h3>Comprendo tu día a día</h3>
+        <p>Te cuento mi historia porque sé lo que cuesta sobrevivir al mundo. Comprendo profundamente lo abrumador que puede ser tomar grandes decisiones, liderar equipos, aprender sobre la marcha para los nuevos desafíos, porque incluso cuando las condiciones de vida mejoran las exigencias también aumentan. Pero también sé lo agotadores que resultan los pequeños desafíos diarios:</p>
+        <ul class="daily">
+          <li>Hacer un trámite o cambiar de planes.</li>
+          <li>Lidiar con visitas inesperadas o hacer nuevos amigos.</li>
+          <li>Ordenar tu clóset o iniciar una actividad.</li>
+          <li>Pedir un favor, decir «no», tomar decisiones complejas o darme el permiso de descansar.</li>
+          <li>Creer en mí, en mi conocimiento, en mis sueños y en mis proyectos.</li>
+          <li>Transitar la soledad, crear vínculos nuevos, llevar a cabo planes, cuidar de mí.</li>
+        </ul></div>
+    </div>
+    <div class="skills">
+      <h3>Habilidades clave que me caracterizan</h3>
+      <div class="srow s1"><span>Ética</span><span>Vocación</span><span>Confidencialidad</span></div>
+      <div class="srow s2"><span>Lenguaje neuroafirmativo</span><span>Desarrollo profesional continuo</span><span>Adaptación</span><span>Creatividad</span></div>
+      <div class="srow s3"><span>Empatía</span><span>Calidez</span><span>Compromiso</span><span>Análisis</span><span>Comunicación efectiva</span></div>
     </div>
   </section>
 
@@ -482,6 +623,14 @@ document.querySelectorAll(".node").forEach(n=>n.addEventListener("click",()=>{
 document.querySelectorAll(".vc").forEach(c=>c.addEventListener("click",()=>{
   document.querySelectorAll(".vc").forEach(x=>x.setAttribute("aria-pressed",x===c));
   document.querySelectorAll(".vd").forEach(d=>d.hidden=d.id!==c.dataset.v);
+}));
+document.querySelectorAll(".col").forEach(c=>c.addEventListener("click",()=>{
+  document.querySelectorAll(".col").forEach(x=>x.setAttribute("aria-pressed",x===c));
+  document.querySelectorAll(".pt").forEach(t=>t.classList.toggle("on",t.dataset.c===c.dataset.c));
+}));
+document.querySelectorAll(".ch").forEach(c=>c.addEventListener("click",()=>{
+  document.querySelectorAll(".ch").forEach(x=>x.setAttribute("aria-pressed",x===c));
+  document.querySelectorAll(".chp").forEach(d=>d.hidden=d.id!==c.dataset.h);
 }));
 </script>
 </body>
